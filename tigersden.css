@@ -1,6 +1,6 @@
 /* ============================================================
    TIGERS DEN  —  Lioden den CSS
-   
+   Built on the free CSS template by Katie (#106445) & Jester.
    ------------------------------------------------------------
    PALETTE (tied to the images: cyan city, violet eyes,
             gold/blue earth, pale moon rock)
@@ -299,7 +299,7 @@ td.right {
 /* Sized with object-fit so any image shape fills the slot cleanly. */
 
 /* img2 — every cave */
-a[href^="cave.php?id="] > div.cave-grid > img {
+a[href*="cave.php?id="] > div.cave-grid > img {
 	content: url('https://i.ibb.co/x86vC9LW/img2.jpg') !important;
 	width: 240px;
 	height: 120px;
@@ -307,7 +307,7 @@ a[href^="cave.php?id="] > div.cave-grid > img {
 }
 
 /* img3 — View Pride Overview */
-a[href^="lionoverview.php"] > div.cave-grid > img {
+a[href*="lionoverview.php"] > div.cave-grid > img {
 	content: url('https://i.ibb.co/d02xbgnJ/img3.jpg') !important;
 	width: 260px;
 	height: 60px;
@@ -315,7 +315,7 @@ a[href^="lionoverview.php"] > div.cave-grid > img {
 }
 
 /* img4 — Unsorted */
-a[href^="unsorted.php"] > div.cave-grid > img {
+a[href*="unsorted.php"] > div.cave-grid > img {
 	content: url('https://i.ibb.co/hx7k4Q4p/img4.jpg') !important;
 	width: 260px;
 	height: 60px;
@@ -323,7 +323,7 @@ a[href^="unsorted.php"] > div.cave-grid > img {
 }
 
 /* img5 — Pregnant Lionesses */
-a[href^="nesting.php"] > div.cave-grid > img {
+a[href*="nesting.php"] > div.cave-grid > img {
 	content: url('https://i.ibb.co/WWtrKd72/img5.jpg') !important;
 	width: 260px;
 	height: 60px;
@@ -331,7 +331,7 @@ a[href^="nesting.php"] > div.cave-grid > img {
 }
 
 /* img6 — every beetle mound */
-a[href^="mound.php"] > div.mound-grid > img {
+a[href*="mound.php"] > div.mound-grid > img {
 	content: url('https://i.ibb.co/rGpjGPDp/img6.jpg') !important;
 	width: 130px;
 	height: 80px;
