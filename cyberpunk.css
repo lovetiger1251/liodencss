@@ -1,0 +1,480 @@
+/* CYBERPUNK DEN CSS
+built on jester and katie's free css template (v3)
+template made by jester (#187561) & katie (#106445)
+additional credits from the template: Pandora #144118, Kat #94329, tawny #251887,
+Austin #43750, Bobcat (#79288), Tserin (#2230), Atticus (#198107)
+
+PALETTE
+night      #0A0E1A   page background
+panel      #131A2E   side panels, chat, comments
+raised     #1B2340   tables, inputs, headers on tables
+text       #C8D8F0   body text
+muted      #6F7FA6   timestamps, secondary text
+cyan       #22E5FF   links, borders, success
+magenta    #FF2E88   hover, headers, danger
+amber      #FFB020   energy, warnings, badges
+
+No image hosting is needed for this file: the background is drawn with CSS gradients
+and the Lioden logo is left as the default. Optional image-replacement sections from
+the template (cave covers, currency icons, footnote icons, logo replacer) were removed
+because they need hosted image links. */
+
+/* FONTS - Import from Google Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Titillium+Web:wght@400;600&display=swap');
+
+body {font-family: 'Titillium Web', 'Segoe UI', sans-serif; font-size: 15px;}
+
+.topbar {font-family: 'Chakra Petch', sans-serif;}
+
+.navbar {font-family: 'Chakra Petch', sans-serif; font-weight: 600; letter-spacing: 0.5px;}
+
+/* BACKGROUNDS
+The first one is for PC, the second is for mobile.
+The grid is drawn with CSS, so there is no image link to break. */
+
+@media screen and (min-width: 601px) {
+body {
+background:
+  linear-gradient(rgba(34, 229, 255, 0.05) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(34, 229, 255, 0.05) 1px, transparent 1px),
+  radial-gradient(ellipse at 50% 0%, #1A2444 0%, #0A0E1A 65%) !important;
+background-size: 40px 40px, 40px 40px, 100% 100% !important;
+background-attachment: fixed !important;
+color: #C8D8F0; } }
+
+@media screen and (max-width: 600px){
+body {
+background: #0A0E1A !important;
+background-size: cover;
+color: #C8D8F0; } }
+
+/* SCROLL BOXES */
+
+::-webkit-scrollbar {
+width: 7px;
+height: 7px; }
+::-webkit-scrollbar-track {
+background: #0A0E1A;}
+::-webkit-scrollbar-thumb {
+background: #22E5FF; }
+::-webkit-scrollbar-thumb:hover {
+background: #FF2E88; }
+
+/* HEADERS -
+H1 is the big header that says 'X's Den'
+H2 is not used anywhere in the default look unless you want to use it.
+H3 is used in the side bar (above the energy panel, achievement panel, etc. */
+
+h1 {
+color: #FF2E88 !important;
+font-size: 56px;
+text-align: center !important;
+font-family: 'Chakra Petch', sans-serif;
+font-weight: 700;
+letter-spacing: 3px;
+text-shadow: 0 0 6px #FF2E88, 0 0 22px rgba(255, 46, 136, 0.55);}
+
+h2 {
+color: #22E5FF !important;
+font-family: 'Chakra Petch', sans-serif;
+font-size: 24px;}
+
+h3 {
+color: #22E5FF !important;
+font-family: 'Chakra Petch', sans-serif;
+font-weight: 600;
+letter-spacing: 1px;
+font-size: 17px;}
+
+/* LINKS
+Color of links. This will affect all links on your page. */
+
+a:link,
+a:visited {
+color: #22E5FF !important;
+background: none !important; }
+
+a:hover {
+color: #FF2E88 !important; }
+
+/* MAIN PANEL - The panel in front of your background image. */
+
+.container.main {
+background: rgba(10, 14, 26, 0.72);
+border: 1px solid rgba(34, 229, 255, 0.18);
+box-shadow: none;
+border-radius: 0px; }
+.col-md-9 {
+background: none; }
+
+/* TOPBAR, NAVBAR, & BREADCRUMB */
+
+.topbar {
+background: #0A0E1A !important;
+color: #C8D8F0 !important;
+border: none !important;
+border-bottom: 1px solid rgba(34, 229, 255, 0.35) !important;
+border-radius: 0px !important;  }
+
+.navbar {
+background: #131A2E !important;
+color: #C8D8F0 !important;
+border: none !important;
+border-top: 2px solid #FF2E88 !important;
+border-radius: 0px !important; }
+
+.navbar li a {
+color: #C8D8F0 !important; }
+
+.navbar li a:hover {
+background: #0A0E1A !important;
+color: #FF2E88 !important; }
+
+/* Mobile collapsible navbar */
+
+.navbar-toggle {
+border: none !important;
+background: #131A2E !important;
+}
+
+.navbar-collapse {
+box-shadow: none !important;
+border-top: none !important;
+}
+
+/* Bookmark Bar - aka breadcrumb, this is where your link path is shown */
+
+.breadcrumb {
+background: #0A0E1A !important;
+color: #6F7FA6 !important;
+border: none !important;
+border-radius: 0px !important;}
+.breadcrumb .active {
+color: #C8D8F0; }
+
+/* ALERTS
+.alert-success is the green one you see for hunting, patrolling, etc.
+.alert-danger is red alerts, like inbox
+.alert-warning keep the same as danger for best results */
+
+.alert {
+background: #131A2E !important;
+color: #C8D8F0 !important;
+border: none !important;
+border-left: 4px solid #22E5FF !important;
+border-radius: 0px !important;
+text-align: center !important;  }
+.alert-warning {
+background: #131A2E !important;
+border-left: 4px solid #FF2E88 !important;
+color: #FF2E88 !important;}
+.alert-danger {
+background: #131A2E !important;
+border-left: 4px solid #FF2E88 !important;
+color: #FF2E88 !important;}
+.alert-success {
+background: #131A2E !important;
+border-left: 4px solid #22E5FF !important;
+color: #22E5FF !important;}
+
+/* COMMENT BOX
+div#commentBox is the color of the ENTIRE BOX and the container.
+.comment is the comments themselves. */
+
+div#commentBox {
+background: #131A2E !important;
+border: 1px solid rgba(34, 229, 255, 0.18) !important;
+border-radius: 0px !important;
+color: #C8D8F0 !important;}
+
+.comment {
+background: #1B2340 !important;
+border: none !important;
+border-bottom: 1px solid rgba(34, 229, 255, 0.12) !important;
+border-radius: 0px !important;
+color: #C8D8F0 !important;
+text-align: center !important;}
+.text-muted {
+color: #6F7FA6 !important; }
+
+input.bad {
+background: #FF2E88 !important;
+color: #0A0E1A !important;}
+input.bad a {
+color: #0A0E1A !important; }
+
+table#player.table hr {
+display: none !important; }
+table#player.table div.xlarge {
+margin-top: 10px !important; }
+
+/* SIDE PANELS */
+
+.panel {
+background: #131A2E !important;
+color: #C8D8F0 !important;
+border: 1px solid rgba(34, 229, 255, 0.18) !important;
+border-radius: 0px !important;
+box-shadow: none !important;  }
+
+/* IMPRESSION / ALL PROGRESS Bars
+Unless you color the progress bars below, all progress bars default to this. */
+.progress-bar {
+background: #22E5FF !important;
+border-radius: 0px !important; }
+
+/* ENERGY */ .progress-bar-warning {
+background: #FFB020 !important;
+color: #0A0E1A !important;}
+/* HUNGER */ .progress-bar-danger {
+background: #FF2E88 !important;
+color: #0A0E1A !important;}
+/* EXP + ACHIEVEMENTS */ .progress-bar-success {
+background: #22E5FF !important;
+color: #0A0E1A !important;}
+
+/* This is the text that reads Energy: X% */
+.progress div {
+color: #FFFFFF !important;
+text-shadow: 0 0 3px #0A0E1A, 0 0 3px #0A0E1A !important; }
+
+/* This is the background of the progress bars. */
+.progress {
+background: #0A0E1A;
+color: #C8D8F0 !important;
+border: 1px solid rgba(34, 229, 255, 0.25);
+border-radius: 0px !important;  }
+
+/* CHAT */
+
+button#label_currentChannel {
+border: none !important;
+background: #1B2340 !important; }
+
+div#chatMessageContainer {
+border: none !important; }
+
+/* PINNED MESSAGES */
+
+.s-chat-message__pinned {
+background-color: #1B2340 !important;
+color: #C8D8F0 !important;
+border: none !important;
+border-left: 4px solid #FFB020 !important; }
+
+/* Odd/even chat messages */
+
+.s-chat-message:nth-child(even) {
+background: #131A2E !important;
+border: none !important; }
+.s-chat-message:nth-child(odd) {
+background: #0F1526 !important;
+border: none !important; }
+
+.s-chat-message_timestamp {
+color: #6F7FA6 !important; }
+
+/* Channel Selector */
+.s-chat-sidebar #fraChatChannelMenu,
+button.channelSwitcher, button.channelSwitcher.active {
+    background: #131A2E !important;
+color: #22E5FF !important;
+border: none !important;
+border-radius: 0px !important;
+box-shadow: none !important; }
+
+/* Emote List */
+
+div.emoteList.active {
+  background: #131A2E !important;
+  border: 1px solid #22E5FF !important;
+  box-shadow: none !important;
+}
+div.emoteList.active::before {
+background: #131A2E;
+border-top: none !important;
+border: 1px solid #22E5FF !important; }
+
+/* Pinged messages */
+
+#chatMessageList[data-pings="enabled"] .s-chat-message_mention {
+background-color: #1B2340 !important;
+border-left: 6px solid #FF2E88 !important;
+color: #C8D8F0 !important; }
+
+/* Character counter, X/150 */
+
+div#lblCharacterCounter {
+color: #6F7FA6 !important; }
+
+/* Do not touch */
+html.nolayout {
+background: none !important; }
+
+/* FAPA, KING DYNASTY, ETC. */
+
+.feature {
+background: #131A2E !important;
+color: #C8D8F0 !important;
+border: 1px solid #FF2E88 !important;
+border-radius: 0px !important;  }
+
+div.left {
+background: #1B2340 !important;
+color: #C8D8F0 !important;
+border: none !important;
+border-radius: 0px !important; }
+
+.xsmall {
+font-size: 14px !important; }
+
+/* LION INFO */
+
+.table {
+background: rgba(19, 26, 46, 0.85);
+border: 1px solid rgba(34, 229, 255, 0.18) !important;
+border-collapse: separate;
+border-radius: 0px; }
+
+/* .top is the king's name, .bottom is the mutations line, th is every other table header */
+
+.top, .bottom, th {
+background: #0A0E1A !important;
+color: #22E5FF !important;
+font-family: 'Chakra Petch', sans-serif;
+letter-spacing: 1px;
+border: none !important;
+border-bottom: 1px solid rgba(34, 229, 255, 0.35) !important;
+border-radius: 0px !important; }
+
+.bottom a:visited, .bottom a {
+text-decoration: none !important;}
+
+.table .left {
+background: #131A2E;
+border-radius: 0px !important; }
+
+.inner-table .left {
+background: #131A2E !important;
+color: #6F7FA6 !important;
+border-radius: 0px !important;  }
+
+.inner-table .right {
+background: #1B2340 !important;
+border-radius: 0px !important;
+color: #C8D8F0 !important; }
+
+.right_odd {
+background: none !important; }
+
+/* LION AND USER AVATAR */
+
+div#lion_image {
+opacity: 1.0;
+border-radius: 0px;
+border: 1px solid rgba(34, 229, 255, 0.35);
+overflow: hidden; }
+table#player img {
+opacity: 1.0;
+border-radius: 0px; }
+
+/* TEXT BOXES & BUTTONS */
+
+input, textarea, select, button.button,
+a.btn.btn-default.button {
+background: #0A0E1A !important;
+border: 1px solid rgba(34, 229, 255, 0.35) !important;
+border-radius: 0px !important;
+color: #C8D8F0 !important;
+text-shadow: none !important; }
+
+input:focus, textarea:focus, select:focus {
+border: 1px solid #22E5FF !important;
+outline: none !important;
+box-shadow: 0 0 6px rgba(34, 229, 255, 0.5) !important; }
+
+button.button:hover, a.btn.btn-default.button:hover,
+input[type="submit"]:hover, input[type="button"]:hover {
+color: #FF2E88 !important;
+border: 1px solid #FF2E88 !important; }
+
+/* CAVE NAMES */
+
+.cave-grid,
+.mound-grid {
+background: #131A2E !important;
+color: #22E5FF !important;
+font-family: 'Chakra Petch', sans-serif;
+border: 1px solid rgba(34, 229, 255, 0.25) !important;
+border-radius: 0px !important; }
+
+/* PRIDE TABLE */
+
+table#pride.table, table#pride.table a, table#pride.table a:visited {
+color: #C8D8F0 !important; }
+
+table#pride.table .xsmall
+{font-size: 12px !important;}
+
+/* BADGE - inbox notifications & days till heat */
+
+.badge {
+background: #FFB020 !important;
+color: #0A0E1A !important;
+border-radius: 0px !important; }
+
+/* NO LINK UNDERLINE */
+
+.footer a:link, .footer a:visited, .footer a:active {
+border-bottom: none !important; }
+
+td.bottom a, th a {
+border-bottom: none !important; }
+
+/* MEMBER ONLINE / OFFLINE
+Codes made by Pandora #144118 and Kat .:Red Lion of Voltron:. #94329 */
+
+.member-online {
+    background: #22E5FF;
+    border-radius: 0px;
+    width:40px!important;
+    height:40px;
+    margin:-10px;
+    margin-left:10px; }
+
+.member-offline {
+    background: #6F7FA6;
+    border-radius: 0px;
+    width:40px!important;
+    height:40px;
+    margin:-10px;
+    margin-left:10px;
+    filter: saturate(0%); }
+
+/* CREDIT - no touchy this part, the code will work just fine */
+
+.breadcrumb::after {
+content: "css template by katie (#106445) & jester (#187561)";
+color: #6F7FA6;
+position: absolute;
+right: 13%;
+z-index: 100; }
+
+@media only screen and (max-width: 1199px) and (min-width: 992px)  {
+        .breadcrumb::after {
+            right: 20%;
+        }
+    }
+
+    @media only screen and (max-width: 991px) and (min-width: 768px)  {
+        .breadcrumb::after {
+            right: 20%;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .breadcrumb::after {
+            right: 22%;
+        }
+    }
