@@ -3,20 +3,21 @@
    Based on the free CSS template by Katie (#106445) & Jester.
 
    PALETTE
-     Panels ........ rgba(14, 8, 26, 0.78)   dark violet-black
-     Neon yellow ... #F0FF1E   links, headers, borders
+     Panels ........ rgba(4, 12, 32, 0.78)   deep navy
+     Neon yellow ... #F0FF1E   links, headers, primary borders
      Hot pink ...... #FF2D95   secondary accents
-     Orchid ........ #C77DFF   link hover
-     Text .......... #F4EEFF
-     Muted ......... #B8A9CC
+     Cyan .......... #00E5FF   link hover, panel borders, glow
+     Text .......... #EAF6FF
+     Muted ......... #8FC3D9
 
    FONTS
-     Orbitron ...... title, headers, nav, buttons, labels
+     Bangers ....... den title
+     Orbitron ...... headers, nav, buttons, labels
      Smooch Sans ... body text
 
    IMAGES (all cut to exact slot size)
      background 1920x1080 .... https://i.ibb.co/rRRS7CPY/cyberpunk-1920x1080-16145.jpg
-     logo 192x120 (2x) ....... https://i.ibb.co/Z1fhC1Tg/logo-384x240.png
+     logo 192x120 (2x) ....... https://i.ibb.co/zTHx3pg5/logo.png
      caves 240x120 ........... https://i.ibb.co/QjTNjfY7/cavepreview-240x120.jpg
      pride overview 260x60 ... https://i.ibb.co/zhYpD1dL/prideoverview-260x60.jpg
      unsorted 260x60 ......... https://i.ibb.co/Y4PvjZWB/sorterd-260x60.jpg
@@ -31,25 +32,25 @@
    CURSORS: arrow.cur, link.cur, beam.cur, busy.ani in the repo root
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Smooch+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Orbitron:wght@400;600;700;900&family=Smooch+Sans:wght@400;500;600;700&display=swap');
 
 
 /* ================= 1. PAGE ================= */
 
 body {
-	background: #0A0614 url('https://i.ibb.co/rRRS7CPY/cyberpunk-1920x1080-16145.jpg') center center / cover no-repeat fixed;
+	background: #040C20 url('https://i.ibb.co/rRRS7CPY/cyberpunk-1920x1080-16145.jpg') center center / cover no-repeat fixed;
 	font-family: 'Smooch Sans', sans-serif;
 	font-size: 19px;
 	font-weight: 500;
 	letter-spacing: 0.3px;
-	color: #F4EEFF;
+	color: #EAF6FF;
 	cursor: url('https://lovetiger1251.github.io/liodencss/arrow.cur'), auto;
 }
 
 .container.main {
-	background: rgba(14, 8, 26, 0.78);
-	border: 1px solid rgba(240, 255, 30, 0.25);
-	box-shadow: 0 0 30px rgba(240, 255, 30, 0.12);
+	background: rgba(4, 12, 32, 0.78);
+	border: 1px solid rgba(0, 229, 255, 0.35);
+	box-shadow: 0 0 30px rgba(0, 229, 255, 0.15);
 	border-radius: 6px;
 }
 
@@ -59,15 +60,15 @@ body {
 }
 
 .topbar {
-	background: rgba(14, 8, 26, 0.78);
+	background: rgba(4, 12, 32, 0.78);
 	border: 1px solid rgba(240, 255, 30, 0.25);
 	border-bottom: none;
 	border-radius: 6px 6px 0 0;
-	color: #F4EEFF;
+	color: #EAF6FF;
 }
 
 .breadcrumb {
-	background: rgba(14, 8, 26, 0.78) !important;
+	background: rgba(4, 12, 32, 0.78) !important;
 	border: 1px solid rgba(255, 45, 149, 0.35);
 	border-radius: 4px;
 }
@@ -79,15 +80,15 @@ body {
 .alert,
 .alert-warning,
 .alert-danger {
-	background: rgba(14, 8, 26, 0.85) !important;
+	background: rgba(4, 12, 32, 0.85) !important;
 	border: 1px solid #FF2D95;
 	border-radius: 4px !important;
-	color: #F4EEFF;
+	color: #EAF6FF;
 }
 
 div.container.footer.center.white.visible-lg.visible-md.visible-sm,
 div.container.footer.center.white.visible-lg.visible-md.visible-sm a {
-	color: #B8A9CC !important;
+	color: #8FC3D9 !important;
 	text-shadow: none !important;
 }
 
@@ -95,11 +96,11 @@ div.container.footer.center.white.visible-lg.visible-md.visible-sm a {
 /* ================= 2. NAVBAR + LOGO ================= */
 
 .navbar {
-	background: rgba(14, 8, 26, 0.85);
+	background: rgba(4, 12, 32, 0.85);
 	border: none;
 	border-bottom: 2px solid #F0FF1E;
 	border-radius: 6px 6px 0 0;
-	color: #F4EEFF;
+	color: #EAF6FF;
 }
 
 .navbar li a {
@@ -107,7 +108,7 @@ div.container.footer.center.white.visible-lg.visible-md.visible-sm a {
 	font-size: 13px;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	color: #F4EEFF !important;
+	color: #EAF6FF !important;
 	transition: 0.2s;
 }
 
@@ -124,7 +125,7 @@ div.container.footer.center.white.visible-lg.visible-md.visible-sm a {
 	width: 0 !important;
 	height: 0 !important;
 	padding: 60px 96px;
-	background: url('https://i.ibb.co/Z1fhC1Tg/logo-384x240.png') center center / 192px 120px no-repeat;
+	background: url('https://i.ibb.co/zTHx3pg5/logo.png') center center / 192px 120px no-repeat;
 	opacity: 0.85;
 	transition: 0.2s;
 }
@@ -139,18 +140,21 @@ div.container.footer.center.white.visible-lg.visible-md.visible-sm a {
 @keyframes denTitle {
 	0%   { color: #F0FF1E; text-shadow: 0 0 10px rgba(240, 255, 30, 0.9), 0 0 30px rgba(240, 255, 30, 0.5); }
 	33%  { color: #FF2D95; text-shadow: 0 0 10px rgba(255, 45, 149, 0.9), 0 0 30px rgba(255, 45, 149, 0.5); }
-	66%  { color: #C77DFF; text-shadow: 0 0 10px rgba(199, 125, 255, 0.9), 0 0 30px rgba(199, 125, 255, 0.5); }
+	66%  { color: #00E5FF; text-shadow: 0 0 10px rgba(0, 229, 255, 0.9), 0 0 30px rgba(0, 229, 255, 0.5); }
 	100% { color: #F0FF1E; text-shadow: 0 0 10px rgba(240, 255, 30, 0.9), 0 0 30px rgba(240, 255, 30, 0.5); }
 }
 
 /* Den title — colour-animated */
 h1 {
-	font-family: 'Orbitron', sans-serif;
-	font-weight: 900;
-	font-size: 56px;
+	font-family: 'Bangers', 'Orbitron', sans-serif;
+	font-weight: 400;
+	font-size: 72px;
+	line-height: 1;
 	text-align: center;
 	text-transform: uppercase;
-	letter-spacing: 4px;
+	letter-spacing: 5px;
+	transform: rotate(-4deg);
+	-webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.6);
 	animation: denTitle 8s ease-in-out infinite;
 	cursor: url('https://lovetiger1251.github.io/liodencss/busy.ani'), auto;
 }
@@ -165,7 +169,7 @@ h2 {
 h3 {
 	font-family: 'Orbitron', sans-serif;
 	font-size: 14px !important;
-	color: #F4EEFF !important;
+	color: #EAF6FF !important;
 }
 
 .sidebar h3 {
@@ -182,60 +186,60 @@ a:visited {
 }
 
 a:hover {
-	color: #C77DFF !important;
-	text-shadow: 0 0 6px rgba(199, 125, 255, 0.6);
+	color: #00E5FF !important;
+	text-shadow: 0 0 6px rgba(0, 229, 255, 0.6);
 }
 
 
 /* ================= 4. SIDEBAR ================= */
 
 .panel {
-	background: rgba(14, 8, 26, 0.78) !important;
+	background: rgba(4, 12, 32, 0.78) !important;
 	border: 1px solid rgba(240, 255, 30, 0.25) !important;
 	border-radius: 4px;
 	box-shadow: none !important;
-	color: #F4EEFF !important;
+	color: #EAF6FF !important;
 }
 
 .progress {
-	background: rgba(14, 8, 26, 0.9);
+	background: rgba(4, 12, 32, 0.9);
 	border: 1px solid rgba(255, 45, 149, 0.4);
 	border-radius: 2px !important;
-	color: #F4EEFF !important;
+	color: #EAF6FF !important;
 }
 
 .progress-bar {
-	background: linear-gradient(90deg, #FF2D95, #F0FF1E);
+	background: linear-gradient(90deg, #FF2D95, #00E5FF, #F0FF1E);
 	border-radius: 0 !important;
-	color: #F4EEFF !important;
+	color: #EAF6FF !important;
 }
 
 .progress div {
-	color: #F4EEFF !important;
+	color: #EAF6FF !important;
 	text-shadow: 0 0 4px #000;
 }
 
 /* Chat */
 .s-chat-message:nth-child(even),
 .s-chat-message:nth-child(odd) {
-	background: rgba(14, 8, 26, 0.7) !important;
+	background: rgba(4, 12, 32, 0.7) !important;
 	border: none !important;
 	border-left: 2px solid rgba(240, 255, 30, 0.5) !important;
-	color: #F4EEFF !important;
+	color: #EAF6FF !important;
 }
 
 .s-chat-message:nth-child(odd) {
-	border-left-color: rgba(255, 45, 149, 0.5) !important;
+	border-left-color: rgba(0, 229, 255, 0.6) !important;
 }
 
 .s-chat-message__pinned {
 	background: rgba(255, 45, 149, 0.2) !important;
 	border: 1px solid #FF2D95 !important;
-	color: #F4EEFF !important;
+	color: #EAF6FF !important;
 }
 
 .s-chat-message_timestamp {
-	color: #B8A9CC !important;
+	color: #8FC3D9 !important;
 }
 
 div#chatMessageContainer {
@@ -243,7 +247,7 @@ div#chatMessageContainer {
 }
 
 button#label_currentChannel {
-	background: rgba(14, 8, 26, 0.9) !important;
+	background: rgba(4, 12, 32, 0.9) !important;
 	border: 1px solid #F0FF1E !important;
 	color: #F0FF1E !important;
 }
@@ -252,11 +256,11 @@ button#label_currentChannel {
 /* ================= 5. TABLES ================= */
 
 .table {
-	background: rgba(14, 8, 26, 0.7);
-	border: 1px solid rgba(240, 255, 30, 0.2) !important;
+	background: rgba(4, 12, 32, 0.7);
+	border: 1px solid rgba(0, 229, 255, 0.3) !important;
 	border-collapse: separate;
 	border-radius: 4px;
-	color: #F4EEFF;
+	color: #EAF6FF;
 }
 
 .top,
@@ -276,7 +280,7 @@ td.bottom a {
 .inner-table .left {
 	background: rgba(255, 45, 149, 0.22) !important;
 	border-radius: 0;
-	color: #F4EEFF;
+	color: #EAF6FF;
 }
 
 .inner-table .right,
@@ -286,7 +290,7 @@ td.right {
 }
 
 .right_odd {
-	background: rgba(14, 8, 26, 0.4) !important;
+	background: rgba(4, 12, 32, 0.4) !important;
 }
 
 
@@ -294,8 +298,8 @@ td.right {
 
 .cave-grid,
 .mound-grid {
-	background: rgba(14, 8, 26, 0.8);
-	border: 1px solid rgba(240, 255, 30, 0.3) !important;
+	background: rgba(4, 12, 32, 0.8);
+	border: 1px solid rgba(0, 229, 255, 0.4) !important;
 	border-radius: 4px !important;
 	font-family: 'Orbitron', sans-serif;
 	transition: 0.2s;
@@ -317,7 +321,7 @@ td.right {
 	background-position: center center;
 	background-size: cover;
 	background-repeat: no-repeat;
-	opacity: 0.7;
+	opacity: 0.5;
 	transition: 0.2s;
 }
 
@@ -390,10 +394,10 @@ img[src*="clan"]        { background-image: url('https://i.ibb.co/SDzm6jVY/clanb
 
 .feature,
 div.left {
-	background: rgba(14, 8, 26, 0.8) !important;
+	background: rgba(4, 12, 32, 0.8) !important;
 	border: 1px solid rgba(255, 45, 149, 0.35) !important;
 	border-radius: 4px !important;
-	color: #F4EEFF !important;
+	color: #EAF6FF !important;
 }
 
 
@@ -430,14 +434,14 @@ table#clans img:hover {
 input,
 select,
 textarea {
-	background: #140C24 !important;
+	background: #08182F !important;
 	border: 1px solid rgba(240, 255, 30, 0.35) !important;
 	border-radius: 3px !important;
 	box-shadow: none !important;
 	text-shadow: none !important;
 	font-family: 'Smooch Sans', sans-serif;
 	font-size: 18px;
-	color: #F4EEFF !important;
+	color: #EAF6FF !important;
 }
 
 input[type="submit"],
@@ -465,17 +469,17 @@ button.button:hover {
 .item-header {
 	background: rgba(255, 45, 149, 0.22) !important;
 	border-radius: 3px !important;
-	color: #F4EEFF !important;
+	color: #EAF6FF !important;
 }
 
 .item {
-	background: rgba(14, 8, 26, 0.8) !important;
-	border: 1px solid rgba(240, 255, 30, 0.2) !important;
+	background: rgba(4, 12, 32, 0.8) !important;
+	border: 1px solid rgba(0, 229, 255, 0.3) !important;
 	border-radius: 4px !important;
 }
 
 div.slider.round {
-	background: #2A1A44 !important;
+	background: #0F2A4A !important;
 }
 
 div.slider.round::before {
@@ -497,15 +501,15 @@ div.slider.round::before {
 .mediumbox,
 .largebox {
 	float: left;
-	background: rgba(14, 8, 26, 0.8);
-	border: 1px solid rgba(240, 255, 30, 0.3);
+	background: rgba(4, 12, 32, 0.8);
+	border: 1px solid rgba(0, 229, 255, 0.35);
 	border-top: 2px solid #F0FF1E;
 	border-radius: 4px;
 	margin: 10px;
 	padding: 12px;
 	height: 150px;
 	overflow: auto;
-	color: #F4EEFF;
+	color: #EAF6FF;
 }
 
 .smallbox  { width: 28.4%; }
@@ -533,7 +537,7 @@ input[type="text"], input[type="password"], textarea {
 }
 
 ::-webkit-scrollbar-track {
-	background: #140C24;
+	background: #08182F;
 }
 
 ::-webkit-scrollbar-thumb {
