@@ -15,7 +15,7 @@
      Smooch Sans ... body text
 
    IMAGES (all cut to exact slot size)
-     background 1920x1080 .... https://i.ibb.co/tPmQ8nz6/pagebackground-1920x1080.jpg
+     background 1920x1080 .... https://i.ibb.co/rRRS7CPY/cyberpunk-1920x1080-16145.jpg
      logo 192x120 (2x) ....... https://i.ibb.co/Z1fhC1Tg/logo-384x240.png
      caves 240x120 ........... https://i.ibb.co/QjTNjfY7/cavepreview-240x120.jpg
      pride overview 260x60 ... https://i.ibb.co/zhYpD1dL/prideoverview-260x60.jpg
@@ -36,7 +36,7 @@
 /* ================= 1. PAGE ================= */
 
 body {
-	background: #0A0614 url('https://i.ibb.co/tPmQ8nz6/pagebackground-1920x1080.jpg') center center / cover no-repeat fixed;
+	background: #0A0614 url('https://i.ibb.co/rRRS7CPY/cyberpunk-1920x1080-16145.jpg') center center / cover no-repeat fixed;
 	font-family: 'Smooch Sans', sans-serif;
 	font-size: 19px;
 	font-weight: 500;
