@@ -382,8 +382,8 @@ img[src*="clan"]:hover {
 	opacity: 1;
 }
 
-img[src*="ancestors.jpg"]    { background-image: url('https://i.ibb.co/wFVjxfRW/dynasty-230x100.jpg') !important; }   /* King Dynasty */
-img[src*="ancestorsfem.png"] { background-image: url('https://i.ibb.co/SDzm6jVY/clanbanner-230x100.jpg') !important; } /* Pride Dynasty */
+img[src*="ancestors"]:not([src*="ancestorsfem"]) { background-image: url('https://i.ibb.co/wFVjxfRW/dynasty-230x100.jpg') !important; }    /* King Dynasty */
+img[src*="ancestorsfem"]                            { background-image: url('https://i.ibb.co/SDzm6jVY/clanbanner-230x100.jpg') !important; } /* Pride Dynasty */
 img[src*="achievement"] { background-image: url('https://i.ibb.co/9kyK2fKY/achivement-230x100.jpg') !important; }
 img[src*="showcase"]    { background-image: url('https://i.ibb.co/JR1b7prP/showcase-230x100.jpg') !important; }
 img[src*="clan"]        { background-image: url('https://i.ibb.co/SDzm6jVY/clanbanner-230x100.jpg') !important; }
