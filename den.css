@@ -358,7 +358,7 @@ a[href*="mound.php"] .mound-grid img {
 
 /* ================= 7. DYNASTY / ACHIEVEMENTS / SHOWCASE / CLAN — 230x100 ================= */
 
-img[src*="dynasty"],
+img[src*="ancestors"],
 img[src*="achievement"],
 img[src*="showcase"],
 img[src*="clan"] {
@@ -373,14 +373,14 @@ img[src*="clan"] {
 	transition: 0.2s;
 }
 
-img[src*="dynasty"]:hover,
+img[src*="ancestors"]:hover,
 img[src*="achievement"]:hover,
 img[src*="showcase"]:hover,
 img[src*="clan"]:hover {
 	opacity: 1;
 }
 
-img[src*="dynasty"]     { background-image: url('https://i.ibb.co/wFVjxfRW/dynasty-230x100.jpg') !important; }
+img[src*="ancestors"]     { background-image: url('https://i.ibb.co/wFVjxfRW/dynasty-230x100.jpg') !important; }
 img[src*="achievement"] { background-image: url('https://i.ibb.co/9kyK2fKY/achivement-230x100.jpg') !important; }
 img[src*="showcase"]    { background-image: url('https://i.ibb.co/JR1b7prP/showcase-230x100.jpg') !important; }
 img[src*="clan"]        { background-image: url('https://i.ibb.co/SDzm6jVY/clanbanner-230x100.jpg') !important; }
