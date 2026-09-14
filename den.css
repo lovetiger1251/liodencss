@@ -9,7 +9,7 @@
      Orchid ........ #C77DFF
      Text .......... #F4EEFF
      Muted ......... #B8A9CC
-   FONTS: Orbitron (headers) / Tulpen One (body)
+   FONTS: Orbitron (headers) / Smooch Sans (body)
 
    IMAGES (ImgBB direct links)
      img1 background .......... https://i.ibb.co/tw3HpLP7/img1.jpg
@@ -20,7 +20,7 @@
      img6 beetle mounds ....... https://i.ibb.co/rGpjGPDp/img6.jpg
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Tulpen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Smooch+Sans:wght@400;500;600;700&display=swap');
 
 /* ================= BACKGROUND ================= */
 
@@ -31,9 +31,9 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-color: #0A0614;
-	font-family: 'Tulpen One', sans-serif;
+	font-family: 'Smooch Sans', sans-serif;
 	font-size: 19px;
-	font-weight: 400;
+	font-weight: 500;
 	letter-spacing: 0.3px;
 	color: #F4EEFF;
 }
@@ -360,7 +360,7 @@ textarea {
 	color: #F4EEFF !important;
 	box-shadow: none !important;
 	text-shadow: none !important;
-	font-family: 'Tulpen One', sans-serif;
+	font-family: 'Smooch Sans', sans-serif;
 	font-size: 18px;
 }
 
