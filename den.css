@@ -349,8 +349,9 @@ a[href*="nesting.php"] .cave-grid img {
 	background-image: url('https://i.ibb.co/LdLQGCbB/pregnantlioness-260x60.jpg') !important;
 }
 
-/* Every beetle mound — 130x80 */
-a[href*="mound.php"] .mound-grid img {
+/* Every beetle mound (sorted + unsorted) — 130x80 */
+.mound-grid img[src*="beetlemound"],
+.mound-grid img[src*="beetleunsorted"] {
 	padding: 40px 65px;
 	background-image: url('https://i.ibb.co/rGfm2vMv/IMG-1789.jpg') !important;
 }
