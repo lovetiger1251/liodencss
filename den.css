@@ -9,7 +9,7 @@
      Orchid ........ #C77DFF
      Text .......... #F4EEFF
      Muted ......... #B8A9CC
-   FONTS: Audiowide (headers) / Oxanium (body)
+   FONTS: Orbitron (headers) / Tulpen One (body)
 
    IMAGES (ImgBB direct links)
      img1 background .......... https://i.ibb.co/tw3HpLP7/img1.jpg
@@ -20,7 +20,7 @@
      img6 beetle mounds ....... https://i.ibb.co/rGpjGPDp/img6.jpg
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Oxanium:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Tulpen+One&display=swap');
 
 /* ================= BACKGROUND ================= */
 
@@ -31,9 +31,10 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-color: #0A0614;
-	font-family: 'Oxanium', sans-serif;
-	font-size: 15px;
-	font-weight: 500;
+	font-family: 'Tulpen One', sans-serif;
+	font-size: 19px;
+	font-weight: 400;
+	letter-spacing: 0.3px;
 	color: #F4EEFF;
 }
 
@@ -69,7 +70,7 @@ body {
 
 .navbar li a {
 	color: #F4EEFF !important;
-	font-family: 'Audiowide', sans-serif;
+	font-family: 'Orbitron', sans-serif;
 	font-weight: 400;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -101,7 +102,7 @@ button.button, button.button:hover {
 	border-radius: 4px;
 	text-shadow: none !important;
 	color: #F0FF1E !important;
-	font-family: 'Audiowide', sans-serif;
+	font-family: 'Orbitron', sans-serif;
 }
 
 .alert,
@@ -123,9 +124,9 @@ button.button, button.button:hover {
 }
 
 h1 {
-	font-family: 'Audiowide', sans-serif;
-	font-weight: 400;
-	font-size: 64px;
+	font-family: 'Orbitron', sans-serif;
+	font-weight: 900;
+	font-size: 56px;
 	text-align: center;
 	text-transform: uppercase;
 	letter-spacing: 4px;
@@ -135,14 +136,14 @@ h1 {
 /* ================= OTHER HEADERS ================= */
 
 h2 {
-	font-family: 'Audiowide', sans-serif;
+	font-family: 'Orbitron', sans-serif;
 	color: #F0FF1E;
 	font-size: 24px;
 	text-align: center;
 }
 
 h3 {
-	font-family: 'Audiowide', sans-serif;
+	font-family: 'Orbitron', sans-serif;
 	color: #F4EEFF !important;
 	font-size: 14px !important;
 }
@@ -229,7 +230,7 @@ button#label_currentChannel {
 th {
 	background: rgba(240, 255, 30, 0.12) !important;
 	color: #F0FF1E !important;
-	font-family: 'Audiowide', sans-serif;
+	font-family: 'Orbitron', sans-serif;
 	border-radius: 0;
 }
 
@@ -268,7 +269,7 @@ td.right {
 	background: rgba(14, 8, 26, 0.8);
 	border: 1px solid rgba(240, 255, 30, 0.3) !important;
 	border-radius: 4px !important;
-	font-family: 'Audiowide', sans-serif;
+	font-family: 'Orbitron', sans-serif;
 	transition: 0.2s;
 }
 
@@ -359,7 +360,8 @@ textarea {
 	color: #F4EEFF !important;
 	box-shadow: none !important;
 	text-shadow: none !important;
-	font-family: 'Oxanium', sans-serif;
+	font-family: 'Tulpen One', sans-serif;
+	font-size: 18px;
 }
 
 input[type="submit"],
@@ -367,8 +369,9 @@ input[type="button"] {
 	background: rgba(240, 255, 30, 0.12) !important;
 	color: #F0FF1E !important;
 	border: 1px solid #F0FF1E !important;
-	font-family: 'Audiowide', sans-serif;
+	font-family: 'Orbitron', sans-serif;
 	font-weight: 600;
+	font-size: 12px;
 }
 
 input[type="submit"]:hover,
