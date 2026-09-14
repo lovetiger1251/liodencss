@@ -22,7 +22,8 @@
      unsorted 260x60 ......... https://i.ibb.co/Y4PvjZWB/sorterd-260x60.jpg
      pregnant 260x60 ......... https://i.ibb.co/LdLQGCbB/pregnantlioness-260x60.jpg
      mounds 130x80 ........... https://i.ibb.co/rGfm2vMv/IMG-1789.jpg
-     dynasty 230x100 ......... https://i.ibb.co/wFVjxfRW/dynasty-230x100.jpg
+     king dynasty 230x100 .... https://i.ibb.co/wFVjxfRW/dynasty-230x100.jpg
+     pride dynasty 230x100 ... https://i.ibb.co/SDzm6jVY/clanbanner-230x100.jpg
      achievements 230x100 .... https://i.ibb.co/9kyK2fKY/achivement-230x100.jpg
      showcase 230x100 ........ https://i.ibb.co/JR1b7prP/showcase-230x100.jpg
      clan 230x100 ............ https://i.ibb.co/SDzm6jVY/clanbanner-230x100.jpg
@@ -381,7 +382,8 @@ img[src*="clan"]:hover {
 	opacity: 1;
 }
 
-img[src*="ancestors"]     { background-image: url('https://i.ibb.co/wFVjxfRW/dynasty-230x100.jpg') !important; }
+img[src*="ancestors.jpg"]    { background-image: url('https://i.ibb.co/wFVjxfRW/dynasty-230x100.jpg') !important; }   /* King Dynasty */
+img[src*="ancestorsfem.png"] { background-image: url('https://i.ibb.co/SDzm6jVY/clanbanner-230x100.jpg') !important; } /* Pride Dynasty */
 img[src*="achievement"] { background-image: url('https://i.ibb.co/9kyK2fKY/achivement-230x100.jpg') !important; }
 img[src*="showcase"]    { background-image: url('https://i.ibb.co/JR1b7prP/showcase-230x100.jpg') !important; }
 img[src*="clan"]        { background-image: url('https://i.ibb.co/SDzm6jVY/clanbanner-230x100.jpg') !important; }
