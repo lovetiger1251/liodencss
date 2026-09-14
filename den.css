@@ -507,23 +507,23 @@ table#clans img:hover,
 }
 
 /* ================= CURSORS =================
-   Files live in the repo at /cursors/ (upload arrow.cur, link.cur, beam.cur, busy.ani). */
+   arrow.cur, link.cur, beam.cur, busy.ani sit in the repo root next to den.css. */
 
 body {
-	cursor: url('https://lovetiger1251.github.io/liodencss/cursors/arrow.cur'), auto;
+	cursor: url('https://lovetiger1251.github.io/liodencss/arrow.cur'), auto;
 }
 
 a, a:hover,
 button, input[type="submit"], input[type="button"],
 .cave-grid, .mound-grid, .navbar li a {
-	cursor: url('https://lovetiger1251.github.io/liodencss/cursors/link.cur'), pointer;
+	cursor: url('https://lovetiger1251.github.io/liodencss/link.cur'), pointer;
 }
 
 input[type="text"], input[type="password"], textarea {
-	cursor: url('https://lovetiger1251.github.io/liodencss/cursors/beam.cur'), text;
+	cursor: url('https://lovetiger1251.github.io/liodencss/beam.cur'), text;
 }
 
 /* Animated cursor on the den title (animates in Chrome/Edge only) */
 h1 {
-	cursor: url('https://lovetiger1251.github.io/liodencss/cursors/busy.ani'), auto;
+	cursor: url('https://lovetiger1251.github.io/liodencss/busy.ani'), auto;
 }
