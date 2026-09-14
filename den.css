@@ -1,0 +1,529 @@
+/* ============================================================
+   TIGERS DEN — Lioden den CSS (clean build)
+   Based on the free CSS template by Katie (#106445) & Jester.
+
+   PALETTE
+     Panels ........ rgba(14, 8, 26, 0.78)   dark violet-black
+     Neon yellow ... #F0FF1E
+     Hot pink ...... #FF2D95
+     Orchid ........ #C77DFF
+     Text .......... #F4EEFF
+     Muted ......... #B8A9CC
+   FONTS: Audiowide (headers) / Oxanium (body)
+
+   IMAGES (ImgBB direct links)
+     img1 background .......... https://i.ibb.co/tw3HpLP7/img1.jpg
+     img2 caves ............... https://i.ibb.co/x86vC9LW/img2.jpg
+     img3 pride overview ...... https://i.ibb.co/d02xbgnJ/img3.jpg
+     img4 unsorted ............ https://i.ibb.co/hx7k4Q4p/img4.jpg
+     img5 pregnant lionesses .. https://i.ibb.co/WWtrKd72/img5.jpg
+     img6 beetle mounds ....... https://i.ibb.co/rGpjGPDp/img6.jpg
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Oxanium:wght@400;500;600;700&display=swap');
+
+/* ================= BACKGROUND ================= */
+
+body {
+	background-image: url('https://i.ibb.co/tw3HpLP7/img1.jpg');
+	background-position: center center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: #0A0614;
+	font-family: 'Oxanium', sans-serif;
+	font-size: 15px;
+	font-weight: 500;
+	color: #F4EEFF;
+}
+
+/* ================= LAYOUT PANELS ================= */
+
+.container.main {
+	background: rgba(14, 8, 26, 0.78);
+	border: 1px solid rgba(240, 255, 30, 0.25);
+	box-shadow: 0 0 30px rgba(240, 255, 30, 0.12);
+	border-radius: 6px;
+}
+
+.col-md-9 {
+	background: none;
+	border-right: none;
+}
+
+.topbar {
+	background: rgba(14, 8, 26, 0.78);
+	border: 1px solid rgba(240, 255, 30, 0.25);
+	border-bottom: none;
+	color: #F4EEFF;
+	border-radius: 6px 6px 0 0;
+}
+
+.navbar {
+	background: rgba(14, 8, 26, 0.85);
+	border: none;
+	border-bottom: 2px solid #F0FF1E;
+	color: #F4EEFF;
+	border-radius: 6px 6px 0 0;
+}
+
+.navbar li a {
+	color: #F4EEFF !important;
+	font-family: 'Audiowide', sans-serif;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 13px;
+	transition: 0.2s;
+}
+
+.navbar li a:hover {
+	background: rgba(240, 255, 30, 0.12) !important;
+	border-bottom: none;
+	color: #F0FF1E !important;
+	text-shadow: 0 0 8px rgba(240, 255, 30, 0.8);
+}
+
+.breadcrumb {
+	background: rgba(14, 8, 26, 0.78) !important;
+	border: 1px solid rgba(255, 45, 149, 0.35);
+	border-radius: 4px;
+}
+
+.breadcrumb .active {
+	color: #FF2D95;
+}
+
+input.floatright, input.floatright:hover,
+button.button, button.button:hover {
+	background: rgba(14, 8, 26, 0.9) !important;
+	border: 1px solid #F0FF1E !important;
+	border-radius: 4px;
+	text-shadow: none !important;
+	color: #F0FF1E !important;
+	font-family: 'Audiowide', sans-serif;
+}
+
+.alert,
+.alert-warning,
+.alert-danger {
+	background: rgba(14, 8, 26, 0.85) !important;
+	border: 1px solid #FF2D95;
+	color: #F4EEFF;
+	border-radius: 4px !important;
+}
+
+/* ================= DEN TITLE — COLOR ANIMATED ================= */
+
+@keyframes denTitle {
+	0%   { color: #F0FF1E; text-shadow: 0 0 10px rgba(240, 255, 30, 0.9), 0 0 30px rgba(240, 255, 30, 0.5); }
+	33%  { color: #FF2D95; text-shadow: 0 0 10px rgba(255, 45, 149, 0.9), 0 0 30px rgba(255, 45, 149, 0.5); }
+	66%  { color: #C77DFF; text-shadow: 0 0 10px rgba(199, 125, 255, 0.9), 0 0 30px rgba(199, 125, 255, 0.5); }
+	100% { color: #F0FF1E; text-shadow: 0 0 10px rgba(240, 255, 30, 0.9), 0 0 30px rgba(240, 255, 30, 0.5); }
+}
+
+h1 {
+	font-family: 'Audiowide', sans-serif;
+	font-weight: 400;
+	font-size: 64px;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	animation: denTitle 8s ease-in-out infinite;
+}
+
+/* ================= OTHER HEADERS ================= */
+
+h2 {
+	font-family: 'Audiowide', sans-serif;
+	color: #F0FF1E;
+	font-size: 24px;
+	text-align: center;
+}
+
+h3 {
+	font-family: 'Audiowide', sans-serif;
+	color: #F4EEFF !important;
+	font-size: 14px !important;
+}
+
+.sidebar h3 {
+	color: #F0FF1E !important;
+	font-size: 22px !important;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+/* ================= SIDEBAR ================= */
+
+.panel {
+	background: rgba(14, 8, 26, 0.78) !important;
+	box-shadow: none !important;
+	border: 1px solid rgba(240, 255, 30, 0.25) !important;
+	color: #F4EEFF !important;
+	border-radius: 4px;
+}
+
+.progress {
+	background: rgba(14, 8, 26, 0.9);
+	border: 1px solid rgba(255, 45, 149, 0.4);
+	color: #F4EEFF !important;
+	border-radius: 2px !important;
+}
+
+.progress-bar {
+	background: linear-gradient(90deg, #FF2D95, #F0FF1E);
+	color: #F4EEFF !important;
+	border-radius: 0 !important;
+}
+
+.progress div {
+	color: #F4EEFF !important;
+	text-shadow: 0 0 4px #000;
+}
+
+.s-chat-message:nth-child(even),
+.s-chat-message:nth-child(odd) {
+	background: rgba(14, 8, 26, 0.7) !important;
+	color: #F4EEFF !important;
+	border: none !important;
+	border-left: 2px solid rgba(240, 255, 30, 0.5) !important;
+}
+
+.s-chat-message:nth-child(odd) {
+	border-left-color: rgba(255, 45, 149, 0.5) !important;
+}
+
+.s-chat-message__pinned {
+	background: rgba(255, 45, 149, 0.2) !important;
+	color: #F4EEFF !important;
+	border: 1px solid #FF2D95 !important;
+}
+
+.s-chat-message_timestamp {
+	color: #B8A9CC !important;
+}
+
+div#chatMessageContainer {
+	border: none !important;
+}
+
+button#label_currentChannel {
+	background: rgba(14, 8, 26, 0.9) !important;
+	color: #F0FF1E !important;
+	border: 1px solid #F0FF1E !important;
+}
+
+/* ================= TABLES ================= */
+
+.table {
+	background: rgba(14, 8, 26, 0.7);
+	border: 1px solid rgba(240, 255, 30, 0.2) !important;
+	border-collapse: separate;
+	border-radius: 4px;
+	color: #F4EEFF;
+}
+
+.top,
+.bottom,
+th {
+	background: rgba(240, 255, 30, 0.12) !important;
+	color: #F0FF1E !important;
+	font-family: 'Audiowide', sans-serif;
+	border-radius: 0;
+}
+
+td.bottom a {
+	text-decoration: none !important;
+}
+
+.inner-table .left {
+	background: rgba(255, 45, 149, 0.22) !important;
+	color: #F4EEFF;
+	border-radius: 0;
+}
+
+.inner-table .right {
+	background: none;
+	border-radius: 0 !important;
+}
+
+td.right {
+	border-radius: 0 !important;
+}
+
+.right_odd {
+	background: rgba(14, 8, 26, 0.4) !important;
+}
+
+.table .left {
+	background: rgba(255, 45, 149, 0.22);
+	border-radius: 2px;
+}
+
+/* ================= CAVE / MOUND BOXES ================= */
+
+.cave-grid,
+.mound-grid {
+	background: rgba(14, 8, 26, 0.8);
+	border: 1px solid rgba(240, 255, 30, 0.3) !important;
+	border-radius: 4px !important;
+	font-family: 'Audiowide', sans-serif;
+	transition: 0.2s;
+}
+
+.cave-grid:hover,
+.mound-grid:hover {
+	border-color: #F0FF1E !important;
+	box-shadow: 0 0 12px rgba(240, 255, 30, 0.4);
+}
+
+/* ================= CAVE / MOUND IMAGE REPLACEMENTS =================
+   Method: shrink the original <img> to 0x0 and paint the new image
+   as a background in its padding box. This is the same technique the
+   template uses for mounds and works in every browser.
+   All images are semi-transparent (0.7) and go solid on hover.       */
+
+.cave-grid img,
+.mound-grid img {
+	display: inline-block;
+	width: 0 !important;
+	height: 0 !important;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	opacity: 0.7;
+	transition: 0.2s;
+}
+
+.cave-grid:hover img,
+.mound-grid:hover img {
+	opacity: 1;
+}
+
+/* Default sizes: caves 240x120, mounds 130x80 */
+.cave-grid img {
+	padding: 60px 120px;
+}
+
+.mound-grid img {
+	padding: 40px 65px;
+}
+
+/* img2 — every cave */
+a[href*="cave.php?id="] .cave-grid img {
+	background-image: url('https://i.ibb.co/x86vC9LW/img2.jpg') !important;
+}
+
+/* img3 — View Pride Overview (260x60) */
+a[href*="lionoverview.php"] .cave-grid img {
+	background-image: url('https://i.ibb.co/d02xbgnJ/img3.jpg') !important;
+	padding: 30px 130px;
+}
+
+/* img4 — Unsorted (260x60) */
+a[href*="unsorted.php"] .cave-grid img {
+	background-image: url('https://i.ibb.co/hx7k4Q4p/img4.jpg') !important;
+	padding: 30px 130px;
+}
+
+/* img5 — Pregnant Lionesses (260x60) */
+a[href*="nesting.php"] .cave-grid img {
+	background-image: url('https://i.ibb.co/WWtrKd72/img5.jpg') !important;
+	padding: 30px 130px;
+}
+
+/* img6 — every beetle mound */
+a[href*="mound.php"] .mound-grid img {
+	background-image: url('https://i.ibb.co/rGpjGPDp/img6.jpg') !important;
+}
+
+/* ================= FEED ALL / PLAY ALL + DYNASTY PANELS ================= */
+
+.feature,
+div.left {
+	background: rgba(14, 8, 26, 0.8) !important;
+	color: #F4EEFF !important;
+	border: 1px solid rgba(255, 45, 149, 0.35) !important;
+	border-radius: 4px !important;
+}
+
+/* ================= INPUTS ================= */
+
+input,
+select,
+textarea {
+	background: #140C24 !important;
+	border: 1px solid rgba(240, 255, 30, 0.35) !important;
+	border-radius: 3px !important;
+	color: #F4EEFF !important;
+	box-shadow: none !important;
+	text-shadow: none !important;
+	font-family: 'Oxanium', sans-serif;
+}
+
+input[type="submit"],
+input[type="button"] {
+	background: rgba(240, 255, 30, 0.12) !important;
+	color: #F0FF1E !important;
+	border: 1px solid #F0FF1E !important;
+	font-family: 'Audiowide', sans-serif;
+	font-weight: 600;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover {
+	background: rgba(240, 255, 30, 0.28) !important;
+}
+
+/* ================= ACCOUNT OPTIONS ================= */
+
+.item-header {
+	background: rgba(255, 45, 149, 0.22) !important;
+	color: #F4EEFF !important;
+	border-radius: 3px !important;
+}
+
+.item {
+	background: rgba(14, 8, 26, 0.8) !important;
+	border: 1px solid rgba(240, 255, 30, 0.2) !important;
+	border-radius: 4px !important;
+}
+
+div.slider.round {
+	background: #2A1A44 !important;
+}
+
+div.slider.round::before {
+	background: #F0FF1E !important;
+}
+
+/* ================= FOOTER ================= */
+
+div.container.footer.center.white.visible-lg.visible-md.visible-sm,
+div.container.footer.center.white.visible-lg.visible-md.visible-sm a {
+	color: #B8A9CC !important;
+	text-shadow: none !important;
+}
+
+/* ================= LINKS ================= */
+
+a:link,
+a:visited {
+	color: #F0FF1E !important;
+	transition: 0.2s;
+}
+
+a:hover {
+	color: #C77DFF !important;
+	text-shadow: 0 0 6px rgba(199, 125, 255, 0.6);
+}
+
+/* ================= DESCRIPTION BOXES ================= */
+
+.boxcontainer {
+	background: none;
+	height: auto;
+	padding: 0;
+	justify-content: center;
+	display: flex;
+}
+
+.smallbox,
+.mediumbox,
+.largebox {
+	float: left;
+	background: rgba(14, 8, 26, 0.8);
+	color: #F4EEFF;
+	padding: 12px;
+	border: 1px solid rgba(240, 255, 30, 0.3);
+	border-top: 2px solid #F0FF1E;
+	border-radius: 4px;
+	margin: 10px;
+	height: 150px;
+	overflow: auto;
+}
+
+.smallbox  { width: 28.4%; }
+.mediumbox { width: 43.8%; }
+.largebox  { width: 90%; }
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #140C24;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #FF2D95;
+	border-radius: 4px;
+}
+
+/* ================= LION, AVATAR & OTHER IMAGES — SEMI-TRANSPARENT ================= */
+
+div#lion_image {
+	border-radius: 6px !important;
+	overflow: hidden;
+	border: 1px solid rgba(240, 255, 30, 0.4);
+}
+
+table#player img {
+	border-radius: 6px !important;
+	overflow: hidden;
+}
+
+div#lion_image,
+table#player img,
+.dynastylist img,
+table#clans img,
+.navbar-brand img,
+.panel-body img {
+	opacity: 0.7;
+	transition: 0.2s;
+}
+
+div#lion_image:hover,
+table#player img:hover,
+.dynastylist img:hover,
+table#clans img:hover,
+.navbar-brand img:hover {
+	opacity: 1;
+}
+
+/* ================= MOBILE ================= */
+
+@media only screen and (max-width: 767px) {
+	.container.main .hidden-xs {
+		display: block !important;
+	}
+	h1 {
+		font-size: 40px;
+		letter-spacing: 2px;
+	}
+}
+
+/* ================= CURSORS =================
+   Files live in the repo at /cursors/ (upload arrow.cur, link.cur, beam.cur, busy.ani). */
+
+body {
+	cursor: url('https://lovetiger1251.github.io/liodencss/cursors/arrow.cur'), auto;
+}
+
+a, a:hover,
+button, input[type="submit"], input[type="button"],
+.cave-grid, .mound-grid, .navbar li a {
+	cursor: url('https://lovetiger1251.github.io/liodencss/cursors/link.cur'), pointer;
+}
+
+input[type="text"], input[type="password"], textarea {
+	cursor: url('https://lovetiger1251.github.io/liodencss/cursors/beam.cur'), text;
+}
+
+/* Animated cursor on the den title (animates in Chrome/Edge only) */
+h1 {
+	cursor: url('https://lovetiger1251.github.io/liodencss/cursors/busy.ani'), auto;
+}
