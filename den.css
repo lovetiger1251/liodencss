@@ -12,12 +12,17 @@
    FONTS: Orbitron (headers) / Smooch Sans (body)
 
    IMAGES (ImgBB direct links)
-     img1 background .......... https://i.ibb.co/tw3HpLP7/img1.jpg
-     img2 caves ............... https://i.ibb.co/x86vC9LW/img2.jpg
-     img3 pride overview ...... https://i.ibb.co/d02xbgnJ/img3.jpg
-     img4 unsorted ............ https://i.ibb.co/hx7k4Q4p/img4.jpg
-     img5 pregnant lionesses .. https://i.ibb.co/WWtrKd72/img5.jpg
-     img6 beetle mounds ....... https://i.ibb.co/rGpjGPDp/img6.jpg
+     background ........... https://i.ibb.co/0Rv3hrkN/pagebackground.jpg
+     logo ................. https://i.ibb.co/8Ld9Pj3Z/logo.png
+     caves ................ https://i.ibb.co/7tpHtMmP/cavepreview.jpg
+     pride overview ....... https://i.ibb.co/F44myPzL/prideoverview.jpg
+     unsorted ............. https://i.ibb.co/v6TLXyWc/sorterd.jpg
+     pregnant lionesses ... https://i.ibb.co/pj0NNV22/pregnantlioness.jpg
+     beetle mounds ........ https://i.ibb.co/PGw5bmf1/beetle.jpg
+     dynasty .............. https://i.ibb.co/cSRqYjys/dynasty.jpg
+     achievements ......... https://i.ibb.co/WNVNK9Xw/achivement.jpg
+     showcase ............. https://i.ibb.co/LDwqKhd3/showcase.jpg
+     clan banner .......... https://i.ibb.co/wNZgT8xk/clanbanner.jpg
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Smooch+Sans:wght@400;500;600;700&display=swap');
@@ -25,7 +30,7 @@
 /* ================= BACKGROUND ================= */
 
 body {
-	background-image: url('https://i.ibb.co/tw3HpLP7/img1.jpg');
+	background-image: url('https://i.ibb.co/0Rv3hrkN/pagebackground.jpg');
 	background-position: center center;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
@@ -311,33 +316,73 @@ td.right {
 	padding: 40px 65px;
 }
 
-/* img2 — every cave */
+/* every cave */
 a[href*="cave.php?id="] .cave-grid img {
-	background-image: url('https://i.ibb.co/x86vC9LW/img2.jpg') !important;
+	background-image: url('https://i.ibb.co/7tpHtMmP/cavepreview.jpg') !important;
 }
 
-/* img3 — View Pride Overview (260x60) */
+/* View Pride Overview (260x60) */
 a[href*="lionoverview.php"] .cave-grid img {
-	background-image: url('https://i.ibb.co/d02xbgnJ/img3.jpg') !important;
+	background-image: url('https://i.ibb.co/F44myPzL/prideoverview.jpg') !important;
 	padding: 30px 130px;
 }
 
-/* img4 — Unsorted (260x60) */
+/* Unsorted (260x60) */
 a[href*="unsorted.php"] .cave-grid img {
-	background-image: url('https://i.ibb.co/hx7k4Q4p/img4.jpg') !important;
+	background-image: url('https://i.ibb.co/v6TLXyWc/sorterd.jpg') !important;
 	padding: 30px 130px;
 }
 
-/* img5 — Pregnant Lionesses (260x60) */
+/* Pregnant Lionesses (260x60) */
 a[href*="nesting.php"] .cave-grid img {
-	background-image: url('https://i.ibb.co/WWtrKd72/img5.jpg') !important;
+	background-image: url('https://i.ibb.co/pj0NNV22/pregnantlioness.jpg') !important;
 	padding: 30px 130px;
 }
 
-/* img6 — every beetle mound */
+/* every beetle mound */
 a[href*="mound.php"] .mound-grid img {
-	background-image: url('https://i.ibb.co/rGpjGPDp/img6.jpg') !important;
+	background-image: url('https://i.ibb.co/PGw5bmf1/beetle.jpg') !important;
 }
+
+/* ================= LOGO (192x120) ================= */
+
+.navbar-brand img {
+	display: inline-block;
+	width: 0 !important;
+	height: 0 !important;
+	padding: 60px 96px;
+	background: url('https://i.ibb.co/8Ld9Pj3Z/logo.png') center center / cover no-repeat;
+}
+
+/* ================= DYNASTY / ACHIEVEMENTS / SHOWCASE / CLAN BANNERS (230x100) =================
+   Matched by the filename of Lioden's default image, so they work regardless of layout. */
+
+img[src*="dynasty"],
+img[src*="achievement"],
+img[src*="showcase"],
+img[src*="clan"] {
+	display: inline-block;
+	width: 0 !important;
+	height: 0 !important;
+	padding: 50px 115px;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	opacity: 0.7;
+	transition: 0.2s;
+}
+
+img[src*="dynasty"]:hover,
+img[src*="achievement"]:hover,
+img[src*="showcase"]:hover,
+img[src*="clan"]:hover {
+	opacity: 1;
+}
+
+img[src*="dynasty"]     { background-image: url('https://i.ibb.co/cSRqYjys/dynasty.jpg') !important; }
+img[src*="achievement"] { background-image: url('https://i.ibb.co/WNVNK9Xw/achivement.jpg') !important; }
+img[src*="showcase"]    { background-image: url('https://i.ibb.co/LDwqKhd3/showcase.jpg') !important; }
+img[src*="clan"]        { background-image: url('https://i.ibb.co/wNZgT8xk/clanbanner.jpg') !important; }
 
 /* ================= FEED ALL / PLAY ALL + DYNASTY PANELS ================= */
 
