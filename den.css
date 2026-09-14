@@ -11,7 +11,7 @@
      Muted ......... #8FC3D9
 
    FONTS
-     Bangers ....... den title
+     Rubik Glitch .. den title (Bangers fallback)
      Orbitron ...... headers, nav, buttons, labels
      Smooch Sans ... body text
 
@@ -32,7 +32,7 @@
    CURSORS: arrow.cur, link.cur, beam.cur, busy.ani in the repo root
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Orbitron:wght@400;600;700;900&family=Smooch+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Bangers&family=Orbitron:wght@400;600;700;900&family=Smooch+Sans:wght@400;500;600;700&display=swap');
 
 
 /* ================= 1. PAGE ================= */
@@ -138,24 +138,28 @@ div.container.footer.center.white.visible-lg.visible-md.visible-sm a {
 /* ================= 3. TEXT ================= */
 
 @keyframes denTitle {
-	0%   { color: #F0FF1E; text-shadow: 0 0 10px rgba(240, 255, 30, 0.9), 0 0 30px rgba(240, 255, 30, 0.5); }
-	33%  { color: #FF2D95; text-shadow: 0 0 10px rgba(255, 45, 149, 0.9), 0 0 30px rgba(255, 45, 149, 0.5); }
-	66%  { color: #00E5FF; text-shadow: 0 0 10px rgba(0, 229, 255, 0.9), 0 0 30px rgba(0, 229, 255, 0.5); }
-	100% { color: #F0FF1E; text-shadow: 0 0 10px rgba(240, 255, 30, 0.9), 0 0 30px rgba(240, 255, 30, 0.5); }
+	0%   { color: #F0FF1E; text-shadow: 0 0 8px #FFF, 0 0 20px #F0FF1E, 0 0 45px #F0FF1E, 0 0 90px #F0FF1E, 0 0 140px rgba(240, 255, 30, 0.6); }
+	16%  { color: #FF7A00; text-shadow: 0 0 8px #FFF, 0 0 20px #FF7A00, 0 0 45px #FF7A00, 0 0 90px #FF7A00, 0 0 140px rgba(255, 122, 0, 0.6); }
+	32%  { color: #FF2D95; text-shadow: 0 0 8px #FFF, 0 0 20px #FF2D95, 0 0 45px #FF2D95, 0 0 90px #FF2D95, 0 0 140px rgba(255, 45, 149, 0.6); }
+	48%  { color: #B026FF; text-shadow: 0 0 8px #FFF, 0 0 20px #B026FF, 0 0 45px #B026FF, 0 0 90px #B026FF, 0 0 140px rgba(176, 38, 255, 0.6); }
+	64%  { color: #2D7BFF; text-shadow: 0 0 8px #FFF, 0 0 20px #2D7BFF, 0 0 45px #2D7BFF, 0 0 90px #2D7BFF, 0 0 140px rgba(45, 123, 255, 0.6); }
+	80%  { color: #00E5FF; text-shadow: 0 0 8px #FFF, 0 0 20px #00E5FF, 0 0 45px #00E5FF, 0 0 90px #00E5FF, 0 0 140px rgba(0, 229, 255, 0.6); }
+	92%  { color: #39FF14; text-shadow: 0 0 8px #FFF, 0 0 20px #39FF14, 0 0 45px #39FF14, 0 0 90px #39FF14, 0 0 140px rgba(57, 255, 20, 0.6); }
+	100% { color: #F0FF1E; text-shadow: 0 0 8px #FFF, 0 0 20px #F0FF1E, 0 0 45px #F0FF1E, 0 0 90px #F0FF1E, 0 0 140px rgba(240, 255, 30, 0.6); }
 }
 
 /* Den title — colour-animated */
 h1 {
-	font-family: 'Bangers', 'Orbitron', sans-serif;
+	font-family: 'Rubik Glitch', 'Bangers', 'Orbitron', sans-serif;
 	font-weight: 400;
-	font-size: 72px;
+	font-size: 100px;
 	line-height: 1;
 	text-align: center;
 	text-transform: uppercase;
-	letter-spacing: 5px;
-	transform: rotate(-4deg);
-	-webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.6);
-	animation: denTitle 8s ease-in-out infinite;
+	letter-spacing: 6px;
+	transform: rotate(-5deg);
+	-webkit-text-stroke: 2px rgba(0, 0, 0, 0.7);
+	animation: denTitle 10s linear infinite;
 	cursor: url('https://lovetiger1251.github.io/liodencss/busy.ani'), auto;
 }
 
@@ -193,8 +197,13 @@ a:hover {
 
 /* ================= 4. SIDEBAR ================= */
 
-.panel {
+.panel,
+.col-md-3 .panel,
+.col-md-3 .panel-default,
+.col-md-3 .panel-body,
+.col-md-3 .panel-heading {
 	background: rgba(4, 12, 32, 0.78) !important;
+	background-image: none !important;
 	border: 1px solid rgba(240, 255, 30, 0.25) !important;
 	border-radius: 4px;
 	box-shadow: none !important;
@@ -553,7 +562,7 @@ input[type="text"], input[type="password"], textarea {
 		display: block !important;
 	}
 	h1 {
-		font-size: 40px;
-		letter-spacing: 2px;
+		font-size: 56px;
+		letter-spacing: 3px;
 	}
 }
