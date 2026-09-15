@@ -4,7 +4,8 @@
    Contributor credits from the original: Pandora #144118, Kat #94329,
    tawny #251887, Austin #43750, Bobcat #79288, Tserin #2230, Atticus #198107.
 
-   No images, no GIFs. Background, bubbles and all decoration are CSS.
+   Background image hosted on ImgBB (set in the body rule below).
+   Bubbles and all other decoration are CSS.
 
    TERRITORY DESCRIPTION TAG
      <link rel="stylesheet" type="text/css" href="https://lovetiger1251.github.io/liodencss/bubble.css" />
@@ -72,15 +73,28 @@
 
 
 /* ============================================================
-   BACKGROUND - light water gradient + two layers of rising bubbles
+   BACKGROUND - image + two layers of rising CSS bubbles
    ============================================================ */
 
 body {
   font-family: var(--font-body);
   font-size: 14px;
   color: var(--text) !important;
-  background: linear-gradient(180deg, #ffffff 0%, #d8f6fb 30%, #8fdcf0 65%, #4fa3e8 100%) fixed !important;
-  background-size: cover !important;
+}
+
+/* Desktop: background image, fixed and scaled to fill */
+@media screen and (min-width: 601px) {
+  body {
+    background: #8fdcf0 url('https://i.ibb.co/RTk2zYcJ/b7100443-9c55-4e6c-a49d-973f436f4647.png') center center / cover no-repeat fixed !important;
+  }
+}
+
+/* Mobile: light gradient instead of the large image */
+@media screen and (max-width: 600px) {
+  body {
+    background: linear-gradient(180deg, #ffffff 0%, #d8f6fb 30%, #8fdcf0 65%, #4fa3e8 100%) fixed !important;
+    background-size: cover !important;
+  }
 }
 
 /* bubble layers: each tile holds a few rings (each with a small
