@@ -6,7 +6,7 @@
 
    FILES NEEDED IN THE REPO NEXT TO THIS CSS
      b7100443-9c55-4e6c-a49d-973f436f4647.png                 (background)
-     Pngtreeelement_float_round_blue_bubble_3917372.png       (bubble)
+     Pngtreeelement_float_round_blue_bubble_3917372.png       (logo)
 
    TERRITORY DESCRIPTION TAG
      <link rel="stylesheet" type="text/css" href="https://lovetiger1251.github.io/liodencss/bubble.css" />
@@ -86,72 +86,6 @@ body {
     background-size: cover !important;
   }
 }
-
-/* FLOATING BUBBLES - your bubble PNG, hosted in the repo.
-   Two fixed layers, each 200vh tall with the bubbles laid out twice
-   (top half + bottom half), sliding up by exactly half their height so
-   the loop never jumps. The front layer is bigger and slower, the back
-   layer smaller, fainter and faster, which gives depth.
-   To freeze them:  set both animation lines to  animation: none;
-   To change density: add/remove lines below (x% y% / size). */
-body::before, body::after {
-  content: '';
-  position: fixed;
-  left: 0; top: 0;
-  width: 100vw; height: 200vh;
-  z-index: -1;
-  pointer-events: none;
-}
-body::before {
-  background:
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 6% 4% / 255px 255px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 6% 54% / 255px 255px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 78% 9% / 153px 153px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 78% 59% / 153px 153px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 34% 15% / 93px 93px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 34% 65% / 93px 93px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 92% 23% / 204px 204px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 92% 73% / 204px 204px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 18% 31% / 119px 119px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 18% 81% / 119px 119px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 58% 38% / 306px 306px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 58% 88% / 306px 306px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 85% 46% / 102px 102px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 85% 96% / 102px 102px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 42% 48% / 76px 76px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 42% 98% / 76px 76px no-repeat;
-  opacity: 0.95;
-  animation: bubbles-drift 90s linear infinite;
-}
-body::after {
-  background:
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 24% 2% / 71px 71px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 24% 52% / 71px 71px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 66% 7% / 102px 102px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 66% 57% / 102px 102px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 10% 14% / 81px 81px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 10% 64% / 81px 81px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 50% 20% / 61px 61px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 50% 70% / 61px 61px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 88% 27% / 85px 85px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 88% 77% / 85px 85px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 30% 35% / 98px 98px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 30% 85% / 98px 98px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 72% 43% / 68px 68px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 72% 93% / 68px 68px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 4% 47% / 74px 74px no-repeat,
-    url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') 4% 97% / 74px 74px no-repeat;
-  opacity: 0.7;
-  animation: bubbles-drift 55s linear infinite;
-}
-@keyframes bubbles-drift {
-  0%   { transform: translate(0, 0); }
-  25%  { transform: translate(14px, -12.5%); }
-  50%  { transform: translate(0, -25%); }
-  75%  { transform: translate(-14px, -37.5%); }
-  100% { transform: translate(0, -50%); }
-}
-@media screen and (max-width: 600px) { body::before, body::after { display: none; } }
 
 html.nolayout { background: none !important; }
 
@@ -442,8 +376,15 @@ table#player img {
   animation: orbit 7s ease-in-out infinite;
 }
 
+/* LOGO - replaced with the bubble PNG. The Lioden logo slot is 192x120,
+   the PNG has a wide transparent margin, so it's drawn at 150px to fill
+   the height. Drifts on a slow circular path. */
 div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img {
-  filter: drop-shadow(0 4px 10px rgba(16,48,94,0.25));
+  content: url('https://lovetiger1251.github.io/liodencss/Pngtreeelement_float_round_blue_bubble_3917372.png') !important;
+  width: 150px !important;
+  height: 150px !important;
+  margin: -15px 0;
+  filter: drop-shadow(0 6px 12px rgba(16,48,94,0.25));
   display: inline-block;
   animation: orbit-wide 9s ease-in-out infinite reverse;
 }
