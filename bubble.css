@@ -1,6 +1,8 @@
 /* ============================================================
    BUBBLE v5 - Lioden den CSS
- built by daddy for kitty cat
+   Built on Jester (#187561) & Katie's (#106445) v3 template.
+   Contributor credits from the original: Pandora #144118, Kat #94329,
+   tawny #251887, Austin #43750, Bobcat #79288, Tserin #2230, Atticus #198107.
 
    FILES NEEDED IN THE REPO NEXT TO THIS CSS
      b7100443-9c55-4e6c-a49d-973f436f4647.png                 (background)
@@ -69,8 +71,7 @@
       rgba(255, 255, 255, 0.22);
   --text-bubble-shadow:
       inset 0 0 0 1.5px rgba(255,255,255,0.85),
-      inset 0 -6px 12px rgba(79,163,232,0.14),
-      0 4px 12px rgba(16,48,94,0.12);
+      inset 0 -6px 12px rgba(79,163,232,0.14);
 
   /* faint, static water caustic pattern in navy - CSS only, no image */
   --water:
@@ -374,9 +375,12 @@ div.left:hover { box-shadow: var(--bubble-glow) !important; }
 .table {
   background: rgba(255,255,255,0.22);
   border: 1.5px solid rgba(255,255,255,0.9) !important;
-  border-collapse: separate;
+  border-collapse: separate !important;
+  border-spacing: 5px 6px !important;
+  padding: 4px;
   border-radius: var(--radius);
 }
+.inner-table { border-collapse: separate !important; border-spacing: 4px 5px !important; }
 
 .top, .bottom, th {
   background: var(--text-bubble) !important;
@@ -389,29 +393,38 @@ div.left:hover { box-shadow: var(--bubble-glow) !important; }
   font-size: 20px;
   letter-spacing: 1px;
   text-shadow: 0 1px 0 rgba(255,255,255,0.7);
-  padding: 4px 16px !important;
+  padding: 4px 16px;
 }
 .top a, .bottom a, th a { color: var(--navy) !important; }
 
 /* other important text: king's name line, member ID / avatar block,
    stat labels - each gets its own transparent bubble */
 #about > tbody > tr:nth-child(1) > td > div,
-table#player.table div.xlarge,
-table#player.table td.bottom,
-.inner-table .left {
+table#player.table div.xlarge {
   background: var(--text-bubble) !important;
   box-shadow: var(--text-bubble-shadow);
   border-radius: 999px !important;
   padding: 3px 14px !important;
   display: inline-block;
+  margin: 4px 0;
   font-family: var(--font-display);
   font-weight: 400;
   color: var(--navy) !important;
 }
-table#player.table td.bottom { display: block; border-radius: var(--radius-sm) !important; }
+/* these are table cells - style in place, no display change */
+table#player.table td.bottom,
+.inner-table .left {
+  background: var(--text-bubble) !important;
+  box-shadow: var(--text-bubble-shadow);
+  border-radius: var(--radius-sm) !important;
+  padding: 4px 12px !important;
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--navy) !important;
+}
 
 .table .left        { background: rgba(255,255,255,0.35); border-radius: var(--radius-sm) !important; }
-.inner-table .left  { font-size: 15px; letter-spacing: 0.5px; margin: 2px 0; }
+.inner-table .left  { font-size: 15px; letter-spacing: 0.5px; }
 .inner-table .right { background: rgba(255,255,255,0.22) !important; border-radius: var(--radius-sm) !important; color: var(--ink) !important; }
 .right_odd          { background: none !important; }
 
