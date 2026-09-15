@@ -1,0 +1,519 @@
+/* ============================================================
+   BUBBLE - Lioden den CSS
+   Built on Jester (#187561) & Katie's (#106445) v3 template.
+   Contributor credits from the original: Pandora #144118, Kat #94329,
+   tawny #251887, Austin #43750, Bobcat #79288, Tserin #2230, Atticus #198107.
+
+   No images, no GIFs. Background, bubbles and all decoration are CSS.
+
+   TERRITORY DESCRIPTION TAG
+     <link rel="stylesheet" type="text/css" href="https://lovetiger1251.github.io/liodencss/bubble.css" />
+   CAVE / MOUND SETTINGS -> Cave CSS URL
+     https://lovetiger1251.github.io/liodencss/bubble.css
+
+   Fonts: Poiret One (thin geometric - headers), Quicksand (rounded - body)
+   Palette: white / cyan / blue / navy, kept light.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&family=Quicksand:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-display: 'Poiret One', 'Quicksand', sans-serif;
+  --font-body:    'Quicksand', 'Segoe UI', sans-serif;
+
+  --white:    #ffffff;
+  --ice:      #f2fdff;   /* near-white cyan          */
+  --mist:     #d8f6fb;   /* pale cyan                */
+  --cyan:     #4fd8ee;   /* bright cyan              */
+  --teal:     #17b8d6;   /* saturated cyan           */
+  --sky:      #4fa3e8;   /* light blue               */
+  --blue:     #1f6fd0;   /* dark blue                */
+  --navy:     #10305e;   /* navy                     */
+  --ink:      #0b2247;   /* text on white            */
+
+  /* the main sheet everything sits on - white tint, see-through */
+  --sheet:        rgba(255, 255, 255, 0.42);
+  --sheet-border: rgba(255, 255, 255, 0.75);
+
+  /* inner panels - lighter white tint on top of the sheet */
+  --panel:        rgba(255, 255, 255, 0.50);
+  --panel-alt:    rgba(255, 255, 255, 0.28);
+  --panel-border: rgba(255, 255, 255, 0.85);
+  --panel-text:   var(--ink);
+
+  --bar:          rgba(255, 255, 255, 0.55);
+  --bar-text:     var(--navy);
+  --bar-hover:    rgba(79, 216, 238, 0.35);
+  --bar-hover-text: var(--ink);
+
+  --text:         var(--ink);
+  --text-muted:   #5b7ba3;
+  --heading:      var(--navy);
+  --link:         var(--blue);
+  --link-hover:   var(--teal);
+
+  --accent:       var(--cyan);
+  --accent-text:  var(--ink);
+
+  --button:       rgba(255, 255, 255, 0.65);
+  --button-text:  var(--navy);
+
+  --progress-track: rgba(255, 255, 255, 0.45);
+  --energy:       var(--cyan);
+  --hunger:       var(--navy);
+  --exp:          var(--sky);
+
+  --radius:       22px;
+  --radius-sm:    12px;
+  --border:       1px solid var(--panel-border);
+  --glass:        inset 0 1px 0 rgba(255,255,255,0.9), 0 8px 24px rgba(16, 48, 94, 0.12);
+  --glow:         0 0 0 3px rgba(79, 216, 238, 0.35), 0 8px 24px rgba(16, 48, 94, 0.15);
+}
+
+
+/* ============================================================
+   BACKGROUND - light water gradient + two layers of rising bubbles
+   ============================================================ */
+
+body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text) !important;
+  background: linear-gradient(180deg, #ffffff 0%, #d8f6fb 30%, #8fdcf0 65%, #4fa3e8 100%) fixed !important;
+  background-size: cover !important;
+}
+
+/* bubble layers: each tile holds a few rings (each with a small
+   highlight dot). Radii are fixed px and kept inside the tile so no
+   bubble is clipped at a tile edge. The tile repeats, and moving the
+   position by one full tile height loops seamlessly. Two layers with
+   different tiles and speeds give depth. */
+body::before, body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-repeat: repeat;
+}
+body::before {
+  background-image:
+    radial-gradient(circle 64px at 110px 150px, rgba(255,255,255,0) 56px, rgba(255,255,255,0.8) 59px, rgba(255,255,255,0.18) 63px, rgba(255,255,255,0) 64px),
+    radial-gradient(circle 12px at 84px 124px, rgba(255,255,255,0.9) 0px, rgba(255,255,255,0) 12px),
+    radial-gradient(circle 38px at 320px 380px, rgba(255,255,255,0) 30px, rgba(255,255,255,0.8) 33px, rgba(255,255,255,0.18) 37px, rgba(255,255,255,0) 38px),
+    radial-gradient(circle 12px at 305px 365px, rgba(255,255,255,0.9) 0px, rgba(255,255,255,0) 12px),
+    radial-gradient(circle 26px at 360px 90px, rgba(255,255,255,0) 18px, rgba(255,255,255,0.8) 21px, rgba(255,255,255,0.18) 25px, rgba(255,255,255,0) 26px),
+    radial-gradient(circle 12px at 350px 80px, rgba(255,255,255,0.9) 0px, rgba(255,255,255,0) 12px),
+    radial-gradient(circle 18px at 180px 470px, rgba(255,255,255,0) 10px, rgba(255,255,255,0.8) 13px, rgba(255,255,255,0.18) 17px, rgba(255,255,255,0) 18px),
+    radial-gradient(circle 12px at 173px 463px, rgba(255,255,255,0.9) 0px, rgba(255,255,255,0) 12px);
+  background-size: 460px 560px;
+  opacity: 0.85;
+  animation: bubbles-rise 55s linear infinite;
+}
+body::after {
+  background-image:
+    radial-gradient(circle 30px at 70px 200px, rgba(255,255,255,0) 22px, rgba(255,255,255,0.8) 25px, rgba(255,255,255,0.18) 29px, rgba(255,255,255,0) 30px),
+    radial-gradient(circle 12px at 58px 188px, rgba(255,255,255,0.9) 0px, rgba(255,255,255,0) 12px),
+    radial-gradient(circle 20px at 200px 70px, rgba(255,255,255,0) 12px, rgba(255,255,255,0.8) 15px, rgba(255,255,255,0.18) 19px, rgba(255,255,255,0) 20px),
+    radial-gradient(circle 12px at 192px 62px, rgba(255,255,255,0.9) 0px, rgba(255,255,255,0) 12px),
+    radial-gradient(circle 14px at 150px 300px, rgba(255,255,255,0) 6px, rgba(255,255,255,0.8) 9px, rgba(255,255,255,0.18) 13px, rgba(255,255,255,0) 14px),
+    radial-gradient(circle 12px at 144px 294px, rgba(255,255,255,0.9) 0px, rgba(255,255,255,0) 12px);
+  background-size: 260px 360px;
+  opacity: 0.65;
+  animation: bubbles-rise 32s linear infinite;
+}
+@keyframes bubbles-rise {
+  from { background-position: 0 0; }
+  to   { background-position: 0 -100%; }
+}
+
+@media screen and (max-width: 600px) {
+  body::before, body::after { display: none; }   /* keep phones light */
+}
+
+html.nolayout { background: none !important; }
+
+::-webkit-scrollbar       { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: rgba(255,255,255,0.35); border-radius: 8px; }
+::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 8px; }
+* { scrollbar-width: thin; scrollbar-color: var(--cyan) rgba(255,255,255,0.35); }
+
+
+/* ============================================================
+   TYPE
+   ============================================================ */
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 58px;
+  letter-spacing: 4px;
+  text-align: center !important;
+  color: var(--navy) !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.9), 0 6px 18px rgba(16, 48, 94, 0.18);
+}
+h2 { font-family: var(--font-display); font-weight: 400; font-size: 26px; letter-spacing: 2px; color: var(--heading) !important; }
+h3 { font-family: var(--font-display); font-weight: 400; font-size: 20px; letter-spacing: 2px; color: var(--heading) !important; }
+
+.topbar { font-family: var(--font-body); font-weight: 600; }
+.navbar { font-family: var(--font-display); font-size: 16px; letter-spacing: 1.5px; }
+
+a:link, a:visited { color: var(--link) !important; background: none !important; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+a:hover           { color: var(--link-hover) !important; }
+
+.footer a:link, .footer a:visited, .footer a:active { border-bottom: none !important; }
+td.bottom a, th a { border-bottom: none !important; }
+.bottom a:visited, .bottom a { text-decoration: none !important; }
+
+
+/* ============================================================
+   MAIN SHEET - the panel all the information sits on
+   ============================================================ */
+
+.container.main {
+  background: var(--sheet) !important;
+  border: 1px solid var(--sheet-border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--glass) !important;
+  backdrop-filter: blur(10px) saturate(1.2);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+}
+.col-md-9 { background: none; }
+
+/* glass surfaces share one recipe: white tint, white hairline,
+   a highlight in the top-left corner like light on a bubble */
+.topbar, .navbar, .breadcrumb, .panel, div#commentBox, .feature, div.left,
+.cave-grid, .mound-grid, .Box1, .Box2, .Box3, .mobilebox, div.emoteList.active {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 32%),
+    var(--panel) !important;
+  color: var(--panel-text) !important;
+  border: var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--glass) !important;
+}
+
+.topbar, .navbar, .breadcrumb { border-radius: 999px !important; }
+.navbar li a { border-radius: 999px; transition: background 0.2s, color 0.2s; }
+.navbar li a:hover { background: var(--bar-hover) !important; color: var(--bar-hover-text) !important; }
+.navbar-toggle   { border: none !important; background: rgba(255,255,255,0.6) !important; border-radius: 999px !important; }
+.navbar-collapse { box-shadow: none !important; border-top: none !important; }
+
+.breadcrumb .active { color: var(--teal); }
+.breadcrumb > li + li::before { color: var(--cyan) !important; content: "\25CB  " !important; }   /* small circle */
+
+
+/* ============================================================
+   ALERTS
+   ============================================================ */
+
+.alert {
+  background: rgba(255,255,255,0.6) !important;
+  color: var(--ink) !important;
+  border: var(--border) !important;
+  border-left: 6px solid var(--cyan) !important;
+  border-radius: var(--radius-sm) !important;
+  text-align: center !important;
+  box-shadow: var(--glass);
+}
+.alert-success { border-left-color: var(--teal) !important; background: rgba(216,246,251,0.85) !important; }
+.alert-danger  { border-left-color: var(--navy) !important; background: rgba(255,255,255,0.75) !important; color: var(--navy) !important; }
+.alert-warning { border-left-color: var(--navy) !important; background: rgba(255,255,255,0.75) !important; color: var(--navy) !important; }
+
+
+/* ============================================================
+   PROGRESS BARS, BADGES, ONLINE DOTS
+   ============================================================ */
+
+.progress {
+  background: var(--progress-track);
+  color: var(--ink) !important;
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 999px !important;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(16,48,94,0.12);
+}
+.progress-bar {
+  background: var(--sky) !important;
+  border-radius: 999px !important;
+  background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0) 100%) !important;
+  background-size: 200% 100% !important;
+  background-repeat: no-repeat !important;
+  animation: shimmer 3.5s linear infinite;
+}
+.progress-bar-warning { background-color: var(--energy) !important; }
+.progress-bar-danger  { background-color: var(--hunger) !important; }
+.progress .progress-bar-danger div { color: var(--white) !important; text-shadow: none; }
+.progress-bar-success { background-color: var(--exp)    !important; }
+.progress div         { color: var(--ink) !important; font-weight: 700; text-shadow: 0 1px 0 rgba(255,255,255,0.6); }
+
+.badge {
+  background: var(--cyan) !important;
+  color: var(--ink) !important;
+  border-radius: 999px !important;
+  font-weight: 700;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.8);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.member-online  { background: var(--teal); border-radius: 50%; width: 40px !important; height: 40px; margin: -10px; margin-left: 10px; box-shadow: 0 0 0 3px rgba(255,255,255,0.8), 0 0 12px var(--cyan); }
+.member-offline { background: var(--mist); border-radius: 50%; width: 40px !important; height: 40px; margin: -10px; margin-left: 10px; box-shadow: 0 0 0 3px rgba(255,255,255,0.8); filter: saturate(0%); }
+
+
+/* ============================================================
+   COMMENT BOX
+   ============================================================ */
+
+.comment {
+  background: var(--panel-alt) !important;
+  color: var(--panel-text) !important;
+  border: 1px solid rgba(255,255,255,0.7) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.7) !important;
+  border-radius: var(--radius-sm) !important;
+  text-align: center !important;
+  margin: 6px 0;
+}
+.comment:nth-child(even) { background: rgba(216,246,251,0.45) !important; }
+.text-muted { color: var(--text-muted) !important; }
+
+input.bad   { background: var(--navy) !important; color: var(--white) !important; border-radius: 50% !important; }
+input.bad a { color: var(--white) !important; }
+
+table#player.table hr         { display: none !important; }
+table#player.table div.xlarge { margin-top: 10px !important; }
+
+
+/* ============================================================
+   CHAT
+   ============================================================ */
+
+button#label_currentChannel { border: none !important; background: rgba(255,255,255,0.6) !important; border-radius: 999px !important; color: var(--navy) !important; }
+div#chatMessageContainer    { border: none !important; }
+
+.s-chat-message__pinned {
+  background-color: rgba(79,216,238,0.22) !important;
+  color: var(--ink) !important;
+  border: none !important;
+  border-left: 4px solid var(--teal) !important;
+}
+.s-chat-message:nth-child(odd)  { background: rgba(255,255,255,0.55) !important; border: none !important; }
+.s-chat-message:nth-child(even) { background: rgba(255,255,255,0.35) !important; border: none !important; }
+.s-chat-message_timestamp       { color: var(--text-muted) !important; }
+
+.s-chat-sidebar #fraChatChannelMenu,
+button.channelSwitcher, button.channelSwitcher.active {
+  background: rgba(255,255,255,0.55) !important;
+  color: var(--navy) !important;
+  border: none !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+}
+button.channelSwitcher.active { background: var(--cyan) !important; color: var(--ink) !important; }
+
+div.emoteList.active { border-radius: var(--radius-sm) !important; }
+div.emoteList.active::before { background: var(--panel); border: var(--border); border-top: none !important; }
+
+#chatMessageList[data-pings="enabled"] .s-chat-message_mention {
+  background-color: rgba(79,216,238,0.28) !important;
+  border-left: 6px solid var(--blue) !important;
+  color: var(--ink) !important;
+}
+div#lblCharacterCounter { color: var(--text-muted) !important; }
+
+
+/* ============================================================
+   FAPA & LEFT-COLUMN BUTTONS
+   ============================================================ */
+
+.feature { border: 2px solid var(--cyan) !important; }
+div.left { transition: transform 0.2s, box-shadow 0.2s; }
+div.left:hover { transform: translateY(-2px); box-shadow: var(--glow) !important; }
+.xsmall { font-size: 14px !important; }
+
+
+/* ============================================================
+   LION INFO / DEN TABLES
+   ============================================================ */
+
+.table {
+  background: rgba(255,255,255,0.30);
+  border: 1px solid rgba(255,255,255,0.7) !important;
+  border-collapse: separate;
+  border-radius: var(--radius);
+}
+
+.top, .bottom, th {
+  background: linear-gradient(90deg, var(--cyan), var(--sky)) !important;
+  color: var(--ink) !important;
+  border: none !important;
+  border-radius: 999px !important;
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.table .left        { background: rgba(255,255,255,0.45); border-radius: var(--radius-sm) !important; }
+.inner-table .left  { background: rgba(255,255,255,0.6) !important; border-radius: var(--radius-sm) !important; color: var(--blue) !important; font-weight: 700; }
+.inner-table .right { background: rgba(255,255,255,0.3) !important; border-radius: var(--radius-sm) !important; color: var(--ink) !important; }
+.right_odd          { background: none !important; }
+
+
+/* ============================================================
+   IMAGES - avatars, logo, icons
+   ============================================================ */
+
+div#lion_image {
+  opacity: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255,255,255,0.95);
+  box-shadow: 0 0 0 5px rgba(79,216,238,0.35), 0 10px 26px rgba(16,48,94,0.2);
+  animation: ring-glow 4s ease-in-out infinite;
+}
+table#player img {
+  opacity: 1;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.95);
+  box-shadow: 0 0 0 3px rgba(79,216,238,0.35);
+  animation: float 5s ease-in-out infinite;
+}
+
+div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img {
+  filter: drop-shadow(0 4px 10px rgba(16,48,94,0.25));
+  animation: float 4s ease-in-out infinite;
+}
+
+img[src$="icon_den_message.png"], img[src$="icon_den_gift.png"], img[src$="icon_den_trade.png"],
+img[src$="icon_den_viewtrade.png"], img[src$="icon_den_wishlist.png"], img[src$="icon_den_block.png"],
+img[src$="icon_den_friend.png"] { display: inline-block; transition: transform 0.2s; }
+a:hover > img[src$="icon_den_message.png"], a:hover > img[src$="icon_den_gift.png"], a:hover > img[src$="icon_den_trade.png"],
+a:hover > img[src$="icon_den_viewtrade.png"], a:hover > img[src$="icon_den_wishlist.png"], a:hover > img[src$="icon_den_block.png"],
+a:hover > img[src$="icon_den_friend.png"] { animation: wiggle 0.6s ease-in-out infinite; }
+
+img[src$="gold.png"], img[src$="silver.png"] { display: inline-block; animation: bob 2.6s ease-in-out infinite; }
+img[src$="silver.png"] { animation-delay: 1.3s; }
+img[src$="icon_warning.png"] { display: inline-block; animation: pulse 1.2s ease-in-out infinite; }
+
+
+/* ============================================================
+   TEXT BOXES & BUTTONS
+   ============================================================ */
+
+input, textarea, select {
+  background: rgba(255,255,255,0.7) !important;
+  color: var(--ink) !important;
+  border: 1px solid rgba(255,255,255,0.95) !important;
+  border-radius: var(--radius-sm) !important;
+  text-shadow: none !important;
+  font-family: var(--font-body);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--cyan) !important;
+  box-shadow: 0 0 0 3px rgba(79,216,238,0.35) !important;
+  outline: none !important;
+}
+button.button, a.btn.btn-default.button, input[type="submit"], input[type="button"] {
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(216,246,251,0.9)) !important;
+  color: var(--navy) !important;
+  border: 1px solid rgba(255,255,255,0.95) !important;
+  border-radius: 999px !important;
+  text-shadow: none !important;
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  box-shadow: 0 4px 12px rgba(16,48,94,0.12);
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+button.button:hover, a.btn.btn-default.button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+  background: linear-gradient(180deg, var(--cyan), var(--sky)) !important;
+  color: var(--ink) !important;
+  transform: translateY(-1px);
+  box-shadow: var(--glow);
+}
+
+
+/* ============================================================
+   CAVES & MOUNDS
+   ============================================================ */
+
+.cave-grid, .mound-grid { overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; }
+.cave-grid:hover, .mound-grid:hover { transform: translateY(-3px); box-shadow: var(--glow) !important; }
+
+div.cave-grid > img { border-radius: var(--radius-sm); animation: breathe 7s ease-in-out infinite; }
+a:nth-child(2n) > div.cave-grid > img { animation-delay: 2s; }
+a:nth-child(3n) > div.cave-grid > img { animation-delay: 4s; }
+.mound-grid img { animation: float 5s ease-in-out infinite; }
+
+/* Custom covers - fill CAVEID / MOUNDID / USERID + image link, then uncomment.
+a[href$="CAVEID"] > div.cave-grid > img { content: url('IMG') !important; width: 258px !important; height: auto !important; }
+a[href$="mound.php?id=MOUNDID"] img     { content: url('IMG') !important; background-size: cover; width: 100%; height: auto; }
+a[href$="unsorted.php?id=USERID"] > div.cave-grid > img     { content: url('IMG') !important; }
+a[href*="lionoverview.php?id=USERID"] > div.cave-grid > img { content: url('IMG') !important; }
+a[href$="unsorted-beetles.php?id=USERID"] img               { content: url('IMG') !important; background-size: cover; width: 100%; height: auto; }
+*/
+
+/* cave page compatibility */
+.featured-lion {
+  background: linear-gradient(90deg, var(--cyan), var(--sky)) !important;
+  color: var(--ink) !important;
+  border: none !important;
+  border-radius: 999px !important;
+  padding: 0; margin: 0 auto; max-width: 640px;
+  font-family: var(--font-display);
+  font-size: 16px; letter-spacing: 2px;
+}
+div.lion-image-block { overflow: hidden; border-radius: var(--radius); }
+table#pride.table, table#pride.table a, table#pride.table a:visited { color: var(--ink) !important; }
+table#pride.table .xsmall { font-size: 12px !important; }
+
+
+/* ============================================================
+   BOXES for the territory description
+   <div class="boxcontainer"><div class="Box1">text</div></div>
+   <div class="boxcontainer"><div class="Box3">text</div><div class="Box2">text</div></div>
+   Mobile: <div class="mobilebox">text</div>
+   ============================================================ */
+
+.boxcontainer { background: none; height: 75px; padding: 0; display: block; transition: 1s; }
+.boxcontainer:hover { height: 250px; }
+
+.Box1, .Box2, .Box3 { padding: 12px; height: 75px; overflow: hidden; margin-bottom: 10px; transition: 1s; }
+.Box1 { float: left;  width: 100%; }
+.Box2 { float: right; width: 30%;  }
+.Box3 { float: left;  width: 65%;  }
+.Box1:hover, .Box2:hover, .Box3:hover { overflow-y: auto; height: 250px; box-shadow: var(--glow) !important; }
+
+.mobilebox { margin: 10px auto; padding: 12px; height: 155px; width: 80%; overflow: auto; }
+
+@media only screen and (min-width: 1200px) {
+  .mobilebox { display: none !important; }
+  div.quote  { width: 790px; }
+}
+@media only screen and (max-width: 1199px) {
+  .Box1, .Box2, .Box3, .boxcontainer { display: none !important; }
+  .mobilebox { display: block !important; }
+}
+@media only screen and (max-width: 767px) {
+  .container.main .hidden-xs { display: block !important; }
+}
+
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+
+@keyframes shimmer   { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@keyframes bob       { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes float     { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes breathe   { 0%, 100% { transform: scale(1); }      50% { transform: scale(1.04); } }
+@keyframes pulse     { 0%, 100% { transform: scale(1); }      50% { transform: scale(1.12); } }
+@keyframes wiggle    { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-12deg); } 75% { transform: rotate(12deg); } }
+@keyframes ring-glow { 0%, 100% { box-shadow: 0 0 0 5px rgba(79,216,238,0.35), 0 10px 26px rgba(16,48,94,0.2); }
+                       50%      { box-shadow: 0 0 0 8px rgba(79,216,238,0.2),  0 10px 32px rgba(23,184,214,0.4); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
