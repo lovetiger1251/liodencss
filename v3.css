@@ -205,7 +205,7 @@ div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img { filt
    ============================================================ */
 
 body::after {
-  content: "<3 Tiger ";
+  content: "< tiger ";
   position: fixed;
   right: 16px;
   bottom: 12px;
@@ -452,37 +452,60 @@ div.cave-grid > img { border-radius: var(--radius-sm); }
 
 /* ---- custom covers ---------------------------------------------
    Files live in the repo: https://lovetiger1251.github.io/liodencss/<file>
-   All are wide photos; width is pinned to the tile and height follows. */
+   Lioden markup (from the v3 template):
+     pregnant lionesses  = div.cave-grid > img  (nestingbanner.png, no link around it)
+     dens                = a[href=CAVEID] > div.cave-grid > img
+     unsorted / overview = a[href*=unsorted.php|lionoverview.php] > div.cave-grid > img
+     beetles + mounds    = mound tiles (div.mound-grid) / a[href*=unsorted-beetles|mound] img
+     banners             = img in div.left (ancestors / ancestorsfem / achievements / showcase / beetle book)
+   Rules are ordered least -> most specific so overrides win. */
 
-/* second.jpg - every den / cave tile (more specific rules below override it) */
+/* first.jpg - base for every cave slot, which is what the pregnant-lionesses banner uses */
 div.cave-grid > img {
-  content: url('https://lovetiger1251.github.io/liodencss/second.jpg') !important;
+  content: url('https://lovetiger1251.github.io/liodencss/first.jpg') !important;
   width: 258px !important;
   max-width: 100% !important;
   height: auto !important;
 }
 
-/* first.jpg - unsorted lions, pregnant lionesses, pride overview */
+/* second.jpg - dens (cave tiles that are links) */
+a > div.cave-grid > img {
+  content: url('https://lovetiger1251.github.io/liodencss/second.jpg') !important;
+}
+
+/* first.jpg - unsorted, pregnant lionesses, pride overview (beats the den rule above) */
 a[href*="unsorted.php"] > div.cave-grid > img,
+a[href*="lionoverview.php"] > div.cave-grid > img,
+a[href*="nesting"] > div.cave-grid > img,
 a[href*="pregnant"] > div.cave-grid > img,
-a[href*="lionoverview.php"] > div.cave-grid > img {
+div.cave-grid > img[src*="nestingbanner"],
+div.cave-grid > img[src*="nesting"] {
   content: url('https://lovetiger1251.github.io/liodencss/first.jpg') !important;
 }
 
-/* third.jpg - beetles */
-a[href*="unsorted-beetles.php"] img,
-a[href*="beetles.php"] > div.cave-grid > img,
-a[href*="beetles.php"] > div.mound-grid > img {
+/* third.jpg - beetles tile, +create mound, and any beetle mound */
+div.mound-grid img,
+a[href*="unsorted-beetles"] img,
+a[href*="beetles.php"] img,
+a[href*="mound"] img,
+a[href*="unsorted-beetles"] > div > img,
+a[href*="beetles.php"] > div > img,
+a[href*="mound"] > div > img {
   content: url('https://lovetiger1251.github.io/liodencss/third.jpg') !important;
   width: 100% !important;
   height: auto !important;
 }
 
-/* fourth.jpg - king dynasty, pride dynasty, achievements, showcase, beetle book banners */
-img[src$="ancestors.jpg"], img[src$="ancestorsfem.png"],
-img[src$="achievements.jpg"], img[src$="showcase/banner.png"],
+/* fourth.jpg - king dynasty, pride dynasty, achievements, showcase, beetle book banners.
+   Matched on the name inside the src (not the extension) so a .jpg/.png change or a
+   cache-busting query string can't break it; div.left img is the catch-all for the same block. */
+div.left img,
+img[src*="ancestors"],
+img[src*="achievements"],
+img[src*="showcase"],
 img[src*="beetlebook"], img[src*="beetle_book"], img[src*="beetle-book"],
-a[href*="beetlebook"] img, a[href*="beetle_book"] img, a[href*="beetle-book"] img {
+a[href*="dynasty"] img, a[href*="ancestors"] img, a[href*="achievements"] img,
+a[href*="showcase"] img, a[href*="beetlebook"] img, a[href*="beetle_book"] img, a[href*="beetle-book"] img {
   content: url('https://lovetiger1251.github.io/liodencss/fourth.jpg') !important;
   width: 100% !important;
   height: auto !important;
