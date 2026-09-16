@@ -201,7 +201,7 @@ div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img { filt
    ============================================================ */
 
 body::after {
-  content: "made by tiger's owner";
+  content: "made by Tiger's owner";
   position: fixed;
   right: 16px;
   bottom: 12px;
