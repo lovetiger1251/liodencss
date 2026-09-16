@@ -170,17 +170,12 @@ div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img { filt
    ALERTS
    ============================================================ */
 
-.alert {
+.alert, .alert-success, .alert-danger, .alert-warning, .alert-info {
+  background: var(--panel) !important;   /* same fill as the sidebar panels, no tint */
+  background-image: none !important;
   border-radius: var(--radius-sm) !important;
   text-align: center !important;
-  /* soft tint fading in from the left instead of a hard side border */
-  background:
-    linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0) 18%),
-    var(--panel) !important;
 }
-.alert-success { background: linear-gradient(90deg, rgba(242,166,90,0.28), rgba(242,166,90,0) 18%), var(--panel) !important; }
-.alert-danger  { background: linear-gradient(90deg, rgba(232,115,107,0.32), rgba(232,115,107,0) 18%), var(--panel) !important; }
-.alert-warning { background: linear-gradient(90deg, rgba(232,115,107,0.32), rgba(232,115,107,0) 18%), var(--panel) !important; }
 
 
 /* ============================================================
