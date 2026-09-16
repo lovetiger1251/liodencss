@@ -561,8 +561,8 @@ table#pride.table .xsmall { font-size: 12px !important; }
 
 /* ============================================================
    SHOOTING STARS - three streaks on fixed layers behind the main
-   sheet, 15 degree descent from the top-left, slow, staggered so they
-   never fire together. body::after is the made-by tag, so these use
+   sheet, 15 degree descent from the top-left, slow, staggered so two
+   or three are in flight at once. body::after is the made-by tag, so these use
    body::before, html::before and html::after.
    Tweak: duration = pace of the whole cycle (travel is the first ~30%),
    animation-delay = when each one first fires, the vh value in the
@@ -581,46 +581,48 @@ body::before, html::before, html::after {
   will-change: transform, opacity;
 }
 body::before {                                   /* long, bright */
-  width: 720px; height: 48px;
+  width: 760px; height: 64px;
   background-image: url('https://lovetiger1251.github.io/liodencss/star1.png');
-  animation: star-a 26s linear infinite;
-  animation-delay: 2s;
+  animation: star-a 24s linear infinite;
+  animation-delay: 0s;
 }
 html::before {                                   /* medium */
-  width: 480px; height: 40px;
+  width: 520px; height: 52px;
   background-image: url('https://lovetiger1251.github.io/liodencss/star2.png');
-  animation: star-b 31s linear infinite;
-  animation-delay: 12s;
+  animation: star-b 24s linear infinite;
+  animation-delay: 8s;
 }
 html::after {                                    /* short, faint */
-  width: 300px; height: 32px;
+  width: 340px; height: 44px;
   background-image: url('https://lovetiger1251.github.io/liodencss/star3.png');
-  animation: star-c 23s linear infinite;
-  animation-delay: 21s;
+  animation: star-c 24s linear infinite;
+  animation-delay: 16s;
   opacity: 0;
 }
 
-/* 15 degrees: vertical drop = horizontal travel x 0.268 */
+/* Each star travels for 72% of a 24s cycle (~17s crossing), and the three
+   are offset by a third of a cycle, so 2 are always in flight and all 3
+   overlap briefly. 15 degrees: vertical drop = horizontal travel x 0.268 */
 @keyframes star-a {
-  0%   { opacity: 0; transform: translate(-760px, 4vh)               rotate(15deg); }
-  3%   { opacity: 1; }
-  30%  { opacity: 1; transform: translate(110vw, calc(4vh + 29.5vw)) rotate(15deg); }
-  33%  { opacity: 0; transform: translate(115vw, calc(4vh + 30.8vw)) rotate(15deg); }
-  100% { opacity: 0; transform: translate(115vw, calc(4vh + 30.8vw)) rotate(15deg); }
+  0%   { opacity: 0; transform: translate(-800px, 4vh)               rotate(15deg); }
+  4%   { opacity: 1; }
+  72%  { opacity: 1; transform: translate(110vw, calc(4vh + 29.5vw)) rotate(15deg); }
+  75%  { opacity: 0; transform: translate(114vw, calc(4vh + 30.6vw)) rotate(15deg); }
+  100% { opacity: 0; transform: translate(114vw, calc(4vh + 30.6vw)) rotate(15deg); }
 }
 @keyframes star-b {
-  0%   { opacity: 0; transform: translate(-520px, 14vh)              rotate(15deg); }
-  3%   { opacity: 0.85; }
-  32%  { opacity: 0.85; transform: translate(110vw, calc(14vh + 29.5vw)) rotate(15deg); }
-  35%  { opacity: 0; transform: translate(115vw, calc(14vh + 30.8vw)) rotate(15deg); }
-  100% { opacity: 0; transform: translate(115vw, calc(14vh + 30.8vw)) rotate(15deg); }
+  0%   { opacity: 0; transform: translate(-560px, 14vh)              rotate(15deg); }
+  4%   { opacity: 0.9; }
+  72%  { opacity: 0.9; transform: translate(110vw, calc(14vh + 29.5vw)) rotate(15deg); }
+  75%  { opacity: 0; transform: translate(114vw, calc(14vh + 30.6vw)) rotate(15deg); }
+  100% { opacity: 0; transform: translate(114vw, calc(14vh + 30.6vw)) rotate(15deg); }
 }
 @keyframes star-c {
-  0%   { opacity: 0; transform: translate(-340px, -2vh)              rotate(15deg); }
-  3%   { opacity: 0.7; }
-  28%  { opacity: 0.7; transform: translate(110vw, calc(-2vh + 29.5vw)) rotate(15deg); }
-  31%  { opacity: 0; transform: translate(115vw, calc(-2vh + 30.8vw)) rotate(15deg); }
-  100% { opacity: 0; transform: translate(115vw, calc(-2vh + 30.8vw)) rotate(15deg); }
+  0%   { opacity: 0; transform: translate(-380px, -2vh)              rotate(15deg); }
+  4%   { opacity: 0.8; }
+  72%  { opacity: 0.8; transform: translate(110vw, calc(-2vh + 29.5vw)) rotate(15deg); }
+  75%  { opacity: 0; transform: translate(114vw, calc(-2vh + 30.6vw)) rotate(15deg); }
+  100% { opacity: 0; transform: translate(114vw, calc(-2vh + 30.6vw)) rotate(15deg); }
 }
 
 @media screen and (max-width: 600px) { body::before, html::before, html::after { display: none; } }
