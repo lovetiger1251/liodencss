@@ -581,19 +581,19 @@ body::before, html::before, html::after {
   will-change: transform, opacity;
 }
 body::before {                                   /* long, bright */
-  width: 760px; height: 64px;
+  width: 760px; height: 84px;
   background-image: url('https://lovetiger1251.github.io/liodencss/star1.png');
   animation: star-a 24s linear infinite;
   animation-delay: 0s;
 }
 html::before {                                   /* medium */
-  width: 520px; height: 52px;
+  width: 520px; height: 70px;
   background-image: url('https://lovetiger1251.github.io/liodencss/star2.png');
   animation: star-b 24s linear infinite;
   animation-delay: 8s;
 }
 html::after {                                    /* short, faint */
-  width: 340px; height: 44px;
+  width: 340px; height: 56px;
   background-image: url('https://lovetiger1251.github.io/liodencss/star3.png');
   animation: star-c 24s linear infinite;
   animation-delay: 16s;
