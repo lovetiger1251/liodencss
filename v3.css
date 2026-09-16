@@ -1,11 +1,12 @@
 /* ============================================================
-   v3.1 - Lioden den CSS (black & white, warm accents, planet logo)
+   v3.2 - Lioden den CSS (black & white, warm accents, planet logo, shooting stars)
    Built on Jester (#187561) & Katie's (#106445) v3 template.
    Contributor credits from the original: Pandora #144118, Kat #94329,
    tawny #251887, Austin #43750, Bobcat #79288, Tserin #2230, Atticus #198107.
    FILES NEEDED IN THE REPO NEXT TO THIS CSS
      tsu.png      (background)
      fifth.png    (logo)
+     star1.png, star2.png, star3.png   (shooting stars)
      first.jpg    (unsorted lions, pregnant lionesses, pride overview)
      second.jpg   (all dens / caves)
      third.jpg    (beetles)
@@ -558,7 +559,73 @@ table#pride.table .xsmall { font-size: 12px !important; }
   h1 { font-size: 36px; letter-spacing: 3px; }
 }
 
-/* stops the title motion for visitors with reduce-motion on */
+/* ============================================================
+   SHOOTING STARS - three streaks on fixed layers behind the main
+   sheet, 15 degree descent from the top-left, slow, staggered so they
+   never fire together. body::after is the made-by tag, so these use
+   body::before, html::before and html::after.
+   Tweak: duration = pace of the whole cycle (travel is the first ~30%),
+   animation-delay = when each one first fires, the vh value in the
+   0% frame = how high it starts.
+   ============================================================ */
+
+body::before, html::before, html::after {
+  content: '';
+  position: fixed;
+  left: 0; top: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+body::before {                                   /* long, bright */
+  width: 720px; height: 48px;
+  background-image: url('https://lovetiger1251.github.io/liodencss/star1.png');
+  animation: star-a 26s linear infinite;
+  animation-delay: 2s;
+}
+html::before {                                   /* medium */
+  width: 480px; height: 40px;
+  background-image: url('https://lovetiger1251.github.io/liodencss/star2.png');
+  animation: star-b 31s linear infinite;
+  animation-delay: 12s;
+}
+html::after {                                    /* short, faint */
+  width: 300px; height: 32px;
+  background-image: url('https://lovetiger1251.github.io/liodencss/star3.png');
+  animation: star-c 23s linear infinite;
+  animation-delay: 21s;
+  opacity: 0;
+}
+
+/* 15 degrees: vertical drop = horizontal travel x 0.268 */
+@keyframes star-a {
+  0%   { opacity: 0; transform: translate(-760px, 4vh)               rotate(15deg); }
+  3%   { opacity: 1; }
+  30%  { opacity: 1; transform: translate(110vw, calc(4vh + 29.5vw)) rotate(15deg); }
+  33%  { opacity: 0; transform: translate(115vw, calc(4vh + 30.8vw)) rotate(15deg); }
+  100% { opacity: 0; transform: translate(115vw, calc(4vh + 30.8vw)) rotate(15deg); }
+}
+@keyframes star-b {
+  0%   { opacity: 0; transform: translate(-520px, 14vh)              rotate(15deg); }
+  3%   { opacity: 0.85; }
+  32%  { opacity: 0.85; transform: translate(110vw, calc(14vh + 29.5vw)) rotate(15deg); }
+  35%  { opacity: 0; transform: translate(115vw, calc(14vh + 30.8vw)) rotate(15deg); }
+  100% { opacity: 0; transform: translate(115vw, calc(14vh + 30.8vw)) rotate(15deg); }
+}
+@keyframes star-c {
+  0%   { opacity: 0; transform: translate(-340px, -2vh)              rotate(15deg); }
+  3%   { opacity: 0.7; }
+  28%  { opacity: 0.7; transform: translate(110vw, calc(-2vh + 29.5vw)) rotate(15deg); }
+  31%  { opacity: 0; transform: translate(115vw, calc(-2vh + 30.8vw)) rotate(15deg); }
+  100% { opacity: 0; transform: translate(115vw, calc(-2vh + 30.8vw)) rotate(15deg); }
+}
+
+@media screen and (max-width: 600px) { body::before, html::before, html::after { display: none; } }
+
+/* stops the title motion and the stars for visitors with reduce-motion on */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
