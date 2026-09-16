@@ -205,7 +205,7 @@ div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img { filt
    ============================================================ */
 
 body::after {
-  content: "< tiger ";
+  content: "<3 tiger ";
   position: fixed;
   right: 16px;
   bottom: 12px;
