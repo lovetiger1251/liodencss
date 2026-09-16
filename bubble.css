@@ -1,5 +1,5 @@
 /* ============================================================
-   WAVE 2.1 - Lioden den CSS (black & white)
+   WAVE 2.2 - Lioden den CSS (black & white, warm accents)
    Built on Jester (#187561) & Katie's (#106445) v3 template.
    Contributor credits from the original: Pandora #144118, Kat #94329,
    tawny #251887, Austin #43750, Bobcat #79288, Tserin #2230, Atticus #198107.
@@ -14,17 +14,23 @@
 
    Fonts:   Julius Sans One (den title)
             Poiret One (headers, navbar, key text)
-            Jost (everything else)
-   Look:    dark translucent glass over the wave, white text,
-            thin white hairlines. No bubble gloss, no glow rings.
+            Josefin Sans (everything else)
+   Look:    dark translucent glass, white text, thin white hairlines,
+            a few sunset (orange / coral / pink) accents.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Poiret+One&family=Jost:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Poiret+One&family=Josefin+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 :root {
   --font-title:   'Julius Sans One', 'Poiret One', sans-serif;
-  --font-display: 'Poiret One', 'Jost', sans-serif;
-  --font-body:    'Jost', 'Segoe UI', sans-serif;
+  --font-display: 'Poiret One', 'Josefin Sans', sans-serif;
+  --font-body:    'Josefin Sans', 'Segoe UI', sans-serif;
+
+  /* sunset accents - used sparingly */
+  --ember:   #f2a65a;   /* orange */
+  --coral:   #e8736b;   /* red-coral */
+  --blush:   #f08fb0;   /* pink */
+  --sunset:  linear-gradient(90deg, var(--ember), var(--coral) 55%, var(--blush));
 
   --white:   #ffffff;
   --text:    #f2f2f2;
@@ -50,7 +56,7 @@
 
 body {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text) !important;
 }
 @media screen and (min-width: 601px) {
@@ -86,12 +92,13 @@ h1 {
     0 0 4px rgba(255,255,255,1),
     0 0 12px rgba(255,255,255,0.9),
     0 0 28px rgba(255,255,255,0.7),
-    0 0 50px rgba(255,255,255,0.45);
+    0 0 50px rgba(255,255,255,0.45),
+    0 0 80px rgba(242,166,90,0.35);
   animation: title-glow 6s ease-in-out infinite, title-drift 26s ease-in-out infinite;
 }
 @keyframes title-glow {
-  0%, 100% { text-shadow: 0 0 4px rgba(255,255,255,1), 0 0 12px rgba(255,255,255,0.9), 0 0 28px rgba(255,255,255,0.7), 0 0 50px rgba(255,255,255,0.45); }
-  50%      { text-shadow: 0 0 6px rgba(255,255,255,1), 0 0 18px rgba(255,255,255,1),   0 0 40px rgba(255,255,255,0.9), 0 0 72px rgba(255,255,255,0.65); }
+  0%, 100% { text-shadow: 0 0 4px rgba(255,255,255,1), 0 0 12px rgba(255,255,255,0.9), 0 0 28px rgba(255,255,255,0.7), 0 0 50px rgba(255,255,255,0.45), 0 0 80px rgba(242,166,90,0.35); }
+  50%      { text-shadow: 0 0 6px rgba(255,255,255,1), 0 0 18px rgba(255,255,255,1),   0 0 40px rgba(255,255,255,0.9), 0 0 72px rgba(255,255,255,0.65), 0 0 100px rgba(232,115,107,0.45); }
 }
 @keyframes title-drift {
   0%   { transform: translate(0px, 0px)   rotate(0deg); }
@@ -108,7 +115,7 @@ h3 { font-family: var(--font-display); font-weight: 400; font-size: 24px; letter
 .navbar { font-family: var(--font-display); font-weight: 400; font-size: 20px; letter-spacing: 2px; }
 
 a:link, a:visited { color: var(--white) !important; background: none !important; text-decoration: none; font-weight: 500; transition: color 0.2s; }
-a:hover           { color: var(--muted) !important; }
+a:hover           { color: var(--ember) !important; }
 .footer a:link, .footer a:visited, .footer a:active { border-bottom: none !important; }
 td.bottom a, th a { border-bottom: none !important; }
 .bottom a:visited, .bottom a { text-decoration: none !important; }
@@ -123,8 +130,8 @@ td.bottom a, th a { border-bottom: none !important; }
   border: 1px solid var(--line) !important;
   border-radius: var(--radius) !important;
   box-shadow: var(--shadow) !important;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 .row, .col-md-9, .col-md-3, .col-sm-9, .col-sm-3 { background: none !important; }
 
@@ -148,14 +155,14 @@ hr { border-color: var(--line) !important; }
 
 .topbar, .navbar, .breadcrumb { border-radius: 999px !important; }
 .navbar li a { border-radius: 999px; color: var(--white) !important; transition: background 0.2s, color 0.2s; }
-.navbar li a:hover { background: rgba(255,255,255,0.12) !important; color: var(--white) !important; }
+.navbar li a:hover { background: rgba(242,166,90,0.16) !important; color: var(--white) !important; }
 .navbar-toggle   { border: 1px solid var(--line) !important; background: var(--panel) !important; border-radius: 999px !important; }
 .navbar-collapse { box-shadow: none !important; border-top: none !important; }
 
 /* Lioden's default logo, kept, greyscaled to match */
 div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img { filter: grayscale(1); }
 
-.breadcrumb .active { color: var(--muted); }
+.breadcrumb .active { color: var(--blush); }
 .breadcrumb > li + li::before { color: var(--muted) !important; content: "/  " !important; }
 
 
@@ -165,12 +172,15 @@ div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img { filt
 
 .alert {
   border-radius: var(--radius-sm) !important;
-  border-left: 4px solid var(--white) !important;
   text-align: center !important;
+  /* soft tint fading in from the left instead of a hard side border */
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0) 18%),
+    var(--panel) !important;
 }
-.alert-success { border-left-color: #d0d0d0 !important; }
-.alert-danger  { border-left-color: #8a8a8a !important; }
-.alert-warning { border-left-color: #8a8a8a !important; }
+.alert-success { background: linear-gradient(90deg, rgba(242,166,90,0.28), rgba(242,166,90,0) 18%), var(--panel) !important; }
+.alert-danger  { background: linear-gradient(90deg, rgba(232,115,107,0.32), rgba(232,115,107,0) 18%), var(--panel) !important; }
+.alert-warning { background: linear-gradient(90deg, rgba(232,115,107,0.32), rgba(232,115,107,0) 18%), var(--panel) !important; }
 
 
 /* ============================================================
@@ -191,9 +201,9 @@ div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img { filt
 /* difference blend: reads black over the light bar, white over the dark track */
 .progress div { color: var(--white) !important; font-weight: 500; text-shadow: none; mix-blend-mode: difference; }
 
-.badge { background: var(--white) !important; color: #000000 !important; border-radius: 999px !important; font-weight: 600; }
+.badge { background: var(--sunset) !important; color: #000000 !important; border-radius: 999px !important; font-weight: 600; }
 
-.member-online  { background: #ffffff; border-radius: 50%; width: 40px !important; height: 40px; margin: -10px; margin-left: 10px; border: 2px solid rgba(0,0,0,0.6); }
+.member-online  { background: var(--ember); border-radius: 50%; width: 40px !important; height: 40px; margin: -10px; margin-left: 10px; border: 2px solid rgba(0,0,0,0.6); }
 .member-offline { background: #6a6a6a; border-radius: 50%; width: 40px !important; height: 40px; margin: -10px; margin-left: 10px; border: 2px solid rgba(0,0,0,0.6); }
 
 
@@ -231,7 +241,7 @@ div#chatMessageContainer    { border: none !important; }
   background-color: rgba(255,255,255,0.1) !important;
   color: var(--text) !important;
   border: none !important;
-  border-left: 3px solid var(--white) !important;
+  border-left: 3px solid var(--ember) !important;
 }
 .s-chat-message:nth-child(odd)  { background: rgba(0,0,0,0.35) !important; border: none !important; }
 .s-chat-message:nth-child(even) { background: rgba(0,0,0,0.2) !important;  border: none !important; }
@@ -245,14 +255,14 @@ button.channelSwitcher, button.channelSwitcher.active {
   border-radius: 999px !important;
   box-shadow: none !important;
 }
-button.channelSwitcher.active { background: var(--white) !important; color: #000000 !important; }
+button.channelSwitcher.active { background: var(--sunset) !important; color: #000000 !important; border-color: transparent !important; }
 
 div.emoteList.active { border-radius: var(--radius-sm) !important; }
 div.emoteList.active::before { background: var(--panel); border: 1px solid var(--line); border-top: none !important; }
 
 #chatMessageList[data-pings="enabled"] .s-chat-message_mention {
   background-color: rgba(255,255,255,0.12) !important;
-  border-left: 4px solid var(--white) !important;
+  border-left: 4px solid var(--coral) !important;
   color: var(--text) !important;
 }
 div#lblCharacterCounter { color: var(--muted) !important; }
@@ -335,7 +345,7 @@ img[src$="icon_den_viewtrade.png"], img[src$="icon_den_wishlist.png"], img[src$=
 img[src$="icon_den_friend.png"] { filter: grayscale(1) brightness(1.6); transition: filter 0.2s; }
 a:hover > img[src$="icon_den_message.png"], a:hover > img[src$="icon_den_gift.png"], a:hover > img[src$="icon_den_trade.png"],
 a:hover > img[src$="icon_den_viewtrade.png"], a:hover > img[src$="icon_den_wishlist.png"], a:hover > img[src$="icon_den_block.png"],
-a:hover > img[src$="icon_den_friend.png"] { filter: grayscale(1) brightness(2) drop-shadow(0 0 4px #ffffff); }
+a:hover > img[src$="icon_den_friend.png"] { filter: grayscale(1) brightness(2) drop-shadow(0 0 4px #f2a65a); }
 
 
 /* ============================================================
@@ -352,8 +362,8 @@ input, textarea, select {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 input:focus, textarea:focus, select:focus {
-  border-color: var(--white) !important;
-  box-shadow: 0 0 0 2px rgba(255,255,255,0.2) !important;
+  border-color: var(--ember) !important;
+  box-shadow: 0 0 0 2px rgba(242,166,90,0.25) !important;
   outline: none !important;
 }
 button.button, a.btn.btn-default.button, input[type="submit"], input[type="button"], .btn {
@@ -375,6 +385,8 @@ button.button:hover, a.btn.btn-default.button:hover, input[type="submit"]:hover,
   color: #000000 !important;
   border-color: var(--white) !important;
 }
+/* the delete-comment button carries the coral */
+input.bad { background: var(--coral) !important; color: var(--white) !important; }
 
 
 /* ============================================================
@@ -387,10 +399,10 @@ button.button:hover, a.btn.btn-default.button:hover, input[type="submit"]:hover,
   transition: border-color 0.25s, color 0.25s;
 }
 .cave-grid:hover, .mound-grid:hover, a:hover > .cave-grid, a:hover > .mound-grid {
-  border-color: var(--line-hi) !important;
-  color: var(--muted) !important;
+  border-color: rgba(242,166,90,0.5) !important;
+  color: var(--ember) !important;
 }
-.cave-grid:hover *, .mound-grid:hover * { color: var(--muted) !important; }
+.cave-grid:hover *, .mound-grid:hover * { color: var(--ember) !important; }
 div.cave-grid > img { border-radius: var(--radius-sm); }
 .mound-grid img     { border-radius: var(--radius-sm); }
 
