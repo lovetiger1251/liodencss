@@ -1,21 +1,19 @@
 /* ============================================================
-   v3 - Lioden den CSS (black & white, warm accents)
+   v3.1 - Lioden den CSS (black & white, warm accents, planet logo)
    Built on Jester (#187561) & Katie's (#106445) v3 template.
    Contributor credits from the original: Pandora #144118, Kat #94329,
    tawny #251887, Austin #43750, Bobcat #79288, Tserin #2230, Atticus #198107.
-
    FILES NEEDED IN THE REPO NEXT TO THIS CSS
      tsu.png      (background)
+     fifth.png    (logo)
      first.jpg    (unsorted lions, pregnant lionesses, pride overview)
      second.jpg   (all dens / caves)
      third.jpg    (beetles)
      fourth.jpg   (king dynasty, pride dynasty, achievements, showcase, beetle book)
-
    TERRITORY DESCRIPTION TAG
      <link rel="stylesheet" type="text/css" href="https://lovetiger1251.github.io/liodencss/v3.css" />
    CAVE / MOUND SETTINGS -> Cave CSS URL
      https://lovetiger1251.github.io/liodencss/v3.css
-
    Fonts:   Julius Sans One (den title)
             Poiret One (headers, navbar, key text)
             Josefin Sans (everything else)
@@ -165,8 +163,17 @@ hr { border-color: var(--line) !important; }
 .navbar-toggle   { border: 1px solid var(--line) !important; background: var(--panel) !important; border-radius: 999px !important; }
 .navbar-collapse { box-shadow: none !important; border-top: none !important; }
 
-/* Lioden's default logo, kept, greyscaled to match */
-div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img { filter: grayscale(1); }
+/* LOGO - the planet (fifth.png, transparent 800x800 with a 100px empty
+   margin). Drawn at 150px so ~112px of planet shows; the empty margin is
+   pulled back in vertically so it sits level with the navbar and stays
+   clear of the DEN link. */
+div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img {
+  content: url('https://lovetiger1251.github.io/liodencss/fifth.png') !important;
+  width: 150px !important;
+  height: 150px !important;
+  margin: -15px 4px -15px -6px;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6)) drop-shadow(0 0 14px rgba(var(--steel-rgb),0.3));
+}
 
 .breadcrumb .active { color: var(--steel) !important; }
 .breadcrumb > li + li::before { color: var(--muted) !important; content: "/  " !important; }
