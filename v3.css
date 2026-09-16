@@ -1,5 +1,5 @@
 /* ============================================================
-   v3.3 - Lioden den CSS (black & white, warm accents, star logo, shooting stars)
+   v3.4 - Lioden den CSS (black & white, warm accents, star logo, shooting stars)
    Built on Jester (#187561) & Katie's (#106445) v3 template.
    Contributor credits from the original: Pandora #144118, Kat #94329,
    tawny #251887, Austin #43750, Bobcat #79288, Tserin #2230, Atticus #198107.
@@ -568,8 +568,8 @@ table#pride.table .xsmall { font-size: 12px !important; }
 
 /* ============================================================
    SHOOTING STARS - three streaks on fixed layers behind the main
-   sheet, 15 degree descent from the top-left, slow, staggered so two
-   or three are in flight at once. body::after is the made-by tag, so these use
+   sheet, 15 degree descent from the top-left, slow, staggered so four
+   or five are in flight at once. body::after is the made-by tag, so these use
    body::before, html::before and html::after.
    Tweak: duration = pace of the whole cycle (travel is the first ~30%),
    animation-delay = when each one first fires, the vh value in the
@@ -587,49 +587,56 @@ body::before, html::before, html::after {
   opacity: 0;
   will-change: transform, opacity;
 }
-body::before {                                   /* long, bright */
-  width: 760px; height: 84px;
-  background-image: url('https://lovetiger1251.github.io/liodencss/star1.png');
+/* Each layer now carries TWO stars, spaced 55vw apart along the path,
+   so 4-5 are on screen at any moment instead of 2. */
+body::before {                                   /* long + short */
+  width: calc(760px + 55vw); height: 84px;
+  background-image: url('https://lovetiger1251.github.io/liodencss/star1.png'), url('https://lovetiger1251.github.io/liodencss/star3.png');
+  background-size: 760px 84px, 340px 56px;
+  background-position: left center, right center;
   animation: star-a 24s linear infinite;
   animation-delay: 0s;
 }
-html::before {                                   /* medium */
-  width: 520px; height: 70px;
-  background-image: url('https://lovetiger1251.github.io/liodencss/star2.png');
+html::before {                                   /* medium + long */
+  width: calc(520px + 55vw); height: 84px;
+  background-image: url('https://lovetiger1251.github.io/liodencss/star2.png'), url('https://lovetiger1251.github.io/liodencss/star1.png');
+  background-size: 520px 70px, 760px 84px;
+  background-position: left center, right center;
   animation: star-b 24s linear infinite;
   animation-delay: 8s;
 }
-html::after {                                    /* short, faint */
-  width: 340px; height: 56px;
-  background-image: url('https://lovetiger1251.github.io/liodencss/star3.png');
+html::after {                                    /* short + medium */
+  width: calc(340px + 55vw); height: 70px;
+  background-image: url('https://lovetiger1251.github.io/liodencss/star3.png'), url('https://lovetiger1251.github.io/liodencss/star2.png');
+  background-size: 340px 56px, 520px 70px;
+  background-position: left center, right center;
   animation: star-c 24s linear infinite;
   animation-delay: 16s;
   opacity: 0;
 }
 
-/* Each star travels for 72% of a 24s cycle (~17s crossing), and the three
-   are offset by a third of a cycle, so 2 are always in flight and all 3
-   overlap briefly. 15 degrees: vertical drop = horizontal travel x 0.268 */
+/* Each layer travels for 72% of a 24s cycle, offset by a third of a
+   cycle. 15 degrees: vertical drop = horizontal travel x 0.268 */
 @keyframes star-a {
-  0%   { opacity: 0; transform: translate(-800px, 4vh)               rotate(15deg); }
+  0%   { opacity: 0; transform: translate(calc(-760px - 55vw), 4vh)          rotate(15deg); }
   4%   { opacity: 1; }
-  72%  { opacity: 1; transform: translate(110vw, calc(4vh + 29.5vw)) rotate(15deg); }
-  75%  { opacity: 0; transform: translate(114vw, calc(4vh + 30.6vw)) rotate(15deg); }
-  100% { opacity: 0; transform: translate(114vw, calc(4vh + 30.6vw)) rotate(15deg); }
+  72%  { opacity: 1; transform: translate(110vw, calc(4vh + 44.2vw + 204px))  rotate(15deg); }
+  75%  { opacity: 0; transform: translate(114vw, calc(4vh + 45.3vw + 204px))  rotate(15deg); }
+  100% { opacity: 0; transform: translate(114vw, calc(4vh + 45.3vw + 204px))  rotate(15deg); }
 }
 @keyframes star-b {
-  0%   { opacity: 0; transform: translate(-560px, 14vh)              rotate(15deg); }
+  0%   { opacity: 0; transform: translate(calc(-520px - 55vw), 14vh)         rotate(15deg); }
   4%   { opacity: 0.9; }
-  72%  { opacity: 0.9; transform: translate(110vw, calc(14vh + 29.5vw)) rotate(15deg); }
-  75%  { opacity: 0; transform: translate(114vw, calc(14vh + 30.6vw)) rotate(15deg); }
-  100% { opacity: 0; transform: translate(114vw, calc(14vh + 30.6vw)) rotate(15deg); }
+  72%  { opacity: 0.9; transform: translate(110vw, calc(14vh + 44.2vw + 139px)) rotate(15deg); }
+  75%  { opacity: 0; transform: translate(114vw, calc(14vh + 45.3vw + 139px)) rotate(15deg); }
+  100% { opacity: 0; transform: translate(114vw, calc(14vh + 45.3vw + 139px)) rotate(15deg); }
 }
 @keyframes star-c {
-  0%   { opacity: 0; transform: translate(-380px, -2vh)              rotate(15deg); }
+  0%   { opacity: 0; transform: translate(calc(-340px - 55vw), -2vh)         rotate(15deg); }
   4%   { opacity: 0.8; }
-  72%  { opacity: 0.8; transform: translate(110vw, calc(-2vh + 29.5vw)) rotate(15deg); }
-  75%  { opacity: 0; transform: translate(114vw, calc(-2vh + 30.6vw)) rotate(15deg); }
-  100% { opacity: 0; transform: translate(114vw, calc(-2vh + 30.6vw)) rotate(15deg); }
+  72%  { opacity: 0.8; transform: translate(110vw, calc(-2vh + 44.2vw + 91px)) rotate(15deg); }
+  75%  { opacity: 0; transform: translate(114vw, calc(-2vh + 45.3vw + 91px)) rotate(15deg); }
+  100% { opacity: 0; transform: translate(114vw, calc(-2vh + 45.3vw + 91px)) rotate(15deg); }
 }
 
 @media screen and (max-width: 600px) { body::before, html::before, html::after { display: none; } }
