@@ -1,5 +1,5 @@
 /* ============================================================
-   v3.5 - Lioden den CSS (black & white, warm accents, star logo, shooting stars)
+   v3.7 - Lioden den CSS (black & white, warm accents, star logo, shooting stars)
    Built on Jester (#187561) & Katie's (#106445) v3 template.
    Contributor credits from the original: Pandora #144118, Kat #94329,
    tawny #251887, Austin #43750, Bobcat #79288, Tserin #2230, Atticus #198107.
@@ -568,8 +568,8 @@ table#pride.table .xsmall { font-size: 12px !important; }
 
 /* ============================================================
    SHOOTING STARS - three streaks on fixed layers behind the main
-   sheet, 15 degree descent from the top-left, slow, staggered so four
-   or five are in flight at once. body::after is the made-by tag, so these use
+   sheet, 15 degree descent from the top-left, slow, six lanes down the
+   page, eight to ten in flight at once. body::after is the made-by tag, so these use
    body::before, html::before and html::after.
    Tweak: duration = pace of the whole cycle (travel is the first ~30%),
    animation-delay = when each one first fires, the vh value in the
@@ -587,29 +587,39 @@ body::before, html::before, html::after {
   opacity: 0;
   will-change: transform, opacity;
 }
-/* Each layer now carries TWO stars, spaced 55vw apart along the path,
-   so 4-5 are on screen at any moment instead of 2. */
-body::before {                                   /* long + short */
-  width: calc(760px + 55vw); height: 84px;
-  background-image: url('https://lovetiger1251.github.io/liodencss/star1.png'), url('https://lovetiger1251.github.io/liodencss/star3.png');
-  background-size: 760px 84px, 340px 56px;
-  background-position: left center, right center;
+/* Each layer carries FOUR stars: two on its upper lane (left / right,
+   55vw apart along the path) and two on a second lane further down the
+   page (at 30% and 78% along, so they never line up with the upper pair).
+   Lanes on screen, top to bottom: -2, 4, 14, 26, 38, 50 vh.
+   The layer is rotated 15deg, so a vertical offset inside it is a
+   parallel lane on screen. */
+body::before {                                   /* lanes 4vh + 38vh */
+  width: calc(760px + 55vw); height: calc(84px + 35vh);
+  background-image:
+    url('https://lovetiger1251.github.io/liodencss/star1.png'), url('https://lovetiger1251.github.io/liodencss/star3.png'),
+    url('https://lovetiger1251.github.io/liodencss/star2.png'), url('https://lovetiger1251.github.io/liodencss/star3.png');
+  background-size: 760px 84px, 340px 56px, 520px 70px, 340px 56px;
+  background-position: left top, right top, 30% bottom, 78% bottom;
   animation: star-a 24s linear infinite;
   animation-delay: 0s;
 }
-html::before {                                   /* medium + long */
-  width: calc(520px + 55vw); height: 84px;
-  background-image: url('https://lovetiger1251.github.io/liodencss/star2.png'), url('https://lovetiger1251.github.io/liodencss/star1.png');
-  background-size: 520px 70px, 760px 84px;
-  background-position: left center, right center;
+html::before {                                   /* lanes 14vh + 50vh */
+  width: calc(520px + 55vw); height: calc(84px + 37vh);
+  background-image:
+    url('https://lovetiger1251.github.io/liodencss/star2.png'), url('https://lovetiger1251.github.io/liodencss/star1.png'),
+    url('https://lovetiger1251.github.io/liodencss/star3.png'), url('https://lovetiger1251.github.io/liodencss/star1.png');
+  background-size: 520px 70px, 760px 84px, 340px 56px, 760px 84px;
+  background-position: left top, right top, 25% bottom, 75% bottom;
   animation: star-b 24s linear infinite;
   animation-delay: 8s;
 }
-html::after {                                    /* short + medium */
-  width: calc(340px + 55vw); height: 70px;
-  background-image: url('https://lovetiger1251.github.io/liodencss/star3.png'), url('https://lovetiger1251.github.io/liodencss/star2.png');
-  background-size: 340px 56px, 520px 70px;
-  background-position: left center, right center;
+html::after {                                    /* lanes -2vh + 26vh */
+  width: calc(340px + 55vw); height: calc(70px + 29vh);
+  background-image:
+    url('https://lovetiger1251.github.io/liodencss/star3.png'), url('https://lovetiger1251.github.io/liodencss/star2.png'),
+    url('https://lovetiger1251.github.io/liodencss/star1.png'), url('https://lovetiger1251.github.io/liodencss/star2.png');
+  background-size: 340px 56px, 520px 70px, 760px 84px, 520px 70px;
+  background-position: left top, right top, 35% bottom, 80% bottom;
   animation: star-c 24s linear infinite;
   animation-delay: 16s;
   opacity: 0;
