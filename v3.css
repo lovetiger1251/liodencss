@@ -1,19 +1,17 @@
-
 /* ============================================================
-   v3 - Lioden den CSS (black & white, warm accents)
+   WAVE 2.2 - Lioden den CSS (black & white, warm accents)
    Built on Jester (#187561) & Katie's (#106445) v3 template.
    Contributor credits from the original: Pandora #144118, Kat #94329,
    tawny #251887, Austin #43750, Bobcat #79288, Tserin #2230, Atticus #198107.
+
    FILES NEEDED IN THE REPO NEXT TO THIS CSS
-     tsu.png      (background)
-     first.jpg    (unsorted lions, pregnant lionesses, pride overview)
-     second.jpg   (all dens / caves)
-     third.jpg    (beetles)
-     fourth.jpg   (king dynasty, pride dynasty, achievements, showcase, beetle book)
+     tsu.png   (background)
+
    TERRITORY DESCRIPTION TAG
-     <link rel="stylesheet" type="text/css" href="https://lovetiger1251.github.io/liodencss/v3.css" />
+     <link rel="stylesheet" type="text/css" href="https://lovetiger1251.github.io/liodencss/bubble.css" />
    CAVE / MOUND SETTINGS -> Cave CSS URL
-     https://lovetiger1251.github.io/liodencss/v3.css
+     https://lovetiger1251.github.io/liodencss/bubble.css
+
    Fonts:   Julius Sans One (den title)
             Poiret One (headers, navbar, key text)
             Josefin Sans (everything else)
@@ -32,8 +30,6 @@
   --ember:   #f2a65a;   /* orange */
   --coral:   #e8736b;   /* red-coral */
   --blush:   #f08fb0;   /* pink */
-  --steel:   #8fa8c4;   /* grey-blue: breadcrumb den name + every hover */
-  --steel-rgb: 143,168,196;
   --sunset:  linear-gradient(90deg, var(--ember), var(--coral) 55%, var(--blush));
 
   --white:   #ffffff;
@@ -62,7 +58,6 @@ body {
   font-family: var(--font-body);
   font-size: 15px;
   color: var(--text) !important;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.85);   /* soft drop shadow on all text */
 }
 @media screen and (min-width: 601px) {
   body { background: #000000 url('https://lovetiger1251.github.io/liodencss/tsu.png') center center / cover no-repeat fixed !important; }
@@ -94,16 +89,16 @@ h1 {
   width: 100%;
   color: var(--white) !important;
   text-shadow:
-    0 0 5px rgba(255,255,255,1),
-    0 0 14px rgba(255,255,255,1),
-    0 0 32px rgba(255,255,255,0.8),
-    0 0 58px rgba(255,255,255,0.55),
-    0 0 90px rgba(242,166,90,0.45);
+    0 0 4px rgba(255,255,255,1),
+    0 0 12px rgba(255,255,255,0.9),
+    0 0 28px rgba(255,255,255,0.7),
+    0 0 50px rgba(255,255,255,0.45),
+    0 0 80px rgba(242,166,90,0.35);
   animation: title-glow 6s ease-in-out infinite, title-drift 26s ease-in-out infinite;
 }
 @keyframes title-glow {
-  0%, 100% { text-shadow: 0 0 5px rgba(255,255,255,1), 0 0 14px rgba(255,255,255,1),   0 0 32px rgba(255,255,255,0.8), 0 0 58px rgba(255,255,255,0.55), 0 0 90px rgba(242,166,90,0.45); }
-  50%      { text-shadow: 0 0 7px rgba(255,255,255,1), 0 0 20px rgba(255,255,255,1),   0 0 46px rgba(255,255,255,0.95), 0 0 82px rgba(255,255,255,0.75), 0 0 115px rgba(232,115,107,0.55); }
+  0%, 100% { text-shadow: 0 0 4px rgba(255,255,255,1), 0 0 12px rgba(255,255,255,0.9), 0 0 28px rgba(255,255,255,0.7), 0 0 50px rgba(255,255,255,0.45), 0 0 80px rgba(242,166,90,0.35); }
+  50%      { text-shadow: 0 0 6px rgba(255,255,255,1), 0 0 18px rgba(255,255,255,1),   0 0 40px rgba(255,255,255,0.9), 0 0 72px rgba(255,255,255,0.65), 0 0 100px rgba(232,115,107,0.45); }
 }
 @keyframes title-drift {
   0%   { transform: translate(0px, 0px)   rotate(0deg); }
@@ -120,7 +115,7 @@ h3 { font-family: var(--font-display); font-weight: 400; font-size: 24px; letter
 .navbar { font-family: var(--font-display); font-weight: 400; font-size: 20px; letter-spacing: 2px; }
 
 a:link, a:visited { color: var(--white) !important; background: none !important; text-decoration: none; font-weight: 500; transition: color 0.2s; }
-a:hover           { color: var(--steel) !important; text-shadow: 0 0 6px rgba(var(--steel-rgb),0.9), 0 0 14px rgba(var(--steel-rgb),0.6), 0 1px 3px rgba(0,0,0,0.85) !important; }
+a:hover           { color: var(--ember) !important; }
 .footer a:link, .footer a:visited, .footer a:active { border-bottom: none !important; }
 td.bottom a, th a { border-bottom: none !important; }
 .bottom a:visited, .bottom a { text-decoration: none !important; }
@@ -152,6 +147,7 @@ td.bottom a, th a { border-bottom: none !important; }
   border: 1px solid var(--line) !important;
   border-radius: var(--radius) !important;
   box-shadow: none !important;
+  text-shadow: none !important;
 }
 .dropdown-menu > li > a { color: var(--text) !important; }
 .dropdown-menu > li > a:hover { background: rgba(255,255,255,0.1) !important; }
@@ -166,7 +162,7 @@ hr { border-color: var(--line) !important; }
 /* Lioden's default logo, kept, greyscaled to match */
 div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img { filter: grayscale(1); }
 
-.breadcrumb .active { color: var(--steel) !important; }
+.breadcrumb .active { color: var(--blush); }
 .breadcrumb > li + li::before { color: var(--muted) !important; content: "/  " !important; }
 
 
@@ -174,48 +170,17 @@ div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img { filt
    ALERTS
    ============================================================ */
 
-.alert, .alert-success, .alert-danger, .alert-warning, .alert-info {
-  background: var(--panel) !important;   /* same fill as the sidebar panels, no tint */
-  background-image: none !important;
+.alert {
   border-radius: var(--radius-sm) !important;
   text-align: center !important;
+  /* soft tint fading in from the left instead of a hard side border */
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.14), rgba(255,255,255,0) 18%),
+    var(--panel) !important;
 }
-
-
-/* ============================================================
-   GLOWS - main lion's name, your username
-   ============================================================ */
-
-/* king's name strip + name in the sidebar lion panel */
-.featured-lion, .featured-lion a,
-#about > tbody > tr:nth-child(1) > td > div,
-.panel h3, .panel h3 a {
-  text-shadow: 0 0 4px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.6), 0 1px 3px rgba(0,0,0,0.85);
-}
-/* your username: topbar welcome link + breadcrumb */
-.topbar a[href*="den.php"], .topbar > a:first-of-type, .breadcrumb .active {
-  text-shadow: 0 0 4px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.6), 0 1px 3px rgba(0,0,0,0.85);
-}
-
-
-/* ============================================================
-   MADE-BY TAG - bottom right of the screen. Edit the text in content:
-   ============================================================ */
-
-body::after {
-  content: "< tiger ";
-  content: "<3 tiger ";
-  position: fixed;
-  right: 16px;
-  bottom: 12px;
-  z-index: 9999;
-  font-family: var(--font-display);
-  font-size: 14px;
-  letter-spacing: 1px;
-  color: var(--white);
-  text-shadow: 0 1px 3px rgba(0,0,0,0.85);
-  pointer-events: none;
-}
+.alert-success { background: linear-gradient(90deg, rgba(242,166,90,0.28), rgba(242,166,90,0) 18%), var(--panel) !important; }
+.alert-danger  { background: linear-gradient(90deg, rgba(232,115,107,0.32), rgba(232,115,107,0) 18%), var(--panel) !important; }
+.alert-warning { background: linear-gradient(90deg, rgba(232,115,107,0.32), rgba(232,115,107,0) 18%), var(--panel) !important; }
 
 
 /* ============================================================
@@ -238,8 +203,8 @@ body::after {
 
 .badge { background: var(--sunset) !important; color: #000000 !important; border-radius: 999px !important; font-weight: 600; }
 
-.member-online  { background: #3ddc6a; border-radius: 50%; width: 22px !important; height: 22px; margin: -4px; margin-left: 10px; border: 2px solid rgba(0,0,0,0.6); box-shadow: 0 0 8px rgba(61,220,106,0.7); }
-.member-offline { background: #6a6a6a; border-radius: 50%; width: 22px !important; height: 22px; margin: -4px; margin-left: 10px; border: 2px solid rgba(0,0,0,0.6); }
+.member-online  { background: var(--ember); border-radius: 50%; width: 40px !important; height: 40px; margin: -10px; margin-left: 10px; border: 2px solid rgba(0,0,0,0.6); }
+.member-offline { background: #6a6a6a; border-radius: 50%; width: 40px !important; height: 40px; margin: -10px; margin-left: 10px; border: 2px solid rgba(0,0,0,0.6); }
 
 
 /* ============================================================
@@ -313,7 +278,8 @@ div.left:hover { border-color: var(--line-hi) !important; }
 .xsmall { font-size: 14px !important; }
 
 /* dynasty / achievements / showcase / beetle book banners */
-div.left img { border-radius: var(--radius-sm) !important; }
+div.left img, img[src$="ancestors.jpg"], img[src$="ancestorsfem.png"],
+img[src$="achievements.jpg"], img[src$="showcase/banner.png"] { border-radius: var(--radius-sm) !important; filter: grayscale(1); }
 
 
 /* ============================================================
@@ -344,6 +310,7 @@ table#player.table td.bottom,
   font-family: var(--font-display);
   font-weight: 400;
   letter-spacing: 1px;
+  text-shadow: none;
 }
 .top, .bottom, th { font-size: 20px; padding: 4px 16px; }
 #about > tbody > tr:nth-child(1) > td > div, table#player.table div.xlarge { display: inline-block; padding: 3px 14px; margin: 4px 0; }
@@ -365,29 +332,20 @@ div#lion_image {
   overflow: hidden;
   border: 2px solid rgba(255,255,255,0.7);
   box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-  transition: transform 0.25s, box-shadow 0.25s;
 }
 table#player img {
   opacity: 1;
   border-radius: 50%;
   border: 2px solid rgba(255,255,255,0.7);
   box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-  transition: transform 0.25s, box-shadow 0.25s;
-}
-div#lion_image:hover, table#player img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.5), 0 0 12px rgba(var(--steel-rgb),0.45);
 }
 
-img[src$="icon_den_gift.png"], img[src$="icon_den_trade.png"],
-img[src$="icon_den_viewtrade.png"], img[src$="icon_den_wishlist.png"], img[src$="icon_den_block.png"]
-  { filter: grayscale(1) brightness(1.6); transition: filter 0.2s; }
-a:hover > img[src$="icon_den_gift.png"], a:hover > img[src$="icon_den_trade.png"],
-a:hover > img[src$="icon_den_viewtrade.png"], a:hover > img[src$="icon_den_wishlist.png"], a:hover > img[src$="icon_den_block.png"]
-  { filter: grayscale(1) brightness(2) drop-shadow(0 0 4px #8fa8c4); }
-/* message + add-friend icons keep their original colour */
-img[src$="icon_den_message.png"], img[src$="icon_den_friend.png"] { filter: none; transition: filter 0.2s; }
-a:hover > img[src$="icon_den_message.png"], a:hover > img[src$="icon_den_friend.png"] { filter: brightness(1.2) drop-shadow(0 0 4px #8fa8c4); }
+img[src$="icon_den_message.png"], img[src$="icon_den_gift.png"], img[src$="icon_den_trade.png"],
+img[src$="icon_den_viewtrade.png"], img[src$="icon_den_wishlist.png"], img[src$="icon_den_block.png"],
+img[src$="icon_den_friend.png"] { filter: grayscale(1) brightness(1.6); transition: filter 0.2s; }
+a:hover > img[src$="icon_den_message.png"], a:hover > img[src$="icon_den_gift.png"], a:hover > img[src$="icon_den_trade.png"],
+a:hover > img[src$="icon_den_viewtrade.png"], a:hover > img[src$="icon_den_wishlist.png"], a:hover > img[src$="icon_den_block.png"],
+a:hover > img[src$="icon_den_friend.png"] { filter: grayscale(1) brightness(2) drop-shadow(0 0 4px #f2a65a); }
 
 
 /* ============================================================
@@ -441,76 +399,20 @@ input.bad { background: var(--coral) !important; color: var(--white) !important;
   transition: border-color 0.25s, color 0.25s;
 }
 .cave-grid:hover, .mound-grid:hover, a:hover > .cave-grid, a:hover > .mound-grid {
-  border-color: rgba(var(--steel-rgb),0.6) !important;
-  color: var(--steel) !important;
-  box-shadow: 0 0 12px rgba(var(--steel-rgb),0.35) !important;
+  border-color: rgba(242,166,90,0.5) !important;
+  color: var(--ember) !important;
 }
-.cave-grid:hover *, .mound-grid:hover * { color: var(--steel) !important; text-shadow: 0 0 6px rgba(var(--steel-rgb),0.9), 0 0 14px rgba(var(--steel-rgb),0.6) !important; }
+.cave-grid:hover *, .mound-grid:hover * { color: var(--ember) !important; }
 div.cave-grid > img { border-radius: var(--radius-sm); }
 .mound-grid img     { border-radius: var(--radius-sm); }
 
-/* ---- custom covers ---------------------------------------------
-   Files live in the repo: https://lovetiger1251.github.io/liodencss/<file>
-   Lioden markup (from the v3 template):
-     pregnant lionesses  = div.cave-grid > img  (nestingbanner.png, no link around it)
-     dens                = a[href=CAVEID] > div.cave-grid > img
-     unsorted / overview = a[href*=unsorted.php|lionoverview.php] > div.cave-grid > img
-     beetles + mounds    = mound tiles (div.mound-grid) / a[href*=unsorted-beetles|mound] img
-     banners             = img in div.left (ancestors / ancestorsfem / achievements / showcase / beetle book)
-   Rules are ordered least -> most specific so overrides win. */
-
-/* first.jpg - base for every cave slot, which is what the pregnant-lionesses banner uses */
-div.cave-grid > img {
-  content: url('https://lovetiger1251.github.io/liodencss/first.jpg') !important;
-  width: 258px !important;
-  max-width: 100% !important;
-  height: auto !important;
-}
-
-/* second.jpg - dens (cave tiles that are links) */
-a > div.cave-grid > img {
-  content: url('https://lovetiger1251.github.io/liodencss/second.jpg') !important;
-}
-
-/* first.jpg - unsorted, pregnant lionesses, pride overview (beats the den rule above) */
-a[href*="unsorted.php"] > div.cave-grid > img,
-a[href*="lionoverview.php"] > div.cave-grid > img,
-a[href*="nesting"] > div.cave-grid > img,
-a[href*="pregnant"] > div.cave-grid > img,
-div.cave-grid > img[src*="nestingbanner"],
-div.cave-grid > img[src*="nesting"] {
-  content: url('https://lovetiger1251.github.io/liodencss/first.jpg') !important;
-}
-
-/* third.jpg - beetles tile, +create mound, and any beetle mound */
-div.mound-grid img,
-a[href*="unsorted-beetles"] img,
-a[href*="beetles.php"] img,
-a[href*="mound"] img,
-a[href*="unsorted-beetles"] > div > img,
-a[href*="beetles.php"] > div > img,
-a[href*="mound"] > div > img {
-  content: url('https://lovetiger1251.github.io/liodencss/third.jpg') !important;
-  width: 100% !important;
-  height: auto !important;
-}
-
-/* fourth.jpg - king dynasty, pride dynasty, achievements, showcase, beetle book banners.
-   Matched on the name inside the src (not the extension) so a .jpg/.png change or a
-   cache-busting query string can't break it; div.left img is the catch-all for the same block. */
-div.left img,
-img[src*="ancestors"],
-img[src*="achievements"],
-img[src*="showcase"],
-img[src*="beetlebook"], img[src*="beetle_book"], img[src*="beetle-book"],
-a[href*="dynasty"] img, a[href*="ancestors"] img, a[href*="achievements"] img,
-a[href*="showcase"] img, a[href*="beetlebook"] img, a[href*="beetle_book"] img, a[href*="beetle-book"] img {
-  content: url('https://lovetiger1251.github.io/liodencss/fourth.jpg') !important;
-  width: 100% !important;
-  height: auto !important;
-  border-radius: var(--radius-sm) !important;
-  filter: none !important;
-}
+/* Custom covers - fill CAVEID / MOUNDID / USERID + image link, then uncomment.
+a[href$="CAVEID"] > div.cave-grid > img { content: url('IMG') !important; width: 258px !important; height: auto !important; }
+a[href$="mound.php?id=MOUNDID"] img     { content: url('IMG') !important; background-size: cover; width: 100%; height: auto; }
+a[href$="unsorted.php?id=USERID"] > div.cave-grid > img     { content: url('IMG') !important; }
+a[href*="lionoverview.php?id=USERID"] > div.cave-grid > img { content: url('IMG') !important; }
+a[href$="unsorted-beetles.php?id=USERID"] img               { content: url('IMG') !important; background-size: cover; width: 100%; height: auto; }
+*/
 
 .featured-lion { padding: 0; margin: 0 auto; max-width: 640px; font-size: 18px; }
 div.lion-image-block { overflow: hidden; border-radius: var(--radius); }
@@ -553,7 +455,55 @@ table#pride.table .xsmall { font-size: 12px !important; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+/* ============================================================
+   PATCH - paste at the very END of the live stylesheet.
+   Needs fifth.png in the repo next to the CSS.
+   ============================================================ */
 
+/* 1. LOGO -> the planet. Transparent PNG, 800x800 with a 100px empty
+   margin, so it's drawn at 170px and pulled in so ~128px shows. */
+div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img {
+  content: url('https://lovetiger1251.github.io/liodencss/fifth.png') !important;
+  width: 170px !important;
+  height: 170px !important;
+  margin: -25px -10px !important;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6)) !important;
+  animation: none !important;
+}
 
-You're not receiving notifications from this thread.
- 
+/* 2. Icons in the info box back to full colour (wishlist, message, gift,
+   trade, block, friend, donator, warning). */
+img[src*="icon_den_"], img[src$="donator.png"], img[src$="icon_warning.png"],
+img[src$="gold.png"], img[src$="silver.png"], img[src$="icon_doubloon.png"] {
+  filter: none !important;
+}
+a:hover > img[src*="icon_den_"] { filter: drop-shadow(0 0 4px rgba(255,255,255,0.8)) !important; }
+
+/* 3. Text shadow - crisp 1px offset plus a tight dark edge, on everything
+   inside the main sheet. The title keeps its own glow (rule 4). */
+.container.main, .container.main * {
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.95), 0 0 2px rgba(0,0,0,0.9) !important;
+}
+input, textarea, select, button, .btn, .badge, .progress div {
+  text-shadow: none !important;
+}
+
+/* 4. Title - stretched ~22% taller, glow restored, drift keeps the stretch. */
+h1 {
+  display: inline-block !important;
+  transform: scaleY(1.22);
+  transform-origin: center;
+  text-shadow:
+    0 0 4px rgba(255,255,255,1),
+    0 0 12px rgba(255,255,255,0.9),
+    0 0 28px rgba(255,255,255,0.7),
+    0 0 50px rgba(255,255,255,0.45) !important;
+  animation: title-drift-tall 26s ease-in-out infinite !important;
+}
+@keyframes title-drift-tall {
+  0%   { transform: translate(0px, 0px)   rotate(0deg)    scaleY(1.22); }
+  22%  { transform: translate(3px, -2px)  rotate(0.4deg)  scaleY(1.22); }
+  48%  { transform: translate(-2px, -4px) rotate(-0.3deg) scaleY(1.22); }
+  70%  { transform: translate(-3px, 1px)  rotate(0.3deg)  scaleY(1.22); }
+  100% { transform: translate(0px, 0px)   rotate(0deg)    scaleY(1.22); }
+}
