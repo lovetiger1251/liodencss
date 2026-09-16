@@ -5,7 +5,7 @@
    tawny #251887, Austin #43750, Bobcat #79288, Tserin #2230, Atticus #198107.
 
    FILES NEEDED IN THE REPO NEXT TO THIS CSS
-     b7100443-9c55-4e6c-a49d-973f436f4647.png                 (background)
+     tsu.png                 (background)
      Pngtreeelement_float_round_blue_bubble_3917372.png       (logo)
 
    TERRITORY DESCRIPTION TAG
@@ -97,7 +97,7 @@ body {
 }
 @media screen and (min-width: 601px) {
   body {
-    background: #000000 url('https://lovetiger1251.github.io/liodencss/b7100443-9c55-4e6c-a49d-973f436f4647.png') center center / cover no-repeat fixed !important;
+    background: #000000 url('https://lovetiger1251.github.io/liodencss/tsu.png') center center / cover no-repeat fixed !important;
   }
 }
 @media screen and (max-width: 600px) {
