@@ -1,5 +1,5 @@
 /* ============================================================
-   v3.4 - Lioden den CSS (black & white, warm accents, star logo, shooting stars)
+   v3.5 - Lioden den CSS (black & white, warm accents, star logo, shooting stars)
    Built on Jester (#187561) & Katie's (#106445) v3 template.
    Contributor credits from the original: Pandora #144118, Kat #94329,
    tawny #251887, Austin #43750, Bobcat #79288, Tserin #2230, Atticus #198107.
@@ -8,8 +8,8 @@
      starlogo.png (logo)
      star1.png, star2.png, star3.png   (shooting stars)
      first.jpg    (unsorted lions, pregnant lionesses, pride overview)
-     second.jpg   (all dens / caves)
-     third.jpg    (beetles)
+     second.jpg   (beetles)
+     third.jpg    (all dens / caves)
      fourth.jpg   (king dynasty, pride dynasty, achievements, showcase, beetle book)
    TERRITORY DESCRIPTION TAG
      <link rel="stylesheet" type="text/css" href="https://lovetiger1251.github.io/liodencss/v3.css" />
@@ -484,9 +484,9 @@ div.cave-grid > img {
   height: auto !important;
 }
 
-/* second.jpg - dens (cave tiles that are links) */
+/* third.jpg - dens (cave tiles that are links) */
 a > div.cave-grid > img {
-  content: url('https://lovetiger1251.github.io/liodencss/second.jpg') !important;
+  content: url('https://lovetiger1251.github.io/liodencss/third.jpg') !important;
 }
 
 /* first.jpg - unsorted, pregnant lionesses, pride overview (beats the den rule above) */
@@ -499,7 +499,7 @@ div.cave-grid > img[src*="nesting"] {
   content: url('https://lovetiger1251.github.io/liodencss/first.jpg') !important;
 }
 
-/* third.jpg - beetles tile, +create mound, and any beetle mound */
+/* second.jpg - beetles tile, +create mound, and any beetle mound */
 div.mound-grid img,
 a[href*="unsorted-beetles"] img,
 a[href*="beetles.php"] img,
@@ -507,7 +507,7 @@ a[href*="mound"] img,
 a[href*="unsorted-beetles"] > div > img,
 a[href*="beetles.php"] > div > img,
 a[href*="mound"] > div > img {
-  content: url('https://lovetiger1251.github.io/liodencss/third.jpg') !important;
+  content: url('https://lovetiger1251.github.io/liodencss/second.jpg') !important;
   width: 100% !important;
   height: auto !important;
 }
