@@ -1,47 +1,4 @@
 
-Skip to content
-
-    lovetiger1251
-    liodencss
-
-Repository navigation
-
-    Code
-    Issues
-    Pull requests
-    Actions
-    Projects
-    Wiki
-    Security and quality
-    Insights
-    Settings
-
-Commit 6ba5720
-lovetiger1251
-lovetiger1251
-authored
-2 hours ago
-··
-Verified
-Update v3.css
-main
-
-1 parent 
-c869c19
- commit 
-6ba5720
-
-1 file changed
-+1-1Lines changed: 1 addition & 1 deletion
-File tree
-
-    v3.css
-
- 
-‎v3.css‎
-+1-1Lines changed: 1 addition & 1 deletion
-Original file line number	Diff line number	Diff line change
-@@ -1,556 +1,556 @@
 /* ============================================================
    v3 - Lioden den CSS (black & white, warm accents)
    Built on Jester (#187561) & Katie's (#106445) v3 template.
@@ -596,10 +553,7 @@ table#pride.table .xsmall { font-size: 12px !important; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
-0 commit comments
-Comments
-0 (0)
-Comment
+
 
 You're not receiving notifications from this thread.
  
