@@ -203,7 +203,7 @@ div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img {
 
 /* signature, bottom-right of the viewport */
 body::after {
-  content: "<3 tiger ";
+  content: "I <3 tiger ";
   position: fixed;
   right: 16px;
   bottom: 12px;
@@ -401,24 +401,24 @@ div.cave-grid > img, .mound-grid img { border-radius: var(--radius-sm); }
 
 /* custom covers — ordered least to most specific so later rules win */
 div.cave-grid > img {                                        /* base: pregnant lionesses banner */
-  content: url('https://lovetiger1251.github.io/liodencss/first.jpg') !important;
+  content: url('https://lovetiger1251.github.io/liodencss/second.jpg') !important;
   width: 258px !important;
   max-width: 100% !important;
   height: auto !important;
 }
 a > div.cave-grid > img {                                    /* dens */
-  content: url('https://lovetiger1251.github.io/liodencss/third.jpg') !important;
+  content: url('https://lovetiger1251.github.io/liodencss/first.jpg') !important;
 }
 a[href*="unsorted.php"] > div.cave-grid > img,               /* unsorted · overview · nesting */
 a[href*="lionoverview.php"] > div.cave-grid > img,
 div.cave-grid > img[src*="nesting"] {
-  content: url('https://lovetiger1251.github.io/liodencss/first.jpg') !important;
+  content: url('https://lovetiger1251.github.io/liodencss/second.jpg') !important;
 }
 div.mound-grid img,                                          /* beetles · mounds */
 a[href*="unsorted-beetles"] img,
 a[href*="beetles.php"] img,
 a[href*="mound"] img {
-  content: url('https://lovetiger1251.github.io/liodencss/second.jpg') !important;
+  content: url('https://lovetiger1251.github.io/liodencss/third.jpg') !important;
   width: 100% !important;
   height: auto !important;
 }
