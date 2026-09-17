@@ -1,11 +1,11 @@
 /* ============================================================
-   v3.7 - Lioden den CSS (black & white, warm accents, star logo, shooting stars)
+   v3.8 - Lioden den CSS (black & white, warm accents, star-cluster logo, shooting stars)
    Built on Jester (#187561) & Katie's (#106445) v3 template.
    Contributor credits from the original: Pandora #144118, Kat #94329,
    tawny #251887, Austin #43750, Bobcat #79288, Tserin #2230, Atticus #198107.
    FILES NEEDED IN THE REPO NEXT TO THIS CSS
      tsu.png      (background)
-     starlogo.png (logo)
+     starlogo.png (logo - the three-star cluster)
      star1.png, star2.png, star3.png   (shooting stars)
      first.jpg    (unsorted lions, pregnant lionesses, pride overview)
      second.jpg   (beetles)
@@ -164,23 +164,23 @@ hr { border-color: var(--line) !important; }
 .navbar-toggle   { border: 1px solid var(--line) !important; background: var(--panel) !important; border-radius: 999px !important; }
 .navbar-collapse { box-shadow: none !important; border-top: none !important; }
 
-/* LOGO - the starburst (starlogo.png, transparent 744x744).
-   Drawn at 150px inside the 192x120 logo slot: the star is centred in
-   its own image, so it is centred in the slot with a little clear space
-   on every side, and the vertical overhang is pulled back so it never
-   reaches the navbar links. Soft white bloom that breathes slowly. */
+/* LOGO - the star cluster, saved as starlogo.png (transparent 573x502).
+   Drawn at 165x145 - same shape as the image - so the big star sits
+   centred in the 192x120 slot with the two small ones inside the corner;
+   the 13px vertical overhang is empty space and never reaches the
+   navbar links. Soft white bloom that breathes slowly. */
 div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img {
   content: url('https://lovetiger1251.github.io/liodencss/starlogo.png') !important;
-  width: 150px !important;
-  height: 150px !important;
-  margin: -15px 6px -15px 0;
+  width: 165px !important;
+  height: 145px !important;
+  margin: -13px 6px -13px 0;
   object-fit: contain;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.9)) drop-shadow(0 0 18px rgba(255,255,255,0.45));
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.9)) drop-shadow(0 0 16px rgba(255,255,255,0.4));
   animation: logo-bloom 8s ease-in-out infinite;
 }
 @keyframes logo-bloom {
-  0%, 100% { filter: drop-shadow(0 0 6px rgba(255,255,255,0.9)) drop-shadow(0 0 18px rgba(255,255,255,0.45)); }
-  50%      { filter: drop-shadow(0 0 9px rgba(255,255,255,1))   drop-shadow(0 0 28px rgba(255,255,255,0.7)); }
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.9)) drop-shadow(0 0 16px rgba(255,255,255,0.4)); }
+  50%      { filter: drop-shadow(0 0 8px rgba(255,255,255,1))   drop-shadow(0 0 26px rgba(255,255,255,0.65)); }
 }
 
 .breadcrumb .active { color: var(--steel) !important; }
