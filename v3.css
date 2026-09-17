@@ -1,5 +1,5 @@
 /* ============================================================
-   v3.9 - Lioden den CSS (black & white, warm accents, star-cluster logo, shooting stars)
+   v3.11 - Lioden den CSS (black & white, warm accents, star-cluster logo, shooting stars)
    Built on Jester (#187561) & Katie's (#106445) v3 template.
    Contributor credits from the original: Pandora #144118, Kat #94329,
    tawny #251887, Austin #43750, Bobcat #79288, Tserin #2230, Atticus #198107.
@@ -590,65 +590,66 @@ body::before, html::before, html::after {
 /* Each layer carries FOUR stars, every one on its OWN lane (different
    vertical offset inside the rotated layer) and at its own point along the
    path, so no two stars ever share a track. Twelve lanes in all, spaced
-   unevenly between -3vh and 53vh. The three layers run on cycles that are
-   not multiples of each other (28 / 31 / 34s), so the combination of
+   unevenly between -15vh and 35vh, so nothing spawns in the lower part
+   of the screen. The three layers run on cycles that are
+   not multiples of each other (40 / 44 / 49s), so the combination of
    what is on screen keeps changing instead of repeating every loop.
    Crossing time is ~20s for every star (15% slower than before). */
-body::before {                                   /* lanes 4, 16, 29, 44 vh */
-  width: calc(760px + 60vw); height: calc(84px + 40vh);
+body::before {                                   /* lanes -8, 2, 13, 26 vh */
+  width: calc(760px + 60vw); height: calc(84px + 34vh);
   background-image:
     url('https://lovetiger1251.github.io/liodencss/star1.png'), url('https://lovetiger1251.github.io/liodencss/star3.png'),
     url('https://lovetiger1251.github.io/liodencss/star2.png'), url('https://lovetiger1251.github.io/liodencss/star3.png');
   background-size: 760px 84px, 340px 56px, 520px 70px, 340px 56px;
   background-position: 0% 0%, 62% 30%, 28% 62%, 90% 100%;
-  animation: star-a 28s linear infinite;
+  animation: star-a 40s linear infinite;
   animation-delay: 0s;
 }
-html::before {                                   /* lanes 11, 21, 34, 53 vh */
-  width: calc(520px + 60vw); height: calc(84px + 42vh);
+html::before {                                   /* lanes -1, 8, 19, 35 vh */
+  width: calc(520px + 60vw); height: calc(84px + 36vh);
   background-image:
     url('https://lovetiger1251.github.io/liodencss/star2.png'), url('https://lovetiger1251.github.io/liodencss/star1.png'),
     url('https://lovetiger1251.github.io/liodencss/star3.png'), url('https://lovetiger1251.github.io/liodencss/star1.png');
   background-size: 520px 70px, 760px 84px, 340px 56px, 760px 84px;
   background-position: 50% 0%, 8% 24%, 84% 55%, 30% 100%;
-  animation: star-b 31s linear infinite;
-  animation-delay: 9s;
+  animation: star-b 44s linear infinite;
+  animation-delay: 13s;
 }
-html::after {                                    /* lanes -3, 12, 26, 33 vh */
-  width: calc(340px + 60vw); height: calc(70px + 36vh);
+html::after {                                    /* lanes -15, -2, 9, 15 vh */
+  width: calc(340px + 60vw); height: calc(70px + 30vh);
   background-image:
     url('https://lovetiger1251.github.io/liodencss/star3.png'), url('https://lovetiger1251.github.io/liodencss/star2.png'),
     url('https://lovetiger1251.github.io/liodencss/star1.png'), url('https://lovetiger1251.github.io/liodencss/star2.png');
   background-size: 340px 56px, 520px 70px, 760px 84px, 520px 70px;
   background-position: 18% 0%, 70% 42%, 44% 80%, 96% 100%;
-  animation: star-c 34s linear infinite;
-  animation-delay: 19s;
+  animation: star-c 49s linear infinite;
+  animation-delay: 27s;
   opacity: 0;
 }
 
 /* Every layer crosses in ~20s; the travel share of each cycle differs
-   because the cycles differ (71% of 28s, 64% of 31s, 58% of 34s).
+   because the cycles differ (50% of 40s, 45% of 44s, 41% of 49s).
    15 degrees: vertical drop = horizontal travel x 0.268 */
 @keyframes star-a {
-  0%   { opacity: 0; transform: translate(calc(-760px - 60vw), 4vh)          rotate(15deg); }
-  3%   { opacity: 1; }
-  71%  { opacity: 1; transform: translate(110vw, calc(4vh + 45.6vw + 204px))  rotate(15deg); }
-  74%  { opacity: 0; transform: translate(114vw, calc(4vh + 46.6vw + 204px))  rotate(15deg); }
-  100% { opacity: 0; transform: translate(114vw, calc(4vh + 46.6vw + 204px))  rotate(15deg); }
+  0%   { opacity: 0; transform: translate(calc(-760px - 60vw), -8vh)         rotate(15deg); }
+  2%   { opacity: 1; }
+  50%  { opacity: 1; transform: translate(110vw, calc(-8vh + 45.6vw + 204px)) rotate(15deg); }
+  53%  { opacity: 0; transform: translate(114vw, calc(-8vh + 46.6vw + 204px)) rotate(15deg); }
+  100% { opacity: 0; transform: translate(114vw, calc(-8vh + 46.6vw + 204px)) rotate(15deg); }
 }
 @keyframes star-b {
-  0%   { opacity: 0; transform: translate(calc(-520px - 60vw), 11vh)         rotate(15deg); }
-  3%   { opacity: 0.9; }
-  64%  { opacity: 0.9; transform: translate(110vw, calc(11vh + 45.6vw + 139px)) rotate(15deg); }
-  67%  { opacity: 0; transform: translate(114vw, calc(11vh + 46.6vw + 139px)) rotate(15deg); }
-  100% { opacity: 0; transform: translate(114vw, calc(11vh + 46.6vw + 139px)) rotate(15deg); }
+  0%   { opacity: 0; transform: translate(calc(-520px - 60vw), -1vh)         rotate(15deg); }
+  2%   { opacity: 0.9; }
+  45%  { opacity: 0.9; transform: translate(110vw, calc(-1vh + 45.6vw + 139px)) rotate(15deg); }
+  48%  { opacity: 0; transform: translate(114vw, calc(-1vh + 46.6vw + 139px)) rotate(15deg); }
+  100% { opacity: 0; transform: translate(114vw, calc(-1vh + 46.6vw + 139px)) rotate(15deg); }
 }
 @keyframes star-c {
-  0%   { opacity: 0; transform: translate(calc(-340px - 60vw), -3vh)         rotate(15deg); }
-  3%   { opacity: 0.8; }
-  58%  { opacity: 0.8; transform: translate(110vw, calc(-3vh + 45.6vw + 91px)) rotate(15deg); }
-  61%  { opacity: 0; transform: translate(114vw, calc(-3vh + 46.6vw + 91px)) rotate(15deg); }
-  100% { opacity: 0; transform: translate(114vw, calc(-3vh + 46.6vw + 91px)) rotate(15deg); }
+  0%   { opacity: 0; transform: translate(calc(-340px - 60vw), -15vh)        rotate(15deg); }
+  2%   { opacity: 0.8; }
+  41%  { opacity: 0.8; transform: translate(110vw, calc(-15vh + 45.6vw + 91px)) rotate(15deg); }
+  44%  { opacity: 0; transform: translate(114vw, calc(-15vh + 46.6vw + 91px)) rotate(15deg); }
+  100% { opacity: 0; transform: translate(114vw, calc(-15vh + 46.6vw + 91px)) rotate(15deg); }
 }
 
 @media screen and (max-width: 600px) { body::before, html::before, html::after { display: none; } }
