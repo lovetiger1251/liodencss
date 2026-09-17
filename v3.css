@@ -1,89 +1,100 @@
-/* ============================================================
-   v3.11 - Lioden den CSS (black & white, warm accents, star-cluster logo, shooting stars)
-   Built on Jester (#187561) & Katie's (#106445) v3 template.
-   Contributor credits from the original: Pandora #144118, Kat #94329,
-   tawny #251887, Austin #43750, Bobcat #79288, Tserin #2230, Atticus #198107.
-   FILES NEEDED IN THE REPO NEXT TO THIS CSS
-     tsu.png      (background)
-     starlogo.png (logo - the three-star cluster)
-     star1.png, star2.png, star3.png   (shooting stars)
-     first.jpg    (unsorted lions, pregnant lionesses, pride overview)
-     second.jpg   (beetles)
-     third.jpg    (all dens / caves)
-     fourth.jpg   (king dynasty, pride dynasty, achievements, showcase, beetle book)
-   TERRITORY DESCRIPTION TAG
-     <link rel="stylesheet" type="text/css" href="https://lovetiger1251.github.io/liodencss/v3.css" />
-   CAVE / MOUND SETTINGS -> Cave CSS URL
-     https://lovetiger1251.github.io/liodencss/v3.css
-   Fonts:   Julius Sans One (den title)
-            Poiret One (headers, navbar, key text)
-            Josefin Sans (everything else)
-   Look:    dark translucent glass, white text, thin white hairlines,
-            a few sunset (orange / coral / pink) accents.
-   ============================================================ */
+/* ==========================================================================
+   TIGER'S DEN — Lioden territory stylesheet
+   v4.1 · 2026-09-17
+
+   Dark glass over a deep-space background. Black & white with a few warm
+   accents, thin hairlines, one glowing title, and shooting stars behind the
+   sheet. Based on the community Lioden CSS template (Jester #187561,
+   Katie #106445 and contributors).
+
+   INSTALL
+     Territory description:
+       <link rel="stylesheet" type="text/css" href="https://lovetiger1251.github.io/liodencss/v4.css" />
+     Cave / mound settings → Cave CSS URL:
+       https://lovetiger1251.github.io/liodencss/v4.css
+
+   ASSETS (same folder as this file)
+     tsu.png                          background
+     starlogo.png                     logo (crescent moon)
+     star1.png  star2.png  star3.png  shooting stars
+     first.jpg                        unsorted · pregnant lionesses · pride overview
+     second.jpg                       beetles / mounds
+     third.jpg                        dens
+     fourth.jpg                       dynasty · achievements · showcase · beetle book
+
+   CONTENTS
+     1  Tokens          6  Comments & chat
+     2  Base            7  Tables & key text
+     3  Typography      8  Portraits, icons, covers
+     4  Surfaces        9  Description boxes
+     5  Controls       10  Shooting stars · reduced motion
+   ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Poiret+One&family=Josefin+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+
+/* 1  TOKENS ------------------------------------------------------------- */
 
 :root {
   --font-title:   'Julius Sans One', 'Poiret One', sans-serif;
   --font-display: 'Poiret One', 'Josefin Sans', sans-serif;
   --font-body:    'Josefin Sans', 'Segoe UI', sans-serif;
 
-  /* sunset accents - used sparingly */
-  --ember:   #f2a65a;   /* orange */
-  --coral:   #e8736b;   /* red-coral */
-  --blush:   #f08fb0;   /* pink */
-  --steel:   #8fa8c4;   /* grey-blue: breadcrumb den name + every hover */
+  --white:  #ffffff;
+  --text:   #f2f2f2;
+  --muted:  #b5b5b5;
+
+  --ember:  #f2a65a;              /* orange  — focus rings, pinned chat   */
+  --coral:  #e8736b;              /* red     — pings, delete button       */
+  --blush:  #f08fb0;              /* pink    — end of the sunset gradient */
+  --steel:  #8fa8c4;              /* grey-blue — breadcrumb, hover glows  */
+  --ember-rgb: 242,166,90;
   --steel-rgb: 143,168,196;
-  --sunset:  linear-gradient(90deg, var(--ember), var(--coral) 55%, var(--blush));
+  --sunset: linear-gradient(90deg, var(--ember), var(--coral) 55%, var(--blush));
 
-  --white:   #ffffff;
-  --text:    #f2f2f2;
-  --muted:   #b5b5b5;
-  --line:    rgba(255, 255, 255, 0.22);   /* hairline borders */
-  --line-hi: rgba(255, 255, 255, 0.45);   /* hover borders     */
-
-  /* dark glass - the image shows through, text stays readable */
-  --sheet:   rgba(0, 0, 0, 0.42);
-  --panel:   rgba(0, 0, 0, 0.38);
-  --panel-2: rgba(255, 255, 255, 0.06);   /* alternate rows    */
-  --field:   rgba(0, 0, 0, 0.45);         /* inputs            */
+  --line:    rgba(255,255,255,0.22);
+  --line-hi: rgba(255,255,255,0.45);
+  --sheet:   rgba(0,0,0,0.42);    /* main container                       */
+  --panel:   rgba(0,0,0,0.38);    /* every inner surface                  */
+  --panel-2: rgba(255,255,255,0.06);
+  --field:   rgba(0,0,0,0.45);    /* inputs                               */
 
   --radius:    16px;
   --radius-sm: 10px;
-  --shadow:    0 8px 28px rgba(0, 0, 0, 0.45);
+  --shadow:    0 8px 28px rgba(0,0,0,0.45);
+  --text-shadow: 0 1px 3px rgba(0,0,0,0.85);
+  --glow-soft:   0 0 4px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.6), var(--text-shadow);
+  --glow-steel:  0 0 6px rgba(var(--steel-rgb),0.9), 0 0 14px rgba(var(--steel-rgb),0.6);
 }
 
 
-/* ============================================================
-   BASE
-   ============================================================ */
+/* 2  BASE --------------------------------------------------------------- */
 
 body {
   font-family: var(--font-body);
   font-size: 15px;
   color: var(--text) !important;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.85);   /* soft drop shadow on all text */
+  text-shadow: var(--text-shadow);
 }
-@media screen and (min-width: 601px) {
-  body { background: #000000 url('https://lovetiger1251.github.io/liodencss/tsu.png') center center / cover no-repeat fixed !important; }
+@media (min-width: 601px) {
+  body { background: #000 url('https://lovetiger1251.github.io/liodencss/tsu.png') center / cover no-repeat fixed !important; }
 }
-@media screen and (max-width: 600px) {
-  body { background: linear-gradient(180deg, #000000 0%, #141414 60%, #2a2a2a 100%) fixed !important; background-size: cover !important; }
+@media (max-width: 600px) {
+  body { background: linear-gradient(180deg, #000 0%, #141414 60%, #2a2a2a 100%) fixed !important; }
 }
 html.nolayout { background: none !important; }
 
+* { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.35) rgba(0,0,0,0.5); }
 ::-webkit-scrollbar       { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: rgba(0,0,0,0.5); }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.35); border-radius: 8px; }
-* { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.35) rgba(0,0,0,0.5); }
 
 
-/* ============================================================
-   TYPE
-   ============================================================ */
+/* 3  TYPOGRAPHY --------------------------------------------------------- */
 
 h1 {
+  display: inline-block;
+  width: 100%;
   font-family: var(--font-title);
   font-weight: 400;
   font-size: 60px;
@@ -91,45 +102,41 @@ h1 {
   letter-spacing: 6px;
   text-transform: uppercase;
   text-align: center !important;
-  display: inline-block;
-  width: 100%;
   color: var(--white) !important;
-  text-shadow:
-    0 0 5px rgba(255,255,255,1),
-    0 0 14px rgba(255,255,255,1),
-    0 0 32px rgba(255,255,255,0.8),
-    0 0 58px rgba(255,255,255,0.55),
-    0 0 90px rgba(242,166,90,0.45);
   animation: title-glow 6s ease-in-out infinite, title-drift 26s ease-in-out infinite;
 }
 @keyframes title-glow {
-  0%, 100% { text-shadow: 0 0 5px rgba(255,255,255,1), 0 0 14px rgba(255,255,255,1),   0 0 32px rgba(255,255,255,0.8), 0 0 58px rgba(255,255,255,0.55), 0 0 90px rgba(242,166,90,0.45); }
-  50%      { text-shadow: 0 0 7px rgba(255,255,255,1), 0 0 20px rgba(255,255,255,1),   0 0 46px rgba(255,255,255,0.95), 0 0 82px rgba(255,255,255,0.75), 0 0 115px rgba(232,115,107,0.55); }
+  0%, 100% { text-shadow: 0 0 5px #fff, 0 0 14px #fff, 0 0 32px rgba(255,255,255,0.8),  0 0 58px rgba(255,255,255,0.55), 0 0 90px  rgba(var(--ember-rgb),0.45); }
+  50%      { text-shadow: 0 0 7px #fff, 0 0 20px #fff, 0 0 46px rgba(255,255,255,0.95), 0 0 82px rgba(255,255,255,0.75), 0 0 115px rgba(232,115,107,0.55); }
 }
 @keyframes title-drift {
-  0%   { transform: translate(0px, 0px)   rotate(0deg); }
-  22%  { transform: translate(3px, -2px)  rotate(0.4deg); }
+  0%   { transform: translate(0, 0)      rotate(0); }
+  22%  { transform: translate(3px, -2px) rotate(0.4deg); }
   48%  { transform: translate(-2px, -4px) rotate(-0.3deg); }
-  70%  { transform: translate(-3px, 1px)  rotate(0.3deg); }
-  100% { transform: translate(0px, 0px)   rotate(0deg); }
+  70%  { transform: translate(-3px, 1px) rotate(0.3deg); }
+  100% { transform: translate(0, 0)      rotate(0); }
 }
 
-h2 { font-family: var(--font-display); font-weight: 400; font-size: 30px; letter-spacing: 2px; color: var(--white) !important; }
-h3 { font-family: var(--font-display); font-weight: 400; font-size: 24px; letter-spacing: 2px; color: var(--white) !important; }
+h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing: 2px; color: var(--white) !important; }
+h2 { font-size: 30px; }
+h3 { font-size: 24px; }
 
-.topbar { font-family: var(--font-body); font-weight: 500; }
-.navbar { font-family: var(--font-display); font-weight: 400; font-size: 20px; letter-spacing: 2px; }
+.topbar { font-weight: 500; }
+.navbar { font-family: var(--font-display); font-size: 20px; letter-spacing: 2px; }
 
 a:link, a:visited { color: var(--white) !important; background: none !important; text-decoration: none; font-weight: 500; transition: color 0.2s; }
-a:hover           { color: var(--steel) !important; text-shadow: 0 0 6px rgba(var(--steel-rgb),0.9), 0 0 14px rgba(var(--steel-rgb),0.6), 0 1px 3px rgba(0,0,0,0.85) !important; }
-.footer a:link, .footer a:visited, .footer a:active { border-bottom: none !important; }
-td.bottom a, th a { border-bottom: none !important; }
-.bottom a:visited, .bottom a { text-decoration: none !important; }
+a:hover           { color: var(--steel) !important; text-shadow: var(--glow-steel), var(--text-shadow) !important; }
+.footer a, td.bottom a, th a, .bottom a { border-bottom: none !important; text-decoration: none !important; }
+
+/* glowing names: king's strip, sidebar lion name, your username */
+.featured-lion, .featured-lion a,
+#about > tbody > tr:nth-child(1) > td > div,
+.panel h3, .panel h3 a,
+.topbar a[href*="den.php"], .topbar > a:first-of-type,
+.breadcrumb .active { text-shadow: var(--glow-soft); }
 
 
-/* ============================================================
-   MAIN SHEET & GLASS SURFACES
-   ============================================================ */
+/* 4  SURFACES ----------------------------------------------------------- */
 
 .container.main {
   background: var(--sheet) !important;
@@ -141,86 +148,61 @@ td.bottom a, th a { border-bottom: none !important; }
 }
 .row, .col-md-9, .col-md-3, .col-sm-9, .col-sm-3 { background: none !important; }
 
-/* one recipe for every surface */
-.topbar, .navbar, .breadcrumb, .panel, div#commentBox, .feature, div.left,
-.cave-grid, .mound-grid, .Box1, .Box2, .Box3, .mobilebox, div.emoteList.active, .alert,
-.well, .dropdown-menu, .modal-content, .popover, .tooltip-inner, .list-group-item,
-.thumbnail, .jumbotron, pre, code, blockquote, div.quote, fieldset, .footer, footer,
-.nav-tabs > li > a, .nav-pills > li > a, #chatMessageContainer, .s-chat-sidebar,
-.s-chat-input, .s-chat-message_input, div#chatbox, div#chat, .chat, .notice, .info, .box, .content {
+.topbar, .navbar, .breadcrumb, .panel, .feature, .alert, div.left, div#commentBox,
+.cave-grid, .mound-grid, .Box1, .Box2, .Box3, .mobilebox, div.emoteList.active,
+.well, .dropdown-menu, .modal-content, .popover, .tooltip-inner,
+pre, code, blockquote, div.quote, fieldset, .footer, .nav-tabs > li > a,
+#chatMessageContainer, .s-chat-sidebar, .s-chat-input {
   background: var(--panel) !important;
   color: var(--text) !important;
   border: 1px solid var(--line) !important;
   border-radius: var(--radius) !important;
   box-shadow: none !important;
 }
-.dropdown-menu > li > a { color: var(--text) !important; }
-.dropdown-menu > li > a:hover { background: rgba(255,255,255,0.1) !important; }
 hr { border-color: var(--line) !important; }
 
 .topbar, .navbar, .breadcrumb { border-radius: 999px !important; }
-.navbar li a { border-radius: 999px; color: var(--white) !important; transition: background 0.2s, color 0.2s; }
-.navbar li a:hover { background: rgba(242,166,90,0.16) !important; color: var(--white) !important; }
-.navbar-toggle   { border: 1px solid var(--line) !important; background: var(--panel) !important; border-radius: 999px !important; }
-.navbar-collapse { box-shadow: none !important; border-top: none !important; }
-
-/* LOGO - the star cluster, saved as starlogo.png (transparent 573x502).
-   Drawn at 165x145 - same shape as the image - so the big star sits
-   centred in the 192x120 slot with the two small ones inside the corner;
-   the 13px vertical overhang is empty space and never reaches the
-   navbar links. Soft white bloom that breathes slowly. */
-div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img {
-  content: url('https://lovetiger1251.github.io/liodencss/starlogo.png') !important;
-  width: 165px !important;
-  height: 145px !important;
-  margin: -13px 6px -13px 0;
-  object-fit: contain;
-  filter: drop-shadow(0 0 5px rgba(255,255,255,0.9)) drop-shadow(0 0 16px rgba(255,255,255,0.4));
-  animation: logo-bloom 8s ease-in-out infinite;
-}
-@keyframes logo-bloom {
-  0%, 100% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.9)) drop-shadow(0 0 16px rgba(255,255,255,0.4)); }
-  50%      { filter: drop-shadow(0 0 8px rgba(255,255,255,1))   drop-shadow(0 0 26px rgba(255,255,255,0.65)); }
-}
+.navbar li a { border-radius: 999px; color: var(--white) !important; transition: background 0.2s; }
+.navbar li a:hover { background: rgba(var(--ember-rgb),0.16) !important; }
+.navbar-toggle   { background: var(--panel) !important; border: 1px solid var(--line) !important; border-radius: 999px !important; }
+.navbar-collapse { border-top: none !important; box-shadow: none !important; }
 
 .breadcrumb .active { color: var(--steel) !important; }
-.breadcrumb > li + li::before { color: var(--muted) !important; content: "/  " !important; }
+.breadcrumb > li + li::before { content: "/  " !important; color: var(--muted) !important; }
 
-
-/* ============================================================
-   ALERTS
-   ============================================================ */
+.dropdown-menu > li > a { color: var(--text) !important; }
+.dropdown-menu > li > a:hover { background: rgba(255,255,255,0.1) !important; }
 
 .alert, .alert-success, .alert-danger, .alert-warning, .alert-info {
-  background: var(--panel) !important;   /* same fill as the sidebar panels, no tint */
+  background: var(--panel) !important;
   background-image: none !important;
   border-radius: var(--radius-sm) !important;
   text-align: center !important;
 }
 
+.feature { border-color: var(--line-hi) !important; }
+div.left { transition: border-color 0.2s; }
+div.left:hover { border-color: var(--line-hi) !important; }
+.xsmall { font-size: 14px !important; }
 
-/* ============================================================
-   GLOWS - main lion's name, your username
-   ============================================================ */
-
-/* king's name strip + name in the sidebar lion panel */
-.featured-lion, .featured-lion a,
-#about > tbody > tr:nth-child(1) > td > div,
-.panel h3, .panel h3 a {
-  text-shadow: 0 0 4px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.6), 0 1px 3px rgba(0,0,0,0.85);
+/* logo — crescent moon (starlogo.png, transparent 582×639). Drawn at
+   118×130 and centred in the 192×120 slot with equal side margins; the
+   5px vertical overhang is transparent, so nothing touches the navbar. */
+div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img {
+  content: url('https://lovetiger1251.github.io/liodencss/starlogo.png') !important;
+  width: 118px !important;
+  height: 130px !important;
+  margin: -5px 37px -5px 37px;
+  object-fit: contain;
+  animation: logo-bloom 8s ease-in-out infinite;
 }
-/* your username: topbar welcome link + breadcrumb */
-.topbar a[href*="den.php"], .topbar > a:first-of-type, .breadcrumb .active {
-  text-shadow: 0 0 4px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.6), 0 1px 3px rgba(0,0,0,0.85);
+@keyframes logo-bloom {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.9)) drop-shadow(0 0 16px rgba(255,255,255,0.4)); }
+  50%      { filter: drop-shadow(0 0 8px #fff)                  drop-shadow(0 0 26px rgba(255,255,255,0.65)); }
 }
 
-
-/* ============================================================
-   MADE-BY TAG - bottom right of the screen. Edit the text in content:
-   ============================================================ */
-
+/* signature, bottom-right of the viewport */
 body::after {
-  content: "< tiger ";
   content: "<3 tiger ";
   position: fixed;
   right: 16px;
@@ -230,124 +212,130 @@ body::after {
   font-size: 14px;
   letter-spacing: 1px;
   color: var(--white);
-  text-shadow: 0 1px 3px rgba(0,0,0,0.85);
+  text-shadow: var(--text-shadow);
   pointer-events: none;
 }
 
 
-/* ============================================================
-   PROGRESS BARS, BADGES, ONLINE DOTS
-   ============================================================ */
+/* 5  CONTROLS ----------------------------------------------------------- */
+
+input, textarea, select {
+  background: var(--field) !important;
+  color: var(--white) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: var(--font-body);
+  text-shadow: none !important;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--ember) !important;
+  box-shadow: 0 0 0 2px rgba(var(--ember-rgb),0.25) !important;
+  outline: none !important;
+}
+
+button.button, a.btn.btn-default.button, input[type="submit"], input[type="button"], .btn {
+  background: rgba(255,255,255,0.1) !important;
+  color: var(--white) !important;
+  border: 1px solid var(--line-hi) !important;
+  border-radius: 999px !important;
+  padding-left: 18px !important;
+  padding-right: 18px !important;
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  transition: background 0.15s, color 0.15s;
+}
+button.button:hover, a.btn.btn-default.button:hover, input[type="submit"]:hover, input[type="button"]:hover, .btn:hover {
+  background: var(--white) !important;
+  color: #000 !important;
+  border-color: var(--white) !important;
+}
+input.bad, input.bad a { background: var(--coral) !important; color: var(--white) !important; border-radius: 50% !important; }
 
 .progress {
   background: rgba(0,0,0,0.5);
-  color: var(--white) !important;
   border: 1px solid var(--line);
   border-radius: 999px !important;
   overflow: hidden;
 }
-.progress-bar { background: #9a9a9a !important; border-radius: 999px !important; }
-.progress-bar-warning { background-color: #ffffff !important; }   /* energy */
-.progress-bar-danger  { background-color: #cfcfcf !important; }   /* hunger - light */
+.progress-bar         { background: #9a9a9a !important; border-radius: 999px !important; }
+.progress-bar-warning { background-color: #fff    !important; }   /* energy */
+.progress-bar-danger  { background-color: #cfcfcf !important; }   /* hunger */
 .progress-bar-success { background-color: #8a8a8a !important; }   /* exp    */
-/* difference blend: reads black over the light bar, white over the dark track */
 .progress div { color: var(--white) !important; font-weight: 500; text-shadow: none; mix-blend-mode: difference; }
 
-.badge { background: var(--sunset) !important; color: #000000 !important; border-radius: 999px !important; font-weight: 600; }
+.badge { background: var(--sunset) !important; color: #000 !important; border-radius: 999px !important; font-weight: 600; }
 
-.member-online  { background: #3ddc6a; border-radius: 50%; width: 22px !important; height: 22px; margin: -4px; margin-left: 10px; border: 2px solid rgba(0,0,0,0.6); box-shadow: 0 0 8px rgba(61,220,106,0.7); }
-.member-offline { background: #6a6a6a; border-radius: 50%; width: 22px !important; height: 22px; margin: -4px; margin-left: 10px; border: 2px solid rgba(0,0,0,0.6); }
+.member-online, .member-offline {
+  width: 22px !important;
+  height: 22px;
+  margin: -4px 0 -4px 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.6);
+}
+.member-online  { background: #3ddc6a; box-shadow: 0 0 8px rgba(61,220,106,0.7); }
+.member-offline { background: #6a6a6a; }
 
 
-/* ============================================================
-   COMMENT BOX
-   ============================================================ */
+/* 6  COMMENTS & CHAT ---------------------------------------------------- */
 
 .comment {
   background: var(--panel-2) !important;
   color: var(--text) !important;
   border: 1px solid var(--line) !important;
-  border-bottom: 1px solid var(--line) !important;
   border-radius: var(--radius-sm) !important;
   text-align: center !important;
   margin: 6px 0;
 }
 .comment:nth-child(even) { background: rgba(255,255,255,0.03) !important; }
-.text-muted { color: var(--muted) !important; }
+.text-muted, .s-chat-message_timestamp, div#lblCharacterCounter { color: var(--muted) !important; }
+table#player.table hr { display: none !important; }
 
-input.bad   { background: var(--white) !important; color: #000000 !important; border-radius: 50% !important; }
-input.bad a { color: #000000 !important; }
-
-table#player.table hr         { display: none !important; }
-table#player.table div.xlarge { margin-top: 10px !important; }
-
-
-/* ============================================================
-   CHAT
-   ============================================================ */
-
-button#label_currentChannel { border: 1px solid var(--line) !important; background: var(--panel) !important; border-radius: 999px !important; color: var(--white) !important; }
-div#chatMessageContainer    { border: none !important; }
-
-.s-chat-message__pinned {
-  background-color: rgba(255,255,255,0.1) !important;
-  color: var(--text) !important;
-  border: none !important;
-  border-left: 3px solid var(--ember) !important;
-}
-.s-chat-message:nth-child(odd)  { background: rgba(0,0,0,0.35) !important; border: none !important; }
-.s-chat-message:nth-child(even) { background: rgba(0,0,0,0.2) !important;  border: none !important; }
-.s-chat-message_timestamp       { color: var(--muted) !important; }
-
+button#label_currentChannel,
 .s-chat-sidebar #fraChatChannelMenu,
-button.channelSwitcher, button.channelSwitcher.active {
+button.channelSwitcher {
   background: var(--panel) !important;
   color: var(--white) !important;
   border: 1px solid var(--line) !important;
   border-radius: 999px !important;
   box-shadow: none !important;
 }
-button.channelSwitcher.active { background: var(--sunset) !important; color: #000000 !important; border-color: transparent !important; }
+button.channelSwitcher.active { background: var(--sunset) !important; color: #000 !important; border-color: transparent !important; }
 
+div#chatMessageContainer { border: none !important; }
+.s-chat-message:nth-child(odd)  { background: rgba(0,0,0,0.35) !important; border: none !important; }
+.s-chat-message:nth-child(even) { background: rgba(0,0,0,0.2)  !important; border: none !important; }
+.s-chat-message__pinned {
+  background-color: rgba(255,255,255,0.1) !important;
+  color: var(--text) !important;
+  border: none !important;
+  border-left: 3px solid var(--ember) !important;
+}
+#chatMessageList[data-pings="enabled"] .s-chat-message_mention {
+  background-color: rgba(255,255,255,0.12) !important;
+  color: var(--text) !important;
+  border-left: 4px solid var(--coral) !important;
+}
 div.emoteList.active { border-radius: var(--radius-sm) !important; }
 div.emoteList.active::before { background: var(--panel); border: 1px solid var(--line); border-top: none !important; }
 
-#chatMessageList[data-pings="enabled"] .s-chat-message_mention {
-  background-color: rgba(255,255,255,0.12) !important;
-  border-left: 4px solid var(--coral) !important;
-  color: var(--text) !important;
-}
-div#lblCharacterCounter { color: var(--muted) !important; }
 
-
-/* ============================================================
-   FAPA & LEFT-COLUMN BUTTONS
-   ============================================================ */
-
-.feature { border: 1px solid var(--line-hi) !important; }
-div.left { transition: border-color 0.2s; }
-div.left:hover { border-color: var(--line-hi) !important; }
-.xsmall { font-size: 14px !important; }
-
-/* dynasty / achievements / showcase / beetle book banners */
-div.left img { border-radius: var(--radius-sm) !important; }
-
-
-/* ============================================================
-   LION INFO / DEN TABLES
-   ============================================================ */
+/* 7  TABLES & KEY TEXT -------------------------------------------------- */
 
 .table {
   background: rgba(0,0,0,0.3);
   border: 1px solid var(--line) !important;
+  border-radius: var(--radius);
   border-collapse: separate !important;
   border-spacing: 5px 6px !important;
   padding: 4px;
-  border-radius: var(--radius);
 }
 .inner-table { border-collapse: separate !important; border-spacing: 4px 5px !important; }
 
-/* key text: king's name strip, mutation count, table headers, member block, stat labels */
+/* king's name strip, mutation count, table headers, member block, stat labels, featured lion */
 .top, .bottom, th,
 #about > tbody > tr:nth-child(1) > td > div,
 table#player.table div.xlarge,
@@ -363,165 +351,80 @@ table#player.table td.bottom,
   letter-spacing: 1px;
 }
 .top, .bottom, th { font-size: 20px; padding: 4px 16px; }
-#about > tbody > tr:nth-child(1) > td > div, table#player.table div.xlarge { display: inline-block; padding: 3px 14px; margin: 4px 0; }
-table#player.table td.bottom, .inner-table .left { padding: 4px 12px !important; font-size: 15px; }
 .top a, .bottom a, th a { color: var(--white) !important; }
+#about > tbody > tr:nth-child(1) > td > div { display: inline-block; padding: 3px 14px; margin: 4px 0; }
+table#player.table div.xlarge { display: inline-block; padding: 3px 14px; margin: 10px 0 4px !important; }
+table#player.table td.bottom, .inner-table .left { padding: 4px 12px !important; font-size: 15px; }
+.featured-lion { max-width: 640px; margin: 0 auto; padding: 0; font-size: 18px; }
 
 .table .left        { background: rgba(0,0,0,0.25); border-radius: var(--radius-sm) !important; }
 .inner-table .right { background: rgba(0,0,0,0.2) !important; border-radius: var(--radius-sm) !important; color: var(--text) !important; }
 .right_odd          { background: none !important; }
 
+table#pride.table, table#pride.table a, table#pride.table a:visited { color: var(--text) !important; }
+table#pride.table .xsmall { font-size: 12px !important; }
+div.lion-image-block { overflow: hidden; border-radius: var(--radius); }
 
-/* ============================================================
-   IMAGES - portraits, icons
-   ============================================================ */
 
-div#lion_image {
+/* 8  PORTRAITS, ICONS, COVERS ------------------------------------------- */
+
+div#lion_image, table#player img {
   opacity: 1;
   border-radius: 50%;
-  overflow: hidden;
   border: 2px solid rgba(255,255,255,0.7);
   box-shadow: 0 6px 20px rgba(0,0,0,0.5);
   transition: transform 0.25s, box-shadow 0.25s;
 }
-table#player img {
-  opacity: 1;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.7);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-  transition: transform 0.25s, box-shadow 0.25s;
-}
+div#lion_image { overflow: hidden; }
 div#lion_image:hover, table#player img:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 20px rgba(0,0,0,0.5), 0 0 12px rgba(var(--steel-rgb),0.45);
 }
 
-img[src$="icon_den_gift.png"], img[src$="icon_den_trade.png"],
-img[src$="icon_den_viewtrade.png"], img[src$="icon_den_wishlist.png"], img[src$="icon_den_block.png"]
-  { filter: grayscale(1) brightness(1.6); transition: filter 0.2s; }
-a:hover > img[src$="icon_den_gift.png"], a:hover > img[src$="icon_den_trade.png"],
-a:hover > img[src$="icon_den_viewtrade.png"], a:hover > img[src$="icon_den_wishlist.png"], a:hover > img[src$="icon_den_block.png"]
-  { filter: grayscale(1) brightness(2) drop-shadow(0 0 4px #8fa8c4); }
-/* message + add-friend icons keep their original colour */
-img[src$="icon_den_message.png"], img[src$="icon_den_friend.png"] { filter: none; transition: filter 0.2s; }
-a:hover > img[src$="icon_den_message.png"], a:hover > img[src$="icon_den_friend.png"] { filter: brightness(1.2) drop-shadow(0 0 4px #8fa8c4); }
+/* den action icons: greyscale, except message + add-friend keep their colour */
+img[src$="icon_den_gift.png"], img[src$="icon_den_trade.png"], img[src$="icon_den_viewtrade.png"],
+img[src$="icon_den_wishlist.png"], img[src$="icon_den_block.png"] { filter: grayscale(1) brightness(1.6); transition: filter 0.2s; }
+a:hover > img[src$="icon_den_gift.png"], a:hover > img[src$="icon_den_trade.png"], a:hover > img[src$="icon_den_viewtrade.png"],
+a:hover > img[src$="icon_den_wishlist.png"], a:hover > img[src$="icon_den_block.png"] { filter: grayscale(1) brightness(2) drop-shadow(0 0 4px var(--steel)); }
+img[src$="icon_den_message.png"], img[src$="icon_den_friend.png"] { transition: filter 0.2s; }
+a:hover > img[src$="icon_den_message.png"], a:hover > img[src$="icon_den_friend.png"] { filter: brightness(1.2) drop-shadow(0 0 4px var(--steel)); }
 
-
-/* ============================================================
-   TEXT BOXES & BUTTONS
-   ============================================================ */
-
-input, textarea, select {
-  background: var(--field) !important;
-  color: var(--white) !important;
-  border: 1px solid var(--line) !important;
-  border-radius: var(--radius-sm) !important;
-  text-shadow: none !important;
-  font-family: var(--font-body);
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-input:focus, textarea:focus, select:focus {
-  border-color: var(--ember) !important;
-  box-shadow: 0 0 0 2px rgba(242,166,90,0.25) !important;
-  outline: none !important;
-}
-button.button, a.btn.btn-default.button, input[type="submit"], input[type="button"], .btn {
-  background: rgba(255,255,255,0.1) !important;
-  color: var(--white) !important;
-  border: 1px solid var(--line-hi) !important;
-  border-radius: 999px !important;
-  text-shadow: none !important;
-  font-family: var(--font-body);
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  padding-left: 18px !important;
-  padding-right: 18px !important;
-  box-shadow: none !important;
-  transition: background 0.15s, color 0.15s;
-}
-button.button:hover, a.btn.btn-default.button:hover, input[type="submit"]:hover, input[type="button"]:hover, .btn:hover {
-  background: var(--white) !important;
-  color: #000000 !important;
-  border-color: var(--white) !important;
-}
-/* the delete-comment button carries the coral */
-input.bad { background: var(--coral) !important; color: var(--white) !important; }
-
-
-/* ============================================================
-   CAVES & MOUNDS
-   ============================================================ */
-
-.cave-grid, .mound-grid {
-  overflow: hidden;
-  border-radius: var(--radius) !important;
-  transition: border-color 0.25s, color 0.25s;
-}
+/* cave & mound tiles */
+.cave-grid, .mound-grid { overflow: hidden; transition: border-color 0.25s, color 0.25s, box-shadow 0.25s; }
 .cave-grid:hover, .mound-grid:hover, a:hover > .cave-grid, a:hover > .mound-grid {
-  border-color: rgba(var(--steel-rgb),0.6) !important;
   color: var(--steel) !important;
+  border-color: rgba(var(--steel-rgb),0.6) !important;
   box-shadow: 0 0 12px rgba(var(--steel-rgb),0.35) !important;
 }
-.cave-grid:hover *, .mound-grid:hover * { color: var(--steel) !important; text-shadow: 0 0 6px rgba(var(--steel-rgb),0.9), 0 0 14px rgba(var(--steel-rgb),0.6) !important; }
-div.cave-grid > img { border-radius: var(--radius-sm); }
-.mound-grid img     { border-radius: var(--radius-sm); }
+.cave-grid:hover *, .mound-grid:hover * { color: var(--steel) !important; text-shadow: var(--glow-steel) !important; }
+div.cave-grid > img, .mound-grid img { border-radius: var(--radius-sm); }
 
-/* ---- custom covers ---------------------------------------------
-   Files live in the repo: https://lovetiger1251.github.io/liodencss/<file>
-   Lioden markup (from the v3 template):
-     pregnant lionesses  = div.cave-grid > img  (nestingbanner.png, no link around it)
-     dens                = a[href=CAVEID] > div.cave-grid > img
-     unsorted / overview = a[href*=unsorted.php|lionoverview.php] > div.cave-grid > img
-     beetles + mounds    = mound tiles (div.mound-grid) / a[href*=unsorted-beetles|mound] img
-     banners             = img in div.left (ancestors / ancestorsfem / achievements / showcase / beetle book)
-   Rules are ordered least -> most specific so overrides win. */
-
-/* first.jpg - base for every cave slot, which is what the pregnant-lionesses banner uses */
-div.cave-grid > img {
+/* custom covers — ordered least to most specific so later rules win */
+div.cave-grid > img {                                        /* base: pregnant lionesses banner */
   content: url('https://lovetiger1251.github.io/liodencss/first.jpg') !important;
   width: 258px !important;
   max-width: 100% !important;
   height: auto !important;
 }
-
-/* third.jpg - dens (cave tiles that are links) */
-a > div.cave-grid > img {
+a > div.cave-grid > img {                                    /* dens */
   content: url('https://lovetiger1251.github.io/liodencss/third.jpg') !important;
 }
-
-/* first.jpg - unsorted, pregnant lionesses, pride overview (beats the den rule above) */
-a[href*="unsorted.php"] > div.cave-grid > img,
+a[href*="unsorted.php"] > div.cave-grid > img,               /* unsorted · overview · nesting */
 a[href*="lionoverview.php"] > div.cave-grid > img,
-a[href*="nesting"] > div.cave-grid > img,
-a[href*="pregnant"] > div.cave-grid > img,
-div.cave-grid > img[src*="nestingbanner"],
 div.cave-grid > img[src*="nesting"] {
   content: url('https://lovetiger1251.github.io/liodencss/first.jpg') !important;
 }
-
-/* second.jpg - beetles tile, +create mound, and any beetle mound */
-div.mound-grid img,
+div.mound-grid img,                                          /* beetles · mounds */
 a[href*="unsorted-beetles"] img,
 a[href*="beetles.php"] img,
-a[href*="mound"] img,
-a[href*="unsorted-beetles"] > div > img,
-a[href*="beetles.php"] > div > img,
-a[href*="mound"] > div > img {
+a[href*="mound"] img {
   content: url('https://lovetiger1251.github.io/liodencss/second.jpg') !important;
   width: 100% !important;
   height: auto !important;
 }
-
-/* fourth.jpg - king dynasty, pride dynasty, achievements, showcase, beetle book banners.
-   Matched on the name inside the src (not the extension) so a .jpg/.png change or a
-   cache-busting query string can't break it; div.left img is the catch-all for the same block. */
-div.left img,
-img[src*="ancestors"],
-img[src*="achievements"],
-img[src*="showcase"],
-img[src*="beetlebook"], img[src*="beetle_book"], img[src*="beetle-book"],
-a[href*="dynasty"] img, a[href*="ancestors"] img, a[href*="achievements"] img,
-a[href*="showcase"] img, a[href*="beetlebook"] img, a[href*="beetle_book"] img, a[href*="beetle-book"] img {
+div.left img,                                                /* dynasty · achievements · showcase · beetle book */
+img[src*="ancestors"], img[src*="achievements"], img[src*="showcase"],
+img[src*="beetlebook"], img[src*="beetle_book"], img[src*="beetle-book"] {
   content: url('https://lovetiger1251.github.io/liodencss/fourth.jpg') !important;
   width: 100% !important;
   height: auto !important;
@@ -529,132 +432,117 @@ a[href*="showcase"] img, a[href*="beetlebook"] img, a[href*="beetle_book"] img, 
   filter: none !important;
 }
 
-.featured-lion { padding: 0; margin: 0 auto; max-width: 640px; font-size: 18px; }
-div.lion-image-block { overflow: hidden; border-radius: var(--radius); }
-table#pride.table, table#pride.table a, table#pride.table a:visited { color: var(--text) !important; }
-table#pride.table .xsmall { font-size: 12px !important; }
 
+/* 9  DESCRIPTION BOXES ---------------------------------------------------
+   <div class="boxcontainer"><div class="Box1">…</div></div>
+   <div class="boxcontainer"><div class="Box3">…</div><div class="Box2">…</div></div>
+   Mobile: <div class="mobilebox">…</div>
+   ------------------------------------------------------------------------- */
 
-/* ============================================================
-   BOXES for the territory description
-   <div class="boxcontainer"><div class="Box1">text</div></div>
-   <div class="boxcontainer"><div class="Box3">text</div><div class="Box2">text</div></div>
-   Mobile: <div class="mobilebox">text</div>
-   ============================================================ */
-
-.boxcontainer { background: none; height: 75px; padding: 0; display: block; transition: 1s; }
+.boxcontainer { display: block; height: 75px; padding: 0; background: none; transition: 1s; }
 .boxcontainer:hover { height: 250px; }
 
-.Box1, .Box2, .Box3 { padding: 14px; height: 75px; overflow: hidden; margin-bottom: 10px; transition: 1s; }
+.Box1, .Box2, .Box3 { height: 75px; padding: 14px; margin-bottom: 10px; overflow: hidden; transition: 1s; }
 .Box1 { float: left;  width: 100%; }
-.Box2 { float: right; width: 30%;  }
-.Box3 { float: left;  width: 65%;  }
-.Box1:hover, .Box2:hover, .Box3:hover { overflow-y: auto; height: 250px; border-color: var(--line-hi) !important; }
+.Box2 { float: right; width: 30%; }
+.Box3 { float: left;  width: 65%; }
+.Box1:hover, .Box2:hover, .Box3:hover { height: 250px; overflow-y: auto; border-color: var(--line-hi) !important; }
 
-.mobilebox { margin: 10px auto; padding: 14px; height: 155px; width: 80%; overflow: auto; }
+.mobilebox { width: 80%; height: 155px; margin: 10px auto; padding: 14px; overflow: auto; }
 
-@media only screen and (min-width: 1200px) {
+@media (min-width: 1200px) {
   .mobilebox { display: none !important; }
   div.quote  { width: 790px; }
 }
-@media only screen and (max-width: 1199px) {
+@media (max-width: 1199px) {
   .Box1, .Box2, .Box3, .boxcontainer { display: none !important; }
   .mobilebox { display: block !important; }
 }
-@media only screen and (max-width: 767px) {
+@media (max-width: 767px) {
   .container.main .hidden-xs { display: block !important; }
   h1 { font-size: 36px; letter-spacing: 3px; }
 }
 
-/* ============================================================
-   SHOOTING STARS - three streaks on fixed layers behind the main
-   sheet, 15 degree descent from the top-left, slow, twelve lanes down
-   the page, no two stars ever sharing one. body::after is the made-by tag, so these use
-   body::before, html::before and html::after.
-   Tweak: duration = pace of the whole cycle (travel is the first ~30%),
-   animation-delay = when each one first fires, the vh value in the
-   0% frame = how high it starts.
-   ============================================================ */
+
+/* 10  SHOOTING STARS -----------------------------------------------------
+   Three fixed layers behind the main sheet (body::after is the signature).
+   Each layer holds four stars, every one on its own lane and its own point
+   along the path — twelve lanes between -15vh and 35vh, none shared.
+   All stars cross in ~20 s at 15°; the layers cycle at 40 / 44 / 49 s so the
+   on-screen combination never repeats on a short loop.
+     · cycle length  → animation duration
+     · first launch  → animation-delay
+     · lane height   → the vh value in the 0% frame + the layer height
+   ------------------------------------------------------------------------- */
 
 body::before, html::before, html::after {
   content: '';
   position: fixed;
-  left: 0; top: 0;
+  top: 0;
+  left: 0;
   z-index: -1;
-  pointer-events: none;
   background-repeat: no-repeat;
-  background-size: contain;
   opacity: 0;
+  pointer-events: none;
   will-change: transform, opacity;
 }
-/* Each layer carries FOUR stars, every one on its OWN lane (different
-   vertical offset inside the rotated layer) and at its own point along the
-   path, so no two stars ever share a track. Twelve lanes in all, spaced
-   unevenly between -15vh and 35vh, so nothing spawns in the lower part
-   of the screen. The three layers run on cycles that are
-   not multiples of each other (40 / 44 / 49s), so the combination of
-   what is on screen keeps changing instead of repeating every loop.
-   Crossing time is ~20s for every star (15% slower than before). */
-body::before {                                   /* lanes -8, 2, 13, 26 vh */
-  width: calc(760px + 60vw); height: calc(84px + 34vh);
+body::before {                                   /* lanes -8 · 2 · 13 · 26 vh */
+  width: calc(760px + 60vw);
+  height: calc(84px + 34vh);
   background-image:
     url('https://lovetiger1251.github.io/liodencss/star1.png'), url('https://lovetiger1251.github.io/liodencss/star3.png'),
     url('https://lovetiger1251.github.io/liodencss/star2.png'), url('https://lovetiger1251.github.io/liodencss/star3.png');
   background-size: 760px 84px, 340px 56px, 520px 70px, 340px 56px;
   background-position: 0% 0%, 62% 30%, 28% 62%, 90% 100%;
   animation: star-a 40s linear infinite;
-  animation-delay: 0s;
 }
-html::before {                                   /* lanes -1, 8, 19, 35 vh */
-  width: calc(520px + 60vw); height: calc(84px + 36vh);
+html::before {                                   /* lanes -1 · 8 · 19 · 35 vh */
+  width: calc(520px + 60vw);
+  height: calc(84px + 36vh);
   background-image:
     url('https://lovetiger1251.github.io/liodencss/star2.png'), url('https://lovetiger1251.github.io/liodencss/star1.png'),
     url('https://lovetiger1251.github.io/liodencss/star3.png'), url('https://lovetiger1251.github.io/liodencss/star1.png');
   background-size: 520px 70px, 760px 84px, 340px 56px, 760px 84px;
   background-position: 50% 0%, 8% 24%, 84% 55%, 30% 100%;
-  animation: star-b 44s linear infinite;
-  animation-delay: 13s;
+  animation: star-b 44s linear infinite 13s;
 }
-html::after {                                    /* lanes -15, -2, 9, 15 vh */
-  width: calc(340px + 60vw); height: calc(70px + 30vh);
+html::after {                                    /* lanes -15 · -2 · 9 · 15 vh */
+  width: calc(340px + 60vw);
+  height: calc(70px + 30vh);
   background-image:
     url('https://lovetiger1251.github.io/liodencss/star3.png'), url('https://lovetiger1251.github.io/liodencss/star2.png'),
     url('https://lovetiger1251.github.io/liodencss/star1.png'), url('https://lovetiger1251.github.io/liodencss/star2.png');
   background-size: 340px 56px, 520px 70px, 760px 84px, 520px 70px;
   background-position: 18% 0%, 70% 42%, 44% 80%, 96% 100%;
-  animation: star-c 49s linear infinite;
-  animation-delay: 27s;
-  opacity: 0;
+  animation: star-c 49s linear infinite 27s;
 }
 
-/* Every layer crosses in ~20s; the travel share of each cycle differs
-   because the cycles differ (50% of 40s, 45% of 44s, 41% of 49s).
-   15 degrees: vertical drop = horizontal travel x 0.268 */
+/* 15° descent: vertical drop = horizontal travel × 0.268 */
 @keyframes star-a {
-  0%   { opacity: 0; transform: translate(calc(-760px - 60vw), -8vh)         rotate(15deg); }
+  0%   { opacity: 0; transform: translate(calc(-760px - 60vw), -8vh)            rotate(15deg); }
   2%   { opacity: 1; }
-  50%  { opacity: 1; transform: translate(110vw, calc(-8vh + 45.6vw + 204px)) rotate(15deg); }
-  53%  { opacity: 0; transform: translate(114vw, calc(-8vh + 46.6vw + 204px)) rotate(15deg); }
-  100% { opacity: 0; transform: translate(114vw, calc(-8vh + 46.6vw + 204px)) rotate(15deg); }
+  50%  { opacity: 1; transform: translate(110vw, calc(-8vh + 45.6vw + 204px))    rotate(15deg); }
+  53%  { opacity: 0; transform: translate(114vw, calc(-8vh + 46.6vw + 204px))    rotate(15deg); }
+  100% { opacity: 0; transform: translate(114vw, calc(-8vh + 46.6vw + 204px))    rotate(15deg); }
 }
 @keyframes star-b {
-  0%   { opacity: 0; transform: translate(calc(-520px - 60vw), -1vh)         rotate(15deg); }
+  0%   { opacity: 0; transform: translate(calc(-520px - 60vw), -1vh)            rotate(15deg); }
   2%   { opacity: 0.9; }
-  45%  { opacity: 0.9; transform: translate(110vw, calc(-1vh + 45.6vw + 139px)) rotate(15deg); }
-  48%  { opacity: 0; transform: translate(114vw, calc(-1vh + 46.6vw + 139px)) rotate(15deg); }
-  100% { opacity: 0; transform: translate(114vw, calc(-1vh + 46.6vw + 139px)) rotate(15deg); }
+  45%  { opacity: 0.9; transform: translate(110vw, calc(-1vh + 45.6vw + 139px))  rotate(15deg); }
+  48%  { opacity: 0; transform: translate(114vw, calc(-1vh + 46.6vw + 139px))    rotate(15deg); }
+  100% { opacity: 0; transform: translate(114vw, calc(-1vh + 46.6vw + 139px))    rotate(15deg); }
 }
 @keyframes star-c {
-  0%   { opacity: 0; transform: translate(calc(-340px - 60vw), -15vh)        rotate(15deg); }
+  0%   { opacity: 0; transform: translate(calc(-340px - 60vw), -15vh)           rotate(15deg); }
   2%   { opacity: 0.8; }
-  41%  { opacity: 0.8; transform: translate(110vw, calc(-15vh + 45.6vw + 91px)) rotate(15deg); }
-  44%  { opacity: 0; transform: translate(114vw, calc(-15vh + 46.6vw + 91px)) rotate(15deg); }
-  100% { opacity: 0; transform: translate(114vw, calc(-15vh + 46.6vw + 91px)) rotate(15deg); }
+  41%  { opacity: 0.8; transform: translate(110vw, calc(-15vh + 45.6vw + 91px))  rotate(15deg); }
+  44%  { opacity: 0; transform: translate(114vw, calc(-15vh + 46.6vw + 91px))    rotate(15deg); }
+  100% { opacity: 0; transform: translate(114vw, calc(-15vh + 46.6vw + 91px))    rotate(15deg); }
 }
 
-@media screen and (max-width: 600px) { body::before, html::before, html::after { display: none; } }
-
-/* stops the title motion and the stars for visitors with reduce-motion on */
+@media (max-width: 600px) {
+  body::before, html::before, html::after { display: none; }
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
