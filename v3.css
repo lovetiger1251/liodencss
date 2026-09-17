@@ -1,6 +1,6 @@
 /* ==========================================================================
    TIGER'S DEN — Lioden territory stylesheet
-   v4.2 · 2026-09-17
+   v4.4 · 2026-09-17
 
    Dark glass over a deep-space background. Black & white with a few warm
    accents, thin hairlines, one glowing title, and shooting stars behind the
@@ -62,7 +62,7 @@
   --radius:    16px;
   --radius-sm: 10px;
   --shadow:    0 8px 28px rgba(0,0,0,0.45);
-  --text-shadow: 0 1px 3px rgba(0,0,0,0.85);
+  --text-shadow: 1px 1px 0 #000, 0 2px 2px rgba(0,0,0,0.9);   /* crisp offset + tight 2px blur */
   --glow-soft:   0 0 4px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.6), var(--text-shadow);
   --glow-steel:  0 0 6px rgba(var(--steel-rgb),0.9), 0 0 14px rgba(var(--steel-rgb),0.6);
 }
@@ -103,18 +103,12 @@ h1 {
   text-transform: uppercase;
   text-align: center !important;
   color: var(--white) !important;
-  animation: title-glow 6s ease-in-out infinite, title-drift 26s ease-in-out infinite;
-}
-@keyframes title-glow {
-  0%, 100% { text-shadow: 0 0 5px #fff, 0 0 14px #fff, 0 0 32px rgba(255,255,255,0.8),  0 0 58px rgba(255,255,255,0.55), 0 0 90px  rgba(var(--ember-rgb),0.45); }
-  50%      { text-shadow: 0 0 7px #fff, 0 0 20px #fff, 0 0 46px rgba(255,255,255,0.95), 0 0 82px rgba(255,255,255,0.75), 0 0 115px rgba(232,115,107,0.55); }
-}
-@keyframes title-drift {
-  0%   { transform: translate(0, 0)      rotate(0); }
-  22%  { transform: translate(3px, -2px) rotate(0.4deg); }
-  48%  { transform: translate(-2px, -4px) rotate(-0.3deg); }
-  70%  { transform: translate(-3px, 1px) rotate(0.3deg); }
-  100% { transform: translate(0, 0)      rotate(0); }
+  text-shadow: 0 0 5px #fff, 0 0 14px #fff, 0 0 32px rgba(255,255,255,0.8), 0 0 58px rgba(255,255,255,0.55), 0 0 90px rgba(var(--ember-rgb),0.45);
+  animation: none !important;   /* static title: no pulse, no drift */
+  transform: scaleY(1.3) !important;   /* taller letters, same width — raise/lower this number to taste */
+  transform-origin: center;
+  margin-top: 28px;                    /* room for the extra height (scaling doesn't push layout) */
+  margin-bottom: 18px;
 }
 
 h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing: 2px; color: var(--white) !important; }
@@ -381,13 +375,9 @@ div#lion_image:hover, table#player img:hover {
   box-shadow: 0 6px 20px rgba(0,0,0,0.5), 0 0 12px rgba(var(--steel-rgb),0.45);
 }
 
-/* den action icons: greyscale, except message + add-friend keep their colour */
-img[src$="icon_den_gift.png"], img[src$="icon_den_trade.png"], img[src$="icon_den_viewtrade.png"],
-img[src$="icon_den_wishlist.png"], img[src$="icon_den_block.png"] { filter: grayscale(1) brightness(1.6); transition: filter 0.2s; }
-a:hover > img[src$="icon_den_gift.png"], a:hover > img[src$="icon_den_trade.png"], a:hover > img[src$="icon_den_viewtrade.png"],
-a:hover > img[src$="icon_den_wishlist.png"], a:hover > img[src$="icon_den_block.png"] { filter: grayscale(1) brightness(2) drop-shadow(0 0 4px var(--steel)); }
-img[src$="icon_den_message.png"], img[src$="icon_den_friend.png"] { transition: filter 0.2s; }
-a:hover > img[src$="icon_den_message.png"], a:hover > img[src$="icon_den_friend.png"] { filter: brightness(1.2) drop-shadow(0 0 4px var(--steel)); }
+/* den action icons: full colour, soft glow on hover */
+img[src*="icon_den_"] { filter: none !important; transition: filter 0.2s; }
+a:hover > img[src*="icon_den_"] { filter: brightness(1.2) drop-shadow(0 0 4px var(--steel)) !important; }
 
 /* cave & mound tiles */
 .cave-grid, .mound-grid { overflow: hidden; transition: border-color 0.25s, color 0.25s, box-shadow 0.25s; }
