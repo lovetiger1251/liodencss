@@ -1,6 +1,6 @@
 /* ==========================================================================
    TIGER'S DEN — Lioden territory stylesheet
-   v4.1 · 2026-09-17
+   v4.2 · 2026-09-17
 
    Dark glass over a deep-space background. Black & white with a few warm
    accents, thin hairlines, one glowing title, and shooting stars behind the
@@ -17,15 +17,15 @@
      tsu.png                          background
      starlogo.png                     logo (crescent moon)
      star1.png  star2.png  star3.png  shooting stars
-     first.jpg                        unsorted · pregnant lionesses · pride overview
-     second.jpg                       beetles / mounds
-     third.jpg                        dens
+     first.jpg                        dens
+     second.jpg                       unsorted · pregnant lionesses · pride overview
+     third.jpg                        beetles / mounds
      fourth.jpg                       dynasty · achievements · showcase · beetle book
 
    CONTENTS
      1  Tokens          6  Comments & chat
      2  Base            7  Tables & key text
-     3  Typography      8  Portraits, icons, covers
+     3  Typography      8  Portraits, icons, covers (animated)
      4  Surfaces        9  Description boxes
      5  Controls       10  Shooting stars · reduced motion
    ========================================================================== */
@@ -430,6 +430,53 @@ img[src*="beetlebook"], img[src*="beetle_book"], img[src*="beetle-book"] {
   height: auto !important;
   border-radius: var(--radius-sm) !important;
   filter: none !important;
+}
+
+/* animated covers — slow float + glow pulse, each cover on its own rhythm.
+   Same selector order as the cover rules above, so the same rule wins.
+     · more / less movement → the px, deg and scale values in cover-float
+     · glow strength        → the alpha values in cover-glow
+     · speed                → animation-duration (float, glow)               */
+div.cave-grid > img,
+div.mound-grid img,
+a[href*="unsorted-beetles"] img, a[href*="beetles.php"] img, a[href*="mound"] img,
+div.left img,
+img[src*="ancestors"], img[src*="achievements"], img[src*="showcase"],
+img[src*="beetlebook"], img[src*="beetle_book"], img[src*="beetle-book"] {
+  animation: cover-float 10s ease-in-out infinite, cover-glow 7s ease-in-out infinite;
+  will-change: transform;
+}
+a > div.cave-grid > img {                                    /* first.jpg */
+  animation-duration: 12s, 8s;
+  animation-delay: -3s, -2s;
+}
+a[href*="unsorted.php"] > div.cave-grid > img,               /* second.jpg */
+a[href*="lionoverview.php"] > div.cave-grid > img,
+div.cave-grid > img[src*="nesting"] {
+  animation-duration: 10s, 7s;
+  animation-delay: 0s, 0s;
+}
+div.mound-grid img,                                          /* third.jpg */
+a[href*="unsorted-beetles"] img,
+a[href*="beetles.php"] img,
+a[href*="mound"] img {
+  animation-duration: 14s, 9s;
+  animation-delay: -6s, -4s;
+}
+div.left img,                                                /* fourth.jpg */
+img[src*="ancestors"], img[src*="achievements"], img[src*="showcase"],
+img[src*="beetlebook"], img[src*="beetle_book"], img[src*="beetle-book"] {
+  animation-duration: 11s, 6s;
+  animation-delay: -8s, -1s;
+}
+@keyframes cover-float {
+  0%, 100% { transform: translate(0, 0)       rotate(0)       scale(1); }
+  30%      { transform: translate(2px, -4px)  rotate(0.5deg)  scale(1.015); }
+  65%      { transform: translate(-2px, -2px) rotate(-0.4deg) scale(1.02); }
+}
+@keyframes cover-glow {
+  0%, 100% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+  50%      { box-shadow: 0 0 14px rgba(255,255,255,0.35), 0 0 28px rgba(var(--steel-rgb),0.3); }
 }
 
 
