@@ -1,6 +1,6 @@
 /* ==========================================================================
    TIGER'S DEN — Lioden territory stylesheet
-   v4.8 · 2026-09-19
+   v4.9 · 2026-09-19
 
    Dark glass over a deep-space background. Black & white with a few warm
    accents, thin hairlines, one glowing title, and shooting stars behind the
@@ -124,8 +124,11 @@ body:has(table#player) h1::after {
   margin: 12px auto 0;
   background: url('https://lovetiger1251.github.io/liodencss/lion.png') center / contain no-repeat;
   filter: none;                                  /* no glow or outline */
-  transform: translateX(24px) scaleY(0.7692);    /* 24px = nudge right; raise/lower to taste */
+  transform: translateX(64px) scaleY(0.7692);    /* 64px = nudge right; raise/lower to taste */
   transform-origin: top;
+}
+@media (max-width: 767px) {                       /* small screens: smaller nudge so nothing runs off the edge */
+  body:has(table#player) h1::after { transform: translateX(16px) scaleY(0.7692); }
 }
 
 /* link under the lion. CSS can't create a link, so the link itself lives in
@@ -135,33 +138,31 @@ body:has(table#player) h1::after {
    without anchor positioning leave it where it sits in the description. */
 @supports (anchor-name: --a) {
   body:has(table#player) h1 { anchor-name: --den-title; }
-  body:has(.lionlink) h1    { margin-bottom: 84px !important; }   /* room for the link */
+  body:has(.lionlink) h1    { margin-bottom: 64px !important; }   /* room for the link */
   .lionlink {
     position: absolute;
     position-anchor: --den-title;
-    top: calc(anchor(bottom) + 32px);          /* title's stretch overhang + gap below the lion */
+    top: calc(anchor(bottom) + 22px);          /* title's stretch overhang + gap; lower number = higher link */
     left: anchor(center);
-    transform: translateX(calc(-50% + 24px));  /* centred on the lion (same 24px nudge) */
+    transform: translateX(calc(-50% + 24px));  /* fixed spot — independent of the lion's nudge */
     margin: 0;
     z-index: 5;
     white-space: nowrap;
   }
 }
-.lionlink a {
-  display: inline-block;
-  padding: 6px 20px;
-  background: rgba(255,255,255,0.1) !important;
-  border: 1px solid var(--line-hi);
-  border-radius: 999px;
+.lionlink a:link, .lionlink a:visited {
+  color: #F5CF87 !important;
+  background: none !important;
+  border: none;
+  padding: 0;
   font-family: var(--font-display);
   font-size: 17px;
   letter-spacing: 2px;
-  transition: background 0.15s, color 0.15s;
+  transition: color 0.15s, text-shadow 0.15s;
 }
 .lionlink a:hover {
-  background: var(--white) !important;
-  color: #000 !important;
-  text-shadow: none !important;
+  color: #fff !important;
+  text-shadow: 0 0 6px rgba(245,207,135,0.9), 0 0 14px rgba(245,207,135,0.6), var(--text-shadow) !important;
 }
 
 h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing: 2px; color: var(--white) !important; }
