@@ -1,6 +1,6 @@
 /* ==========================================================================
    TIGER'S DEN — Lioden territory stylesheet
-   v4.6 · 2026-09-19
+   v4.7 · 2026-09-19
 
    Dark glass over a deep-space background. Black & white with a few warm
    accents, thin hairlines, one glowing title, and shooting stars behind the
@@ -123,8 +123,8 @@ body:has(table#player) h1::after {
   aspect-ratio: 416 / 210;
   margin: 12px auto 0;
   background: url('https://lovetiger1251.github.io/liodencss/lion.png') center / contain no-repeat;
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.7)) drop-shadow(0 0 14px rgba(255,255,255,0.25));
-  transform: scaleY(0.7692);
+  filter: none;                                  /* no glow or outline */
+  transform: translateX(24px) scaleY(0.7692);    /* 24px = nudge right; raise/lower to taste */
   transform-origin: top;
 }
 
