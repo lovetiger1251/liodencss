@@ -1,6 +1,6 @@
 /* ==========================================================================
    TIGER'S DEN — Lioden territory stylesheet
-   v4.7 · 2026-09-19
+   v4.8 · 2026-09-19
 
    Dark glass over a deep-space background. Black & white with a few warm
    accents, thin hairlines, one glowing title, and shooting stars behind the
@@ -126,6 +126,42 @@ body:has(table#player) h1::after {
   filter: none;                                  /* no glow or outline */
   transform: translateX(24px) scaleY(0.7692);    /* 24px = nudge right; raise/lower to taste */
   transform-origin: top;
+}
+
+/* link under the lion. CSS can't create a link, so the link itself lives in
+   the territory description:
+     <div class="lionlink"><a href="YOUR-URL">YOUR TEXT</a></div>
+   and is moved up under the lion with CSS anchor positioning. Browsers
+   without anchor positioning leave it where it sits in the description. */
+@supports (anchor-name: --a) {
+  body:has(table#player) h1 { anchor-name: --den-title; }
+  body:has(.lionlink) h1    { margin-bottom: 84px !important; }   /* room for the link */
+  .lionlink {
+    position: absolute;
+    position-anchor: --den-title;
+    top: calc(anchor(bottom) + 32px);          /* title's stretch overhang + gap below the lion */
+    left: anchor(center);
+    transform: translateX(calc(-50% + 24px));  /* centred on the lion (same 24px nudge) */
+    margin: 0;
+    z-index: 5;
+    white-space: nowrap;
+  }
+}
+.lionlink a {
+  display: inline-block;
+  padding: 6px 20px;
+  background: rgba(255,255,255,0.1) !important;
+  border: 1px solid var(--line-hi);
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 17px;
+  letter-spacing: 2px;
+  transition: background 0.15s, color 0.15s;
+}
+.lionlink a:hover {
+  background: var(--white) !important;
+  color: #000 !important;
+  text-shadow: none !important;
 }
 
 h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing: 2px; color: var(--white) !important; }
