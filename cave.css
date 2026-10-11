@@ -1,0 +1,601 @@
+/* ==========================================================================
+   TIGER'S DEN — Lioden CAVE stylesheet
+   v4.11 · 2026-10-11
+
+   Dark glass over a deep-space background. Black & white with a few warm
+   accents, thin hairlines, one glowing title, and shooting stars behind the
+   sheet. Based on the community Lioden CSS template (Jester #187561,
+   Katie #106445 and contributors).
+
+   Same theme as the den stylesheet (v3.css), minus the den-only parts
+   (title link, king/stats table, den action icons).
+
+   INSTALL
+     Cave settings → Cave CSS URL:
+       https://lovetiger1251.github.io/liodencss/cave.css
+
+   ASSETS (same folder as this file)
+     tsu.png                          background
+     starlogo.png                     logo (crescent moon)
+     star1.png  star2.png  star3.png  shooting stars
+     first.jpg                        dens
+     second.jpg                       unsorted · pregnant lionesses · pride overview
+     third.jpg                        beetles / mounds
+     fourth.jpg                       dynasty · achievements · showcase · beetle book
+
+   CONTENTS
+     1  Tokens          6  Comments & chat
+     2  Base            7  Tables & key text
+     3  Typography      8  Portraits, icons, covers (animated)
+     4  Surfaces        9  Description boxes
+     5  Controls       10  Shooting stars · reduced motion
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Poiret+One&family=Josefin+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+
+/* 1  TOKENS ------------------------------------------------------------- */
+
+:root {
+  --font-title:   'Julius Sans One', 'Poiret One', sans-serif;
+  --font-display: 'Poiret One', 'Josefin Sans', sans-serif;
+  --font-body:    'Josefin Sans', 'Segoe UI', sans-serif;
+
+  --white:  #ffffff;
+  --text:   #f2f2f2;
+  --muted:  #b5b5b5;
+
+  --ember:  #f2a65a;              /* orange  — focus rings, pinned chat   */
+  --coral:  #e8736b;              /* red     — pings, delete button       */
+  --blush:  #f08fb0;              /* pink    — end of the sunset gradient */
+  --steel:  #8fa8c4;              /* grey-blue — breadcrumb current page  */
+  --ping:   #8b1a3a;              /* deep crimson — chat pings (9:1 vs white text) */
+  --ember-rgb: 242,166,90;
+  --steel-rgb: 143,168,196;
+  --sunset: linear-gradient(90deg, var(--ember), var(--coral) 55%, var(--blush));
+
+  --line:    rgba(255,255,255,0.22);
+  --line-hi: rgba(255,255,255,0.45);
+  --sheet:   rgba(0,0,0,0.42);    /* main container                       */
+  --panel:   rgba(0,0,0,0.38);    /* every inner surface                  */
+  --panel-2: rgba(255,255,255,0.06);
+  --field:   rgba(0,0,0,0.45);    /* inputs                               */
+
+  --radius:    16px;
+  --radius-sm: 10px;
+  --shadow:    0 8px 28px rgba(0,0,0,0.45);
+  --text-shadow: 1px 1px 0 #000, 0 2px 2px rgba(0,0,0,0.9);   /* crisp offset + tight 2px blur */
+  --glow-soft:   0 0 4px rgba(255,255,255,0.9), 0 0 12px rgba(255,255,255,0.6), var(--text-shadow);
+  --glow-white:  0 0 6px rgba(255,255,255,0.9), 0 0 14px rgba(255,255,255,0.6);   /* every hover glow */
+  --chat-bg:     rgba(0,0,0,0.85);  /* chat: solid black, slightly see-through — raise toward 1 for less */
+}
+
+
+/* 2  BASE --------------------------------------------------------------- */
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text) !important;
+  text-shadow: var(--text-shadow);
+}
+@media (min-width: 601px) {
+  body { background: #000 url('https://lovetiger1251.github.io/liodencss/tsu.png') center / cover no-repeat fixed !important; }
+}
+@media (max-width: 600px) {
+  body { background: linear-gradient(180deg, #000 0%, #141414 60%, #2a2a2a 100%) fixed !important; }
+}
+html.nolayout { background: none !important; }
+
+* { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.35) rgba(0,0,0,0.5); }
+::-webkit-scrollbar       { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.5); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.35); border-radius: 8px; }
+
+
+/* 3  TYPOGRAPHY --------------------------------------------------------- */
+
+h1 {
+  display: inline-block;
+  width: 100%;
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 1.1;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  text-align: center !important;
+  color: var(--white) !important;
+  text-shadow: 0 0 5px #fff, 0 0 14px #fff, 0 0 32px rgba(255,255,255,0.8), 0 0 58px rgba(255,255,255,0.55), 0 0 90px rgba(var(--ember-rgb),0.45);
+  animation: none !important;   /* static title: no pulse, no drift */
+  transform: scaleY(1.3) !important;   /* taller letters, same width — raise/lower this number to taste */
+  transform-origin: top;               /* stretch downward only */
+  margin-top: 20px !important;
+  margin-bottom: 30px !important;      /* room for the stretch (scaling doesn't push layout) */
+}
+
+h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing: 2px; color: var(--white) !important; }
+h2 { font-size: 30px; }
+h3 { font-size: 24px; }
+
+.topbar { font-weight: 500; }
+.navbar { font-family: var(--font-display); font-size: 20px; letter-spacing: 2px; }
+
+a:link, a:visited { color: var(--white) !important; background: none !important; text-decoration: none; font-weight: 500; transition: color 0.2s; }
+a:hover           { color: var(--white) !important; text-shadow: var(--glow-white), var(--text-shadow) !important; }
+.footer a, td.bottom a, th a, .bottom a { border-bottom: none !important; text-decoration: none !important; }
+
+/* glowing names: king's strip, sidebar lion name, your username */
+.featured-lion, .featured-lion a,
+.panel h3, .panel h3 a,
+.topbar a[href*="den.php"], .topbar > a:first-of-type,
+.breadcrumb .active { text-shadow: var(--glow-soft); }
+
+
+/* 4  SURFACES ----------------------------------------------------------- */
+
+.container.main {
+  background: var(--sheet) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow) !important;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.row, .col-md-9, .col-md-3, .col-sm-9, .col-sm-3 { background: none !important; }
+
+.topbar, .navbar, .breadcrumb, .panel, .feature, .alert, div.left, div#commentBox,
+.cave-grid, .mound-grid, .Box1, .Box2, .Box3, .mobilebox, div.emoteList.active,
+.well, .dropdown-menu, .modal-content, .popover, .tooltip-inner,
+pre, code, blockquote, div.quote, fieldset, .footer, .nav-tabs > li > a {
+  background: var(--panel) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+}
+hr { border-color: var(--line) !important; }
+
+.topbar, .navbar, .breadcrumb { border-radius: 999px !important; }
+.navbar li a { border-radius: 999px; color: var(--white) !important; transition: background 0.2s; }
+.navbar li a:hover { background: rgba(var(--ember-rgb),0.16) !important; }
+.navbar-toggle   { background: var(--panel) !important; border: 1px solid var(--line) !important; border-radius: 999px !important; }
+.navbar-collapse { border-top: none !important; box-shadow: none !important; }
+
+.breadcrumb .active { color: var(--steel) !important; }
+.breadcrumb > li + li::before { content: "/  " !important; color: var(--muted) !important; }
+
+.dropdown-menu > li > a { color: var(--text) !important; }
+.dropdown-menu > li > a:hover { background: rgba(255,255,255,0.1) !important; }
+
+.alert, .alert-success, .alert-danger, .alert-warning, .alert-info {
+  background: var(--panel) !important;
+  background-image: none !important;
+  border-radius: var(--radius-sm) !important;
+  text-align: center !important;
+}
+
+.feature { border-color: var(--line-hi) !important; }
+div.left { transition: border-color 0.2s; }
+div.left:hover { border-color: var(--line-hi) !important; }
+.xsmall { font-size: 14px !important; }
+
+/* logo — crescent moon (starlogo.png, transparent 582×639). Drawn at
+   118×130 and centred in the 192×120 slot with equal side margins; the
+   5px vertical overhang is transparent, so nothing touches the navbar. */
+div.container.main > div:nth-child(1) > nav > div.navbar-header > a > img {
+  content: url('https://lovetiger1251.github.io/liodencss/starlogo.png') !important;
+  width: 118px !important;
+  height: 130px !important;
+  margin: -5px 37px -5px 37px;
+  object-fit: contain;
+  animation: logo-bloom 8s ease-in-out infinite;
+}
+@keyframes logo-bloom {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(255,255,255,0.9)) drop-shadow(0 0 16px rgba(255,255,255,0.4)); }
+  50%      { filter: drop-shadow(0 0 8px #fff)                  drop-shadow(0 0 26px rgba(255,255,255,0.65)); }
+}
+
+/* signature, bottom-right of the viewport */
+body::after {
+  content: "I <3 tiger ";
+  position: fixed;
+  right: 16px;
+  bottom: 12px;
+  z-index: 9999;
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--white);
+  text-shadow: var(--text-shadow);
+  pointer-events: none;
+}
+
+
+/* 5  CONTROLS ----------------------------------------------------------- */
+
+input, textarea, select {
+  background: var(--field) !important;
+  color: var(--white) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: var(--font-body);
+  text-shadow: none !important;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--ember) !important;
+  box-shadow: 0 0 0 2px rgba(var(--ember-rgb),0.25) !important;
+  outline: none !important;
+}
+
+button.button, a.btn.btn-default.button, input[type="submit"], input[type="button"], .btn {
+  background: rgba(255,255,255,0.1) !important;
+  color: var(--white) !important;
+  border: 1px solid var(--line-hi) !important;
+  border-radius: 999px !important;
+  padding-left: 18px !important;
+  padding-right: 18px !important;
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  transition: background 0.15s, color 0.15s;
+}
+button.button:hover, a.btn.btn-default.button:hover, input[type="submit"]:hover, input[type="button"]:hover, .btn:hover {
+  background: var(--white) !important;
+  color: #000 !important;
+  border-color: var(--white) !important;
+}
+input.bad, input.bad a { background: var(--coral) !important; color: var(--white) !important; border-radius: 50% !important; }
+
+.progress {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid var(--line);
+  border-radius: 999px !important;
+  overflow: hidden;
+}
+.progress-bar         { background: #9a9a9a !important; border-radius: 999px !important; }
+.progress-bar-warning { background-color: #fff    !important; }   /* energy */
+.progress-bar-danger  { background-color: #cfcfcf !important; }   /* hunger */
+.progress-bar-success { background-color: #8a8a8a !important; }   /* exp    */
+.progress div { color: var(--white) !important; font-weight: 500; text-shadow: none; mix-blend-mode: difference; }
+
+.badge { background: var(--sunset) !important; color: #000 !important; border-radius: 999px !important; font-weight: 600; }
+
+.member-online, .member-offline {
+  width: 22px !important;
+  height: 22px;
+  margin: -4px 0 -4px 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.6);
+}
+.member-online  { background: #3ddc6a; box-shadow: 0 0 8px rgba(61,220,106,0.7); }
+.member-offline { background: #6a6a6a; }
+
+
+/* 6  COMMENTS & CHAT ---------------------------------------------------- */
+
+.comment {
+  background: var(--panel-2) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius-sm) !important;
+  text-align: center !important;
+  margin: 6px 0;
+}
+.comment:nth-child(even) { background: rgba(255,255,255,0.03) !important; }
+.text-muted, .s-chat-message_timestamp, div#lblCharacterCounter { color: var(--muted) !important; }
+
+button#label_currentChannel,
+.s-chat-sidebar #fraChatChannelMenu,
+button.channelSwitcher {
+  background: var(--panel) !important;
+  color: var(--white) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+}
+button.channelSwitcher.active { background: var(--sunset) !important; color: #000 !important; border-color: transparent !important; }
+
+/* chat box: one solid, slightly see-through black (--chat-bg), white text */
+#chatMessageContainer, .s-chat-sidebar, .s-chat-input {
+  background: var(--chat-bg) !important;
+  background-image: none !important;
+  color: var(--white) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+}
+div#chatMessageContainer { border: none !important; }
+.s-chat-message, .s-chat-message:nth-child(odd), .s-chat-message:nth-child(even) {
+  background: transparent !important;          /* messages sit on the box's black */
+  color: var(--white) !important;
+  border: none !important;
+}
+.s-chat-message * { color: inherit; }
+.s-chat-message a:link, .s-chat-message a:visited { color: var(--white) !important; }
+.s-chat-message__pinned {
+  background-color: rgba(255,255,255,0.1) !important;
+  color: var(--white) !important;
+  border: none !important;
+  border-left: 3px solid var(--ember) !important;
+}
+
+/* pings — replaces Lioden's yellow with deep crimson (9:1 contrast with white).
+   Covers the common spellings of the mention class; if pings still show
+   yellow, right-click one → Inspect and look for the class with "mention". */
+#chatMessageList .s-chat-message[class*="mention"],
+#chatMessageContainer .s-chat-message[class*="mention"],
+.s-chat-message[class*="mention"],
+.s-chat-message_mention, .s-chat-message--mention, .s-chat-message__mention {
+  background: var(--ping) !important;
+  background-image: none !important;
+  color: var(--white) !important;
+  border-left: 4px solid var(--coral) !important;
+}
+.s-chat-message[class*="mention"] *,
+.s-chat-message[class*="mention"] a:link,
+.s-chat-message[class*="mention"] a:visited { color: var(--white) !important; background: none !important; }
+div.emoteList.active { border-radius: var(--radius-sm) !important; }
+div.emoteList.active::before { background: var(--panel); border: 1px solid var(--line); border-top: none !important; }
+
+
+/* 7  TABLES & KEY TEXT -------------------------------------------------- */
+
+.table {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius);
+  border-collapse: separate !important;
+  border-spacing: 5px 6px !important;
+  padding: 4px;
+}
+.inner-table { border-collapse: separate !important; border-spacing: 4px 5px !important; }
+
+/* table headers, stat labels, featured lion */
+.top, .bottom, th,
+.inner-table .left,
+.featured-lion {
+  background: rgba(255,255,255,0.08) !important;
+  color: var(--white) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius-sm) !important;
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+.top, .bottom, th { font-size: 20px; padding: 4px 16px; }
+.top a, .bottom a, th a { color: var(--white) !important; }
+.inner-table .left { padding: 4px 12px !important; font-size: 15px; }
+.featured-lion { max-width: 640px; margin: 0 auto; padding: 0; font-size: 18px; }
+
+.table .left        { background: rgba(0,0,0,0.25); border-radius: var(--radius-sm) !important; }
+.inner-table .right { background: rgba(0,0,0,0.2) !important; border-radius: var(--radius-sm) !important; color: var(--text) !important; }
+.right_odd          { background: none !important; }
+
+table#pride.table, table#pride.table a, table#pride.table a:visited { color: var(--text) !important; }
+table#pride.table .xsmall { font-size: 12px !important; }
+div.lion-image-block { overflow: hidden; border-radius: var(--radius); }
+
+
+/* 8  PORTRAITS, ICONS, COVERS ------------------------------------------- */
+
+div#lion_image {
+  opacity: 1;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.7);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+div#lion_image { overflow: hidden; }
+div#lion_image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5), 0 0 12px rgba(255,255,255,0.55);
+}
+
+/* cave & mound tiles */
+.cave-grid, .mound-grid { overflow: hidden; transition: border-color 0.25s, color 0.25s, box-shadow 0.25s; }
+.cave-grid:hover, .mound-grid:hover, a:hover > .cave-grid, a:hover > .mound-grid {
+  color: var(--white) !important;
+  border-color: rgba(255,255,255,0.7) !important;
+  box-shadow: 0 0 12px rgba(255,255,255,0.4) !important;
+}
+.cave-grid:hover *, .mound-grid:hover * { color: var(--white) !important; text-shadow: var(--glow-white) !important; }
+div.cave-grid > img, .mound-grid img { border-radius: var(--radius-sm); }
+
+/* custom covers — ordered least to most specific so later rules win */
+div.cave-grid > img {                                        /* base: pregnant lionesses banner */
+  content: url('https://lovetiger1251.github.io/liodencss/second.jpg') !important;
+  width: 258px !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+a > div.cave-grid > img {                                    /* dens */
+  content: url('https://lovetiger1251.github.io/liodencss/first.jpg') !important;
+}
+a[href*="unsorted.php"] > div.cave-grid > img,               /* unsorted · overview · nesting */
+a[href*="lionoverview.php"] > div.cave-grid > img,
+div.cave-grid > img[src*="nesting"] {
+  content: url('https://lovetiger1251.github.io/liodencss/second.jpg') !important;
+}
+div.mound-grid img,                                          /* beetles · mounds */
+a[href*="unsorted-beetles"] img,
+a[href*="beetles.php"] img,
+a[href*="mound"] img {
+  content: url('https://lovetiger1251.github.io/liodencss/third.jpg') !important;
+  width: 100% !important;
+  height: auto !important;
+}
+div.left img,                                                /* dynasty · achievements · showcase · beetle book */
+img[src*="ancestors"], img[src*="achievements"], img[src*="showcase"],
+img[src*="beetlebook"], img[src*="beetle_book"], img[src*="beetle-book"] {
+  content: url('https://lovetiger1251.github.io/liodencss/fourth.jpg') !important;
+  width: 100% !important;
+  height: auto !important;
+  border-radius: var(--radius-sm) !important;
+  filter: none !important;
+}
+
+/* animated covers — slow float + glow pulse, each cover on its own rhythm.
+   Same selector order as the cover rules above, so the same rule wins.
+     · more / less movement → the px, deg and scale values in cover-float
+     · glow strength        → the alpha values in cover-glow
+     · speed                → animation-duration (float, glow)               */
+div.cave-grid > img,
+div.mound-grid img,
+a[href*="unsorted-beetles"] img, a[href*="beetles.php"] img, a[href*="mound"] img,
+div.left img,
+img[src*="ancestors"], img[src*="achievements"], img[src*="showcase"],
+img[src*="beetlebook"], img[src*="beetle_book"], img[src*="beetle-book"] {
+  animation: cover-float 10s ease-in-out infinite, cover-glow 7s ease-in-out infinite;
+  will-change: transform;
+}
+a > div.cave-grid > img {                                    /* first.jpg */
+  animation-duration: 12s, 8s;
+  animation-delay: -3s, -2s;
+}
+a[href*="unsorted.php"] > div.cave-grid > img,               /* second.jpg */
+a[href*="lionoverview.php"] > div.cave-grid > img,
+div.cave-grid > img[src*="nesting"] {
+  animation-duration: 10s, 7s;
+  animation-delay: 0s, 0s;
+}
+div.mound-grid img,                                          /* third.jpg */
+a[href*="unsorted-beetles"] img,
+a[href*="beetles.php"] img,
+a[href*="mound"] img {
+  animation-duration: 14s, 9s;
+  animation-delay: -6s, -4s;
+}
+div.left img,                                                /* fourth.jpg */
+img[src*="ancestors"], img[src*="achievements"], img[src*="showcase"],
+img[src*="beetlebook"], img[src*="beetle_book"], img[src*="beetle-book"] {
+  animation-duration: 11s, 6s;
+  animation-delay: -8s, -1s;
+}
+@keyframes cover-float {
+  0%, 100% { transform: translate(0, 0)       rotate(0)       scale(1); }
+  30%      { transform: translate(2px, -4px)  rotate(0.5deg)  scale(1.015); }
+  65%      { transform: translate(-2px, -2px) rotate(-0.4deg) scale(1.02); }
+}
+@keyframes cover-glow {
+  0%, 100% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+  50%      { box-shadow: 0 0 14px rgba(255,255,255,0.35), 0 0 28px rgba(255,255,255,0.2); }
+}
+
+
+/* 9  DESCRIPTION BOXES ---------------------------------------------------
+   <div class="boxcontainer"><div class="Box1">…</div></div>
+   <div class="boxcontainer"><div class="Box3">…</div><div class="Box2">…</div></div>
+   Mobile: <div class="mobilebox">…</div>
+   ------------------------------------------------------------------------- */
+
+.boxcontainer { display: block; height: 75px; padding: 0; background: none; transition: 1s; }
+.boxcontainer:hover { height: 250px; }
+
+.Box1, .Box2, .Box3 { height: 75px; padding: 14px; margin-bottom: 10px; overflow: hidden; transition: 1s; }
+.Box1 { float: left;  width: 100%; }
+.Box2 { float: right; width: 30%; }
+.Box3 { float: left;  width: 65%; }
+.Box1:hover, .Box2:hover, .Box3:hover { height: 250px; overflow-y: auto; border-color: var(--line-hi) !important; }
+
+.mobilebox { width: 80%; height: 155px; margin: 10px auto; padding: 14px; overflow: auto; }
+
+@media (min-width: 1200px) {
+  .mobilebox { display: none !important; }
+  div.quote  { width: 790px; }
+}
+@media (max-width: 1199px) {
+  .Box1, .Box2, .Box3, .boxcontainer { display: none !important; }
+  .mobilebox { display: block !important; }
+}
+@media (max-width: 767px) {
+  .container.main .hidden-xs { display: block !important; }
+  h1 { font-size: 36px; letter-spacing: 3px; }
+}
+
+
+/* 10  SHOOTING STARS -----------------------------------------------------
+   Three fixed layers behind the main sheet (body::after is the signature).
+   Each layer holds four stars, every one on its own lane and its own point
+   along the path — twelve lanes between -15vh and 35vh, none shared.
+   All stars cross in ~20 s at 15°; the layers cycle at 40 / 44 / 49 s so the
+   on-screen combination never repeats on a short loop.
+     · cycle length  → animation duration
+     · first launch  → animation-delay
+     · lane height   → the vh value in the 0% frame + the layer height
+   ------------------------------------------------------------------------- */
+
+body::before, html::before, html::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-repeat: no-repeat;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+body::before {                                   /* lanes -8 · 2 · 13 · 26 vh */
+  width: calc(760px + 60vw);
+  height: calc(84px + 34vh);
+  background-image:
+    url('https://lovetiger1251.github.io/liodencss/star1.png'), url('https://lovetiger1251.github.io/liodencss/star3.png'),
+    url('https://lovetiger1251.github.io/liodencss/star2.png'), url('https://lovetiger1251.github.io/liodencss/star3.png');
+  background-size: 760px 84px, 340px 56px, 520px 70px, 340px 56px;
+  background-position: 0% 0%, 62% 30%, 28% 62%, 90% 100%;
+  animation: star-a 40s linear infinite;
+}
+html::before {                                   /* lanes -1 · 8 · 19 · 35 vh */
+  width: calc(520px + 60vw);
+  height: calc(84px + 36vh);
+  background-image:
+    url('https://lovetiger1251.github.io/liodencss/star2.png'), url('https://lovetiger1251.github.io/liodencss/star1.png'),
+    url('https://lovetiger1251.github.io/liodencss/star3.png'), url('https://lovetiger1251.github.io/liodencss/star1.png');
+  background-size: 520px 70px, 760px 84px, 340px 56px, 760px 84px;
+  background-position: 50% 0%, 8% 24%, 84% 55%, 30% 100%;
+  animation: star-b 44s linear infinite 13s;
+}
+html::after {                                    /* lanes -15 · -2 · 9 · 15 vh */
+  width: calc(340px + 60vw);
+  height: calc(70px + 30vh);
+  background-image:
+    url('https://lovetiger1251.github.io/liodencss/star3.png'), url('https://lovetiger1251.github.io/liodencss/star2.png'),
+    url('https://lovetiger1251.github.io/liodencss/star1.png'), url('https://lovetiger1251.github.io/liodencss/star2.png');
+  background-size: 340px 56px, 520px 70px, 760px 84px, 520px 70px;
+  background-position: 18% 0%, 70% 42%, 44% 80%, 96% 100%;
+  animation: star-c 49s linear infinite 27s;
+}
+
+/* 15° descent: vertical drop = horizontal travel × 0.268 */
+@keyframes star-a {
+  0%   { opacity: 0; transform: translate(calc(-760px - 60vw), -8vh)            rotate(15deg); }
+  2%   { opacity: 1; }
+  50%  { opacity: 1; transform: translate(110vw, calc(-8vh + 45.6vw + 204px))    rotate(15deg); }
+  53%  { opacity: 0; transform: translate(114vw, calc(-8vh + 46.6vw + 204px))    rotate(15deg); }
+  100% { opacity: 0; transform: translate(114vw, calc(-8vh + 46.6vw + 204px))    rotate(15deg); }
+}
+@keyframes star-b {
+  0%   { opacity: 0; transform: translate(calc(-520px - 60vw), -1vh)            rotate(15deg); }
+  2%   { opacity: 0.9; }
+  45%  { opacity: 0.9; transform: translate(110vw, calc(-1vh + 45.6vw + 139px))  rotate(15deg); }
+  48%  { opacity: 0; transform: translate(114vw, calc(-1vh + 46.6vw + 139px))    rotate(15deg); }
+  100% { opacity: 0; transform: translate(114vw, calc(-1vh + 46.6vw + 139px))    rotate(15deg); }
+}
+@keyframes star-c {
+  0%   { opacity: 0; transform: translate(calc(-340px - 60vw), -15vh)           rotate(15deg); }
+  2%   { opacity: 0.8; }
+  41%  { opacity: 0.8; transform: translate(110vw, calc(-15vh + 45.6vw + 91px))  rotate(15deg); }
+  44%  { opacity: 0; transform: translate(114vw, calc(-15vh + 46.6vw + 91px))    rotate(15deg); }
+  100% { opacity: 0; transform: translate(114vw, calc(-15vh + 46.6vw + 91px))    rotate(15deg); }
+}
+
+@media (max-width: 600px) {
+  body::before, html::before, html::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
